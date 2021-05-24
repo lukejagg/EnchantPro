@@ -15,7 +15,7 @@ public class CustomEnchantment extends Enchantment {
     private EnchantmentTarget targetItem;
     private boolean treasure;
     private boolean cursed;
-    private ArrayList<Enchantment> conflicts = new ArrayList<Enchantment>();
+    private ArrayList<Enchantment> conflicts = new ArrayList<Enchantment>(); // TODO maybe use classes instead of instances
 
     public CustomEnchantment(String key, String name) {
         super(new NamespacedKey(Info.plugin, key));
@@ -34,8 +34,11 @@ public class CustomEnchantment extends Enchantment {
     public String loreString(int level) {
         String numeral = " ";
 
-        if (maxLevel != 1 && level > 0 && level <= maxLevel)
+        if (maxLevel != 1 && level > 0 && level <= maxLevel && level <= NUMERALS.length) {
             numeral += NUMERALS[level - 1];
+        } else if (level > maxLevel || level > NUMERALS.length) {
+            numeral += level;
+        }
 
         return "§7" + name + numeral;
     }

@@ -16,6 +16,8 @@ public class EnchantRegister {
         EnchantRegister.register(Test.getInstance());
     }
 
+    private static ArrayList<CustomEnchantment> enchants = new ArrayList<CustomEnchantment>();
+
     /**
      * Checks if enchantments can be registered
      */
@@ -40,9 +42,17 @@ public class EnchantRegister {
     private static void register(CustomEnchantment enchant) {
         if (allowRegistrations()) {
             Enchantment.registerEnchantment(enchant);
+            enchants.add(enchant);
             Enchantment.stopAcceptingRegistrations();
         } else {
             EnchantPro.Instance.getLogger().warning("Enchantment registration failed!");
         }
+    }
+
+    /**
+     * Returns a custom enchantment based on index
+     */
+    public static CustomEnchantment getEnchant(int id) {
+        return enchants.get(id);
     }
 }
