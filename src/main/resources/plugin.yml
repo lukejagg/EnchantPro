@@ -6,10 +6,6 @@ commands:
     description: Temporary, should not be in the final version.
     usage: /<command>
     permission: enchantpro.test
-  versioninfo:
-    description: Gives the version information for the EnchantPro plugin.
-    usage: /<command>
-    permission: enchantpro.versioninfo
   ep:
     description: EnchantPro command.
     usage: /ep <command>

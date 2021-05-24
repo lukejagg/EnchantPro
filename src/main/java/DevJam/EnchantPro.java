@@ -1,7 +1,6 @@
 package DevJam;
 
 import DevJam.Commands.TestCommand;
-import DevJam.Commands.VersionInfo;
 import org.apache.commons.lang.time.StopWatch;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -31,7 +30,6 @@ public class EnchantPro extends JavaPlugin {
 
         // Register test commands
         getCommand("test").setExecutor(new TestCommand());
-        getCommand("versioninfo").setExecutor(new VersionInfo());
 
         // Register self as command (/ep)
         getCommand(CommandProcessor.PREFIX).setExecutor(this);

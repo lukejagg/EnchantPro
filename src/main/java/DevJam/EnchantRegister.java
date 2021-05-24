@@ -13,17 +13,15 @@ public class EnchantRegister {
      * Method that registers all custom enchantments
      */
     public static void registerEnchantments() {
-        EnchantRegister.register(new Test());
+        EnchantRegister.register(Test.getInstance());
     }
-
-    private static ArrayList<CustomEnchantment> enchants = new ArrayList<CustomEnchantment>();
 
     /**
      * Checks if enchantments can be registered
      */
-    private static boolean allowRegistrations() { // returns true upon success
+    private static boolean allowRegistrations() { // Returns true upon success
         try {
-            // using Java reflection to set a private variable
+            // Using Java reflection to set a private variable
             // https://www.spigotmc.org/threads/making-a-custom-enchantment.226403/
             Field fieldAcceptingNew = Enchantment.class.getDeclaredField("acceptingNew");
             fieldAcceptingNew.setAccessible(true);
@@ -42,17 +40,9 @@ public class EnchantRegister {
     private static void register(CustomEnchantment enchant) {
         if (allowRegistrations()) {
             Enchantment.registerEnchantment(enchant);
-            enchants.add(enchant);
             Enchantment.stopAcceptingRegistrations();
         } else {
             EnchantPro.Instance.getLogger().warning("Enchantment registration failed!");
         }
-    }
-
-    /**
-     * Returns a custom enchantment based on index
-     */
-    public static CustomEnchantment getEnchant(int id) {
-        return enchants.get(id);
     }
 }

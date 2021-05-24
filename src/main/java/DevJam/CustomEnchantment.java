@@ -78,7 +78,7 @@ public class CustomEnchantment extends Enchantment {
      * Adds lore to an item to reflect all of the custom enchantments on the item
      * @param item
      */
-    public static void apply(ItemStack item) { // adds lore to item to reflect all the custom enchantments on it
+    public static void apply(ItemStack item) {
         ArrayList<String> lore = new ArrayList<String>();
 
         Map<Enchantment, Integer> enchantments = item.getEnchantments();
