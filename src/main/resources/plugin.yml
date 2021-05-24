@@ -10,3 +10,6 @@ commands:
     description: Gives the version information for the EnchantPro plugin.
     usage: /<command>
     permission: enchantpro.versioninfo
+  ep:
+    description: EnchantPro command.
+    usage: /ep <command>
