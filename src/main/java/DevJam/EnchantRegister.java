@@ -3,8 +3,11 @@ package DevJam;
 import org.bukkit.enchantments.Enchantment;
 
 import java.lang.reflect.Field;
+import java.util.ArrayList;
 
 public class EnchantRegister {
+    public static ArrayList<CustomEnchant> enchants = new ArrayList<CustomEnchant>();
+
     public static boolean allowRegistrations() { // returns true upon success
         try { // using Java reflection to set a private variable - https://www.spigotmc.org/threads/making-a-custom-enchantment.226403/
             Field fieldAcceptingNew = Enchantment.class.getDeclaredField("acceptingNew");
@@ -20,6 +23,7 @@ public class EnchantRegister {
     public static void register(CustomEnchant e) {
         if (allowRegistrations()) {
             Enchantment.registerEnchantment(e);
+            enchants.add(e);
             Enchantment.stopAcceptingRegistrations();
         } else {
             EnchantPro.Instance.getLogger().warning("Enchantment registration failed!");

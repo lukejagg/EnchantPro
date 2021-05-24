@@ -2,6 +2,10 @@ name: EnchantPro
 version: 1.0
 main: DevJam.EnchantPro
 commands:
+  test:
+    description: Temporary, should not be in the final version.
+    usage: /<command>
+    permission: enchantpro.test
   versioninfo:
     description: Gives the version information for the EnchantPro plugin.
     usage: /<command>
