@@ -2,6 +2,7 @@ package DevJam;
 
 import DevJam.Commands.Test;
 import DevJam.Commands.VersionInfo;
+import org.apache.commons.lang.time.StopWatch;
 import org.bukkit.NamespacedKey;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -22,18 +23,27 @@ public class EnchantPro extends JavaPlugin {
     @Override
     public void onEnable() {
         getLogger().info("onEnable is called!");
+        Info.plugin = this;
+        Info.version = this.getDescription().getVersion();
+
+        // Benchmark
+        StopWatch w = new StopWatch();
+        w.start();
 
         // Register commands
-        this.getCommand("test").setExecutor(new Test());
-        this.getCommand("versioninfo").setExecutor(new VersionInfo());
+        getCommand("test").setExecutor(new Test());
+        getCommand("versioninfo").setExecutor(new VersionInfo());
 
         // Register self as command (/ep)
-        getCommand("ep").setExecutor(this);
+        getCommand(CommandProcessor.PREFIX).setExecutor(this);
+        getCommand(CommandProcessor.PREFIX).setTabCompleter(new CommandProcessor.TabCompletion());
 
         // Custom enchantments
         EnchantRegister.register(new CustomEnchant(new NamespacedKey(this, "test"), "Test Enchantment"));
 
-
+        // Finish initialization
+        w.stop();
+        getLogger().info(Info.BRAND + " v" + Info.version + " started up in " + w.getTime() + "ms");
     }
 
     @Override
