@@ -1,7 +1,5 @@
 package DevJam;
 
-import DevJam.CustomEnchantment;
-import DevJam.EnchantRegister;
 import DevJam.Enchantments.Test;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
@@ -17,7 +15,7 @@ public class TestCommand implements CommandExecutor { // TODO remove - temporary
             Player player = (Player) sender;
 
             ItemStack sword = new ItemStack(Material.DIAMOND_SWORD);
-            sword.addEnchantment(Test.getInstance(), 1);
+            sword.addEnchantment(new Test(), 1);
             CustomEnchantment.apply(sword);
 
             player.getInventory().addItem(sword);

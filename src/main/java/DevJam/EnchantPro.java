@@ -1,6 +1,5 @@
 package DevJam;
 
-import DevJam.TestCommand;
 import org.apache.commons.lang.time.StopWatch;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -20,7 +19,6 @@ public class EnchantPro extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        getLogger().info("onEnable is called!");
         Info.plugin = this;
         Info.version = this.getDescription().getVersion();
 
@@ -36,7 +34,7 @@ public class EnchantPro extends JavaPlugin {
         getCommand(CommandProcessor.PREFIX).setTabCompleter(new CommandProcessor.TabCompletion());
 
         // Custom enchantments
-        EnchantRegister.registerEnchantments();
+        EnchantManager.start();
 
         // Finish initialization
         w.stop();
@@ -45,6 +43,8 @@ public class EnchantPro extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        getLogger().info("onDisable is called!");
+        getLogger().info("Disabling EnchantPro");
+
+        EnchantManager.stop();
     }
 }

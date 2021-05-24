@@ -1,18 +1,12 @@
 package DevJam.Enchantments;
 
 import DevJam.CustomEnchantment;
+import org.bukkit.enchantments.EnchantmentTarget;
 
 public class Test extends CustomEnchantment {
-    private static Test Instance;
-
-    private Test() {
+    public Test() {
         super("test", "Test Enchantment");
-    }
-
-    public static Test getInstance() {
-        if (Instance == null) {
-            Instance = new Test();
-        }
-        return Instance;
+        maxLevel = 5;
+        targetItem = EnchantmentTarget.WEAPON;
     }
 }

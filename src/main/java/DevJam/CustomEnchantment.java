@@ -8,8 +8,9 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.Objects;
 
-public class CustomEnchantment extends Enchantment {
+public abstract class CustomEnchantment extends Enchantment {
     protected String name;
     protected int maxLevel;
     protected EnchantmentTarget targetItem;
@@ -87,18 +88,37 @@ public class CustomEnchantment extends Enchantment {
      * @param item
      */
     public static void apply(ItemStack item) {
+        Map<Enchantment, Integer> enchantments = item.getEnchantments();
+        apply(item, enchantments);
+    }
+
+    public static void apply(ItemStack item, Map<Enchantment, Integer> enchantments) {
         ArrayList<String> lore = new ArrayList<String>();
 
-        Map<Enchantment, Integer> enchantments = item.getEnchantments();
         for (Enchantment enchant : enchantments.keySet()) {
             if (enchant instanceof CustomEnchantment) {
                 CustomEnchantment en = (CustomEnchantment) enchant;
-                lore.add(en.loreString(enchantments.get(enchant)));
+                int level = enchantments.get(enchant);
+                lore.add(en.loreString(level));
             }
         }
 
         ItemMeta meta = item.getItemMeta();
         meta.setLore(lore);
         item.setItemMeta(meta);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        //if (!super.equals(o)) return false;
+        CustomEnchantment that = (CustomEnchantment) o;
+        return name.equals(that.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), name);
     }
 }
