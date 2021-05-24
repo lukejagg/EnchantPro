@@ -6,15 +6,13 @@ import java.lang.reflect.Field;
 
 public class EnchantRegister {
     public static boolean allowRegistrations() { // returns true upon success
-        if (!Enchantment.isAcceptingRegistrations()) {
-            try { // using Java reflection to set a private variable - https://www.spigotmc.org/threads/making-a-custom-enchantment.226403/
-                Field fieldAcceptingNew = Enchantment.class.getDeclaredField("acceptingNew");
-                fieldAcceptingNew.setAccessible(true);
-                fieldAcceptingNew.set(null, true);
-                fieldAcceptingNew.setAccessible(false);
-            } catch (Exception e) {
-                return false;
-            }
+        try { // using Java reflection to set a private variable - https://www.spigotmc.org/threads/making-a-custom-enchantment.226403/
+            Field fieldAcceptingNew = Enchantment.class.getDeclaredField("acceptingNew");
+            fieldAcceptingNew.setAccessible(true);
+            fieldAcceptingNew.set(null, true);
+            fieldAcceptingNew.setAccessible(false);
+        } catch (Exception e) {
+            return false;
         }
         return true;
     }

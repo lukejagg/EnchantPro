@@ -1,5 +1,6 @@
 package DevJam;
 
+import DevJam.Commands.CommandVersionInfo;
 import org.bukkit.NamespacedKey;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -21,6 +22,7 @@ public class EnchantPro extends JavaPlugin {
     @Override
     public void onEnable() {
         getLogger().info("onEnable is called!");
+        this.getCommand("versioninfo").setExecutor(new CommandVersionInfo());
         EnchantRegister.register(new CustomEnchant(new NamespacedKey(this, "test")));
         Enchantment[] enchants = Enchantment.values();
         for (Enchantment enchant : enchants) {
