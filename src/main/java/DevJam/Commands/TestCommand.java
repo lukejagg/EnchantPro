@@ -17,7 +17,7 @@ public class TestCommand implements CommandExecutor {
             Player player = (Player) sender;
 
             ItemStack sword = new ItemStack(Material.DIAMOND_SWORD);
-            sword.addEnchantment(Test.Instance, 1);
+            sword.addEnchantment(Test.getInstance(), 1);
             CustomEnchantment.apply(sword);
 
             player.getInventory().addItem(sword);

@@ -3,7 +3,7 @@ package DevJam.Enchantments;
 import DevJam.CustomEnchantment;
 
 public class Test extends CustomEnchantment {
-    public static Test Instance;
+    private static Test Instance;
 
     private Test() {
         super("test", "Test Enchantment");
