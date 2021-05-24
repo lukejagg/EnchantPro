@@ -1,9 +1,8 @@
 package DevJam;
 
-import DevJam.Commands.Test;
+import DevJam.Commands.TestCommand;
 import DevJam.Commands.VersionInfo;
 import org.apache.commons.lang.time.StopWatch;
-import org.bukkit.NamespacedKey;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -30,8 +29,8 @@ public class EnchantPro extends JavaPlugin {
         StopWatch w = new StopWatch();
         w.start();
 
-        // Register commands
-        getCommand("test").setExecutor(new Test());
+        // Register test commands
+        getCommand("test").setExecutor(new TestCommand());
         getCommand("versioninfo").setExecutor(new VersionInfo());
 
         // Register self as command (/ep)
@@ -39,7 +38,7 @@ public class EnchantPro extends JavaPlugin {
         getCommand(CommandProcessor.PREFIX).setTabCompleter(new CommandProcessor.TabCompletion());
 
         // Custom enchantments
-        EnchantRegister.register(new CustomEnchant(new NamespacedKey(this, "test"), "Test Enchantment"));
+        EnchantRegister.registerEnchantments();
 
         // Finish initialization
         w.stop();

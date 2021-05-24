@@ -1,15 +1,30 @@
 package DevJam;
 
+import DevJam.Enchantments.Test;
+import org.bukkit.NamespacedKey;
 import org.bukkit.enchantments.Enchantment;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 
 public class EnchantRegister {
-    public static ArrayList<CustomEnchant> enchants = new ArrayList<CustomEnchant>();
 
-    public static boolean allowRegistrations() { // returns true upon success
-        try { // using Java reflection to set a private variable - https://www.spigotmc.org/threads/making-a-custom-enchantment.226403/
+    /**
+     * Method that registers all custom enchantments
+     */
+    public static void registerEnchantments() {
+        EnchantRegister.register(new Test());
+    }
+
+    private static ArrayList<CustomEnchantment> enchants = new ArrayList<CustomEnchantment>();
+
+    /**
+     * Checks if enchantments can be registered
+     */
+    private static boolean allowRegistrations() { // returns true upon success
+        try {
+            // using Java reflection to set a private variable
+            // https://www.spigotmc.org/threads/making-a-custom-enchantment.226403/
             Field fieldAcceptingNew = Enchantment.class.getDeclaredField("acceptingNew");
             fieldAcceptingNew.setAccessible(true);
             fieldAcceptingNew.set(null, true);
@@ -20,13 +35,24 @@ public class EnchantRegister {
         return true;
     }
 
-    public static void register(CustomEnchant e) {
+    /**
+     * Registers a CustomEnchantment
+     * @param enchant
+     */
+    private static void register(CustomEnchantment enchant) {
         if (allowRegistrations()) {
-            Enchantment.registerEnchantment(e);
-            enchants.add(e);
+            Enchantment.registerEnchantment(enchant);
+            enchants.add(enchant);
             Enchantment.stopAcceptingRegistrations();
         } else {
             EnchantPro.Instance.getLogger().warning("Enchantment registration failed!");
         }
+    }
+
+    /**
+     * Returns a custom enchantment based on index
+     */
+    public static CustomEnchantment getEnchant(int id) {
+        return enchants.get(id);
     }
 }

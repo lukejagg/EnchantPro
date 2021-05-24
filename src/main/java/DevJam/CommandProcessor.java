@@ -18,6 +18,10 @@ public class CommandProcessor {
         }
     }
 
+    /**
+     * Called when a command is run.
+     * Each sub-command is listed in the switch statement.
+     */
     public static boolean onCommand(CommandSender sender, @SuppressWarnings("unused") Command command, String commandPrefix, String[] args) {
         if (commandPrefix.equalsIgnoreCase(PREFIX)) {
             String label = args.length == 0 ? "" : args[0].toLowerCase();
@@ -32,8 +36,6 @@ public class CommandProcessor {
         return true;
     }
 
-
-    // Commands
     private static boolean versionInfo(CommandSender sender) {
         sender.sendMessage(Info.LOGO + " Using " + Info.MINILOGO + ChatColor.AQUA + " with version " + ChatColor.RED
                 + Info.version +  ChatColor.AQUA + ".");

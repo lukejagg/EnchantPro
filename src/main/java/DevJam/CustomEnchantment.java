@@ -9,19 +9,19 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.ArrayList;
 import java.util.Map;
 
-public class CustomEnchant extends Enchantment {
+public class CustomEnchantment extends Enchantment {
     private String name;
     private int maxLevel;
-    private EnchantmentTarget target;
+    private EnchantmentTarget targetItem;
     private boolean treasure;
     private boolean cursed;
     private ArrayList<Enchantment> conflicts = new ArrayList<Enchantment>();
 
-    public CustomEnchant(NamespacedKey key, String name) {
-        super(key);
+    public CustomEnchantment(String key, String name) {
+        super(new NamespacedKey(Info.plugin, key));
         this.name = name;
         maxLevel = 1;
-        target = EnchantmentTarget.ALL;
+        targetItem = EnchantmentTarget.ALL;
         treasure = false;
         cursed = false;
     }
@@ -30,13 +30,12 @@ public class CustomEnchant extends Enchantment {
         return name;
     }
 
+    public final static String[] NUMERALS = {"I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII", "XIII", "XIV", "XV", "XVI", "XVII", "XVIII", "XIX", "XX"};
     public String loreString(int level) {
-        String[] numerals = {"I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"};
-
         String numeral = " ";
-        if (maxLevel != 1 && level > 0 && level <= maxLevel) {
-            numeral += numerals[level - 1];
-        }
+
+        if (maxLevel != 1 && level > 0 && level <= maxLevel)
+            numeral += NUMERALS[level - 1];
 
         return "§7" + name + numeral;
     }
@@ -50,7 +49,7 @@ public class CustomEnchant extends Enchantment {
     }
 
     public EnchantmentTarget getItemTarget() {
-        return target;
+        return targetItem;
     }
 
     public boolean isTreasure() {
@@ -75,18 +74,23 @@ public class CustomEnchant extends Enchantment {
         return true;
     }
 
-    public static void build(ItemStack item) { // adds lore to item to reflect all the custom enchantments on it
+    /**
+     * Adds lore to an item to reflect all of the custom enchantments on the item
+     * @param item
+     */
+    public static void apply(ItemStack item) { // adds lore to item to reflect all the custom enchantments on it
         ArrayList<String> lore = new ArrayList<String>();
 
         Map<Enchantment, Integer> enchantments = item.getEnchantments();
         for (Enchantment enchant : enchantments.keySet()) {
-            if (enchant instanceof CustomEnchant) {
-                lore.add(((CustomEnchant) enchant).loreString(enchantments.get(enchant)));
+            if (enchant instanceof CustomEnchantment) {
+                CustomEnchantment en = (CustomEnchantment) enchant;
+                lore.add(en.loreString(enchantments.get(enchant)));
             }
         }
 
-        ItemMeta im = item.getItemMeta();
-        im.setLore(lore);
-        item.setItemMeta(im);
+        ItemMeta meta = item.getItemMeta();
+        meta.setLore(lore);
+        item.setItemMeta(meta);
     }
 }
