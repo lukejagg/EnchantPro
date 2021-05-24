@@ -10,12 +10,12 @@ import java.util.ArrayList;
 import java.util.Map;
 
 public class CustomEnchantment extends Enchantment {
-    private String name;
-    private int maxLevel;
-    private EnchantmentTarget targetItem;
-    private boolean treasure;
-    private boolean cursed;
-    private ArrayList<Enchantment> conflicts = new ArrayList<Enchantment>(); // TODO maybe use classes instead of instances
+    protected String name;
+    protected int maxLevel;
+    protected EnchantmentTarget targetItem;
+    protected boolean treasure;
+    protected boolean cursed;
+    protected ArrayList<Enchantment> conflicts = new ArrayList<Enchantment>(); // TODO maybe use classes instead of instances
 
     public CustomEnchantment(String key, String name) {
         super(new NamespacedKey(Info.plugin, key));
@@ -63,9 +63,14 @@ public class CustomEnchantment extends Enchantment {
         return cursed;
     }
 
+    /**
+     * Checks if the enchantment conflicts with another enchantment (idk if this even works)
+     * @param other
+     * @return true if it conflicts, false if it doesn't
+     */
     public boolean conflictsWith(Enchantment other) {
-        for (Enchantment e : conflicts) {
-            if (e.equals(other)) {
+        for (Enchantment conflict : conflicts) {
+            if (conflict.equals(other)) {
                 return true;
             }
         }
