@@ -1,4 +1,4 @@
-package DevJam.Commands;
+package DevJam;
 
 import DevJam.CustomEnchantment;
 import DevJam.EnchantRegister;
@@ -10,7 +10,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-public class TestCommand implements CommandExecutor {
+public class TestCommand implements CommandExecutor { // TODO remove - temporary
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player) {

@@ -1,6 +1,6 @@
 package DevJam;
 
-import DevJam.Commands.TestCommand;
+import DevJam.TestCommand;
 import org.apache.commons.lang.time.StopWatch;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
