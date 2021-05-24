@@ -67,4 +67,16 @@ public class Info {
             BlockFace.SOUTH,
             BlockFace.WEST,
     };
+
+    public static void log(String str) {
+        plugin.getLogger().info(str);
+    }
+
+    public static void error(String str) {
+        plugin.getLogger().severe(str);
+    }
+
+    public static void warn(String str) {
+        plugin.getLogger().warning(str);
+    }
 }
