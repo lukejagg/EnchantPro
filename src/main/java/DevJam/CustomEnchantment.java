@@ -3,6 +3,8 @@ package DevJam;
 import org.bukkit.NamespacedKey;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.enchantments.EnchantmentTarget;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -70,12 +72,7 @@ public abstract class CustomEnchantment extends Enchantment {
      * @return true if it conflicts, false if it doesn't
      */
     public boolean conflictsWith(Enchantment other) {
-        for (Enchantment conflict : conflicts) {
-            if (conflict.equals(other)) {
-                return true;
-            }
-        }
-        return false;
+        return conflicts.contains(other);
     }
 
     public boolean canEnchantItem(ItemStack item) {
@@ -121,4 +118,18 @@ public abstract class CustomEnchantment extends Enchantment {
     public int hashCode() {
         return Objects.hash(super.hashCode(), name);
     }
+
+    // Methods to be overridden by subclasses
+    // Action completed => true, action not completed => false
+
+    /**
+     * Passive action called every time the Update event is called
+     * @param entity - the entity that holds the enchantment
+     * @param level - the level of the enchantment
+     * @return action completion result
+     */
+    public boolean passive(LivingEntity entity, int level) {
+        return false;
+    }
+
 }

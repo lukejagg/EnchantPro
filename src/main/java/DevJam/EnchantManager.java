@@ -1,9 +1,14 @@
 package DevJam;
 
+import DevJam.Enchantments.Regeneration;
 import DevJam.Enchantments.Test;
-import DevJam.Events.EnchantEvent;
+import DevJam.Listeners.EnchantListener;
+import DevJam.Listeners.UpdateListener;
+import DevJam.Tasks.Update;
+import org.bukkit.Bukkit;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.plugin.PluginManager;
+import org.bukkit.scheduler.BukkitScheduler;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -15,7 +20,8 @@ public class EnchantManager {
 
     public static void start() {
         registerEnchantments();
-        registerEvents();
+        registerListeners();
+        registerTasks();
     }
 
     public static void stop() {
@@ -32,6 +38,7 @@ public class EnchantManager {
 
             // Enchantments
             EnchantManager.register(new Test());
+            EnchantManager.register(new Regeneration());
 
             /* Why is this necessary? */
             //Enchantment.stopAcceptingRegistrations();
@@ -75,9 +82,15 @@ public class EnchantManager {
     }
     //endregion
 
-    private static void registerEvents() {
+    private static void registerListeners() {
         PluginManager manager = Info.plugin.getServer().getPluginManager();
-        manager.registerEvents(new EnchantEvent(), Info.plugin);
+        manager.registerEvents(new EnchantListener(), Info.plugin);
+        manager.registerEvents(new UpdateListener(), Info.plugin);
+    }
+
+    private static void registerTasks() {
+        BukkitScheduler scheduler = Bukkit.getScheduler();
+        scheduler.scheduleSyncRepeatingTask(Info.plugin, new Update(), 0, 20);
     }
 
     /**

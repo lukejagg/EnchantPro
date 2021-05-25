@@ -1,4 +1,4 @@
-package DevJam.Events;
+package DevJam.Listeners;
 
 import DevJam.CustomEnchantment;
 import DevJam.Enchantments.Test;
@@ -14,7 +14,7 @@ import org.bukkit.inventory.ItemStack;
 import java.util.Map;
 import java.util.Random;
 
-public class EnchantEvent implements Listener {
+public class EnchantListener implements Listener {
     @EventHandler
     public void onEnchantItem(EnchantItemEvent event) {
         ItemStack item = event.getItem();

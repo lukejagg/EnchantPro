@@ -1,5 +1,6 @@
 package DevJam;
 
+import DevJam.Enchantments.Regeneration;
 import DevJam.Enchantments.Test;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
@@ -14,11 +15,11 @@ public class TestCommand implements CommandExecutor { // TODO remove - temporary
         if (sender instanceof Player) {
             Player player = (Player) sender;
 
-            ItemStack sword = new ItemStack(Material.DIAMOND_SWORD);
-            sword.addEnchantment(new Test(), 1);
-            CustomEnchantment.apply(sword);
+            ItemStack item = new ItemStack(Material.DIAMOND_CHESTPLATE);
+            item.addEnchantment(new Regeneration(), 2);
+            CustomEnchantment.apply(item);
 
-            player.getInventory().addItem(sword);
+            player.getInventory().addItem(item);
         }
         return true;
     }
