@@ -16,6 +16,7 @@ import org.bukkit.inventory.AnvilInventory;
 import org.bukkit.inventory.GrindstoneInventory;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
@@ -87,13 +88,54 @@ public class EnchantListener implements Listener {
         // Prevent book from being in first slot
         if (ItemUtil.isBook(item1) && !ItemUtil.isBook(item2)) return;
 
+        Map<CustomEnchantment, Integer> customEnchants = new HashMap<>();
+        int cost = inv.getRepairCost();
+
         // Merge enchantments
         if (item1.getType() == item2.getType() || ItemUtil.isBook(item2)) {
             Map<Enchantment, Integer> ench1 = item1.getEnchantments(), ench2 = item2.getEnchantments();
 
-            for (Enchantment e : ench1.keySet()) {
+            for (Enchantment e : ench1.keySet())
+                if (e instanceof CustomEnchantment)
+                    customEnchants.put((CustomEnchantment) e, ench1.get(e));
 
+            for (Enchantment e : ench2.keySet()) {
+                if (e instanceof CustomEnchantment) {
+                    CustomEnchantment enchant = (CustomEnchantment) e;
+                    int level = ench2.get(e);
+
+                    // Has the same enchant, try combining
+                    if (customEnchants.containsKey(enchant)) {
+                        int originalLevel = customEnchants.get(enchant);
+
+                        if (level > originalLevel) {
+                            // Overwrite level
+                            customEnchants.put(enchant, level);
+                            cost++;
+                        }
+                        else if (level == originalLevel) {
+                            // Add level to enchantment
+                            customEnchants.put(enchant, level + 1);
+                            cost++;
+                        }
+                        else {
+                            // Level is lower than original level
+                        }
+                    }
+                    else {
+                        if (CustomEnchantment.canAddEnchantment(enchant, ench1))
+                            customEnchants.put(enchant, level);
+                    }
+                }
             }
         }
+
+        for (CustomEnchantment e : customEnchants.keySet()) {
+            CustomEnchantment enchant = (CustomEnchantment) e;
+            int level = customEnchants.get(e);
+            result.addEnchantment(enchant, level);
+        }
+
+        CustomEnchantment.apply(result);
     }
 }

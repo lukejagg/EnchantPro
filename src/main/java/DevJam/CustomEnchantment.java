@@ -62,6 +62,10 @@ public abstract class CustomEnchantment extends Enchantment {
     //endregion
 
     //region Compatibility
+    public static boolean canAddEnchantment(CustomEnchantment enchantment, Map<Enchantment, Integer> enchantments) {
+        return true;
+    }
+
     /**
      * Checks if the enchantment conflicts with another enchantment (idk if this even works)
      * @param other enchantment
