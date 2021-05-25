@@ -6,6 +6,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -30,11 +31,17 @@ public class EnchantPro extends JavaPlugin {
     @Override
     public void onEnable() {
         Info.plugin = this;
+        Info.config = this.getConfig();
         Info.version = this.getDescription().getVersion();
 
         // Benchmark
         StopWatch w = new StopWatch();
         w.start();
+
+        // Config
+        getConfig().addDefault("updatePeriod", 20);
+        getConfig().options().copyDefaults(true);
+        saveConfig();
 
         // Register test commands
         getCommand("test").setExecutor(new TestCommand());

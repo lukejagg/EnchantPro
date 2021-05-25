@@ -2,6 +2,7 @@ package DevJam;
 
 import org.bukkit.ChatColor;
 import org.bukkit.block.BlockFace;
+import org.bukkit.configuration.file.FileConfiguration;
 
 /**
  * This class will be removed in the 3.0.0 or 4.0.0 refractor since it deeply violates the principles of OOP.
@@ -67,6 +68,8 @@ public class Info {
             BlockFace.SOUTH,
             BlockFace.WEST,
     };
+
+    public static FileConfiguration config;
 
     public static void log(String str) {
         plugin.getLogger().info(str);

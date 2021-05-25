@@ -10,7 +10,7 @@ public class Update implements Runnable {
         updateEvent = new UpdateEvent();
     }
 
-    public void run() { // Called once every 20 ticks (for now)
+    public void run() { // Called once every 20 ticks by default (changeable in config)
         Bukkit.getPluginManager().callEvent(updateEvent);
     }
 }

@@ -90,7 +90,7 @@ public class EnchantManager {
 
     private static void registerTasks() {
         BukkitScheduler scheduler = Bukkit.getScheduler();
-        scheduler.scheduleSyncRepeatingTask(Info.plugin, new Update(), 0, 20);
+        scheduler.scheduleSyncRepeatingTask(Info.plugin, new Update(), 0, Info.config.getInt("updatePeriod"));
     }
 
     /**

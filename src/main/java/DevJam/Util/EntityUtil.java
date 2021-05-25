@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class EntityUtil {
     public static ArrayList<ItemStack> getEquipment(Entity entity) {
-        return null;
+        return null; // TODO
     }
 
     /**
