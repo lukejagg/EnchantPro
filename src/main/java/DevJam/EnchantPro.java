@@ -1,20 +1,9 @@
 package DevJam;
 
-import DevJam.Tasks.Update;
 import org.apache.commons.lang.time.StopWatch;
-import org.bukkit.Bukkit;
-import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
-import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.entity.LivingEntity;
-import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.scheduler.BukkitScheduler;
-
-import java.util.ArrayList;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class EnchantPro extends JavaPlugin {
     public static EnchantPro Instance;
@@ -29,6 +18,7 @@ public class EnchantPro extends JavaPlugin {
     }
 
     @Override
+    @SuppressWarnings({"ConstantConditions"})
     public void onEnable() {
         Info.plugin = this;
         Info.config = this.getConfig();

@@ -1,10 +1,14 @@
 package DevJam.Enchantments;
 
 import DevJam.CustomEnchantment;
+import DevJam.Events.UpdateItemEvent;
 import DevJam.Info;
+import DevJam.Util.ItemUtil;
 import org.bukkit.enchantments.EnchantmentTarget;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
+import org.bukkit.inventory.EquipmentSlot;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
@@ -13,11 +17,11 @@ public class Regeneration extends CustomEnchantment {
         super("regeneration", "Regeneration");
         maxLevel = 2;
         targetItem = EnchantmentTarget.ARMOR;
+        updateDelay = 20;
     }
 
     @Override
-    public boolean passive(LivingEntity entity, int level) {
-        entity.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, 5 * 20, level - 1));
-        return true;
+    public void update(UpdateItemEvent event) {
+        event.entity.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, 5 * 20, event.level - 1));
     }
 }

@@ -10,6 +10,7 @@ import java.util.List;
 public class CommandProcessor {
     public final static String PREFIX = "ep";
 
+    //region Autocomplete
     public static class TabCompletion implements TabCompleter {
 
         @Override
@@ -17,6 +18,7 @@ public class CommandProcessor {
             return null;
         }
     }
+    //endregion
 
     /**
      * Called when a command is run.
@@ -36,6 +38,7 @@ public class CommandProcessor {
         return true;
     }
 
+    //region Commands
     private static boolean versionInfo(CommandSender sender) {
         sender.sendMessage(Info.LOGO + " Using " + Info.MINILOGO + ChatColor.AQUA + " with version " + ChatColor.RED
                 + Info.version +  ChatColor.AQUA + ".");
@@ -44,4 +47,5 @@ public class CommandProcessor {
         sender.sendMessage(Info.LOGO + " Download it here:" + ChatColor.DARK_GREEN + " https://github.com/lukejagg/EnchantPro");
         return true;
     }
+    //endregion
 }

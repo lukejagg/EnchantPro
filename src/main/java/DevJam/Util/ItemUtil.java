@@ -3,6 +3,7 @@ package DevJam.Util;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.enchantments.EnchantmentTarget;
+import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 
 public class ItemUtil {
@@ -131,11 +132,30 @@ public class ItemUtil {
     }
     //endregion
 
+    //region Enchanting
+    /**
+     * Checks if the item type is enchantable
+     * @param item item
+     * @return returns if the item type is enchantable
+     */
     public static boolean isEnchantable(ItemStack item) {
+        if (item == null) return false;
         return isTool(item) || isArmor(item)
                 || isSword(item) || isTrident(item) || isShield(item)
                 || isBow(item) || isCrossbow(item)
                 || isFishingRod(item) || isFlintAndSteel(item) || isShears(item)
                 || isBook(item);
     }
+    //endregion
+
+    //region Slots
+    public static boolean slotIsArmor(EquipmentSlot slot) {
+        return slot == EquipmentSlot.HEAD || slot == EquipmentSlot.CHEST
+                || slot == EquipmentSlot.LEGS || slot == EquipmentSlot.FEET;
+    }
+
+    public static boolean slotIsHands(EquipmentSlot slot) {
+        return slot == EquipmentSlot.HAND || slot == EquipmentSlot.OFF_HAND;
+    }
+    //endregion
 }

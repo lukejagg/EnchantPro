@@ -40,18 +40,16 @@ public class EnchantListener implements Listener {
         InventoryType inventoryType = event.getView().getTopInventory().getType();
         if (inventoryType == InventoryType.GRINDSTONE) {
             // Remove lore from preview item
-            Info.plugin.getServer().getScheduler().runTaskLater(Info.plugin, new Runnable() {
-                public void run() {
-                    GrindstoneInventory inv = (GrindstoneInventory)event.getView().getTopInventory();
-                    ItemStack item = inv.getItem(2);
-                    if (item != null)
-                        CustomEnchantment.apply(item);
-                }
+            Info.plugin.getServer().getScheduler().runTaskLater(Info.plugin, () -> {
+                GrindstoneInventory inv = (GrindstoneInventory)event.getView().getTopInventory();
+                ItemStack item = inv.getItem(2);
+                if (item != null)
+                    CustomEnchantment.apply(item);
             },  1L);
 
             // Apply lore removal
             InventoryType.SlotType slotType = event.getSlotType();
-            if (slotType == InventoryType.SlotType.RESULT) {
+            if (slotType == InventoryType.SlotType.RESULT && event.getCurrentItem() != null) {
                 ItemStack item = event.getCurrentItem();
                 CustomEnchantment.apply(item);
             }
@@ -84,7 +82,7 @@ public class EnchantListener implements Listener {
         }
 
         // Make sure item2 is enchantable
-        if (item2 == null || !ItemUtil.isEnchantable(item2) || item2.getAmount() > 1)return;
+        if (!ItemUtil.isEnchantable(item2) || item2.getAmount() > 1)return;
 
         // Prevent book from being in first slot
         if (ItemUtil.isBook(item1) && !ItemUtil.isBook(item2)) return;

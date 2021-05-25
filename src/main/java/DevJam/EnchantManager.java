@@ -2,9 +2,9 @@ package DevJam;
 
 import DevJam.Enchantments.Regeneration;
 import DevJam.Enchantments.Test;
+import DevJam.Listeners.ActionListener;
 import DevJam.Listeners.EnchantListener;
 import DevJam.Listeners.UpdateListener;
-import DevJam.Tasks.Update;
 import org.bukkit.Bukkit;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.plugin.PluginManager;
@@ -15,9 +15,10 @@ import java.util.ArrayList;
 
 public class EnchantManager {
     private static boolean registered = false;
-    private static ArrayList<CustomEnchantment> enchants = new ArrayList<CustomEnchantment>();
+    private static final ArrayList<CustomEnchantment> enchants = new ArrayList<CustomEnchantment>();
 
 
+    //region Initialization
     public static void start() {
         registerEnchantments();
         registerListeners();
@@ -27,6 +28,7 @@ public class EnchantManager {
     public static void stop() {
 
     }
+    //endregion
 
     //region Enchantment Registration
     /**
@@ -72,7 +74,7 @@ public class EnchantManager {
 
     /**
      * Registers a CustomEnchantment
-     * @param enchant
+     * @param enchant enchantment
      */
     private static void register(CustomEnchantment enchant) {
         Enchantment.registerEnchantment(enchant);
@@ -82,21 +84,16 @@ public class EnchantManager {
     }
     //endregion
 
+    //region Listeners
     private static void registerListeners() {
-        PluginManager manager = Info.plugin.getServer().getPluginManager();
+        PluginManager manager = Bukkit.getPluginManager();
         manager.registerEvents(new EnchantListener(), Info.plugin);
-        manager.registerEvents(new UpdateListener(), Info.plugin);
+        manager.registerEvents(new ActionListener(), Info.plugin);
     }
 
     private static void registerTasks() {
         BukkitScheduler scheduler = Bukkit.getScheduler();
-        scheduler.scheduleSyncRepeatingTask(Info.plugin, new Update(), 0, Info.config.getInt("updatePeriod"));
+        scheduler.scheduleSyncRepeatingTask(Info.plugin, new UpdateListener(), 0, 1);
     }
-
-    /**
-     * Returns a custom enchantment based on index
-     */
-    public static CustomEnchantment getEnchant(int id) {
-        return enchants.get(id);
-    }
+    //endregion
 }
