@@ -17,7 +17,7 @@ public class Regeneration extends CustomEnchantment {
 
     @Override
     public boolean passive(LivingEntity entity, int level) {
-        entity.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, 5 * 20, level));
+        entity.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, 5 * 20, level - 1));
         return true;
     }
 }
