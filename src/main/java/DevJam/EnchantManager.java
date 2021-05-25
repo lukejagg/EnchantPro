@@ -1,5 +1,6 @@
 package DevJam;
 
+import DevJam.Enchantments.Life;
 import DevJam.Enchantments.Regeneration;
 import DevJam.Enchantments.Test;
 import DevJam.Listeners.ActionListener;
@@ -15,7 +16,7 @@ import java.util.ArrayList;
 
 public class EnchantManager {
     private static boolean registered = false;
-    private static final ArrayList<CustomEnchantment> enchants = new ArrayList<CustomEnchantment>();
+    private static final ArrayList<CustomEnchantment> enchants = new ArrayList<>();
 
 
     //region Initialization
@@ -41,6 +42,7 @@ public class EnchantManager {
             // Enchantments
             EnchantManager.register(new Test());
             EnchantManager.register(new Regeneration());
+            EnchantManager.register(new Life());
 
             /* Why is this necessary? */
             //Enchantment.stopAcceptingRegistrations();

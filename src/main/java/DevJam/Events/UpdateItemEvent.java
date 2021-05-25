@@ -5,7 +5,7 @@ import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 
 /**
- * Used as event paramter for tick event
+ * Used as event parameter for tick event
  */
 public class UpdateItemEvent {
     public LivingEntity entity;
