@@ -3,6 +3,7 @@ package DevJam;
 import DevJam.Enchantments.Life;
 import DevJam.Enchantments.Regeneration;
 import DevJam.Enchantments.Test;
+import DevJam.Enchantments.WellFed;
 import DevJam.Listeners.ActionListener;
 import DevJam.Listeners.EnchantListener;
 import DevJam.Listeners.UpdateListener;
@@ -43,6 +44,7 @@ public class EnchantManager {
             EnchantManager.register(new Test());
             EnchantManager.register(new Regeneration());
             EnchantManager.register(new Life());
+            EnchantManager.register(new WellFed());
 
             /* Why is this necessary? */
             //Enchantment.stopAcceptingRegistrations();
