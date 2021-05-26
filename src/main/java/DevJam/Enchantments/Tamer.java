@@ -1,30 +1,28 @@
 package DevJam.Enchantments;
 
 import DevJam.CustomEnchantment;
-import DevJam.Info;
 import org.bukkit.Material;
 import org.bukkit.enchantments.EnchantmentTarget;
 import org.bukkit.entity.*;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
-import org.bukkit.inventory.ItemStack;
 
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
-public class Beastmaster extends CustomEnchantment {
+public class Tamer extends CustomEnchantment {
     private final static HashMap<Class, List<Material>> tamingItems = new HashMap<Class, List<Material>>() {{
         put(Wolf.class, Arrays.asList(Material.BONE));
-        put(Cat.class, Arrays.asList(Material.COD, Material.SALMON)); // Beastmaster will allow cooked cod and salmon to tame cats (feature not bug kek)
-        put(Horse.class, Arrays.asList(Material.GOLDEN_APPLE, Material.HAY_BLOCK, Material.CARROT, Material.APPLE, Material.WHEAT, Material.SUGAR, Material.BREAD)); // Beastmaster will allow regular carrots to tame horses, donkeys, and mules (feature not bug once again)
+        put(Cat.class, Arrays.asList(Material.COD, Material.SALMON)); // Tamer will allow cooked cod and salmon to tame cats (feature not bug kek)
+        put(Horse.class, Arrays.asList(Material.GOLDEN_APPLE, Material.HAY_BLOCK, Material.CARROT, Material.APPLE, Material.WHEAT, Material.SUGAR, Material.BREAD)); // Tamer will allow regular carrots to tame horses, donkeys, and mules (feature not bug once again)
         put(Donkey.class, Arrays.asList(Material.GOLDEN_APPLE, Material.HAY_BLOCK, Material.CARROT, Material.APPLE, Material.WHEAT, Material.SUGAR, Material.BREAD));
         put(Mule.class, Arrays.asList(Material.GOLDEN_APPLE, Material.HAY_BLOCK, Material.CARROT, Material.APPLE, Material.WHEAT, Material.SUGAR, Material.BREAD));
         put(Llama.class, Arrays.asList(Material.GOLDEN_APPLE, Material.HAY_BLOCK, Material.CARROT, Material.APPLE, Material.WHEAT, Material.SUGAR, Material.BREAD));
         put(Parrot.class, Arrays.asList(Material.BEETROOT_SEEDS, Material.MELON_SEEDS, Material.WHEAT_SEEDS, Material.PUMPKIN_SEEDS, Material.COCOA_BEANS));
     }};
 
-    public Beastmaster() {
-        super("beastmaster", "Beastmaster");
+    public Tamer() {
+        super("tamer", "Tamer");
         targetItem = EnchantmentTarget.ARMOR;
     }
 

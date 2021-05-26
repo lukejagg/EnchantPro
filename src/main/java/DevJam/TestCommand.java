@@ -18,7 +18,7 @@ public class TestCommand implements CommandExecutor { // TODO remove - temporary
             item.addEnchantment(new Regeneration(), 2);
             item.addEnchantment(new Life(), 2);
             item.addEnchantment(new WellFed(), 3);
-            item.addEnchantment(new Beastmaster(), 1);
+            item.addEnchantment(new Tamer(), 1);
             CustomEnchantment.apply(item);
 
             player.getInventory().addItem(item);

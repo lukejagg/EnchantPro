@@ -42,7 +42,7 @@ public class EnchantManager {
             EnchantManager.register(new Regeneration());
             EnchantManager.register(new Life());
             EnchantManager.register(new WellFed());
-            EnchantManager.register(new Beastmaster());
+            EnchantManager.register(new Tamer());
 
             /* Why is this necessary? */
             //Enchantment.stopAcceptingRegistrations();
