@@ -9,6 +9,7 @@ import org.bukkit.enchantments.EnchantmentTarget;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
+import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -202,6 +203,10 @@ public abstract class CustomEnchantment extends Enchantment {
     }
 
     public void onFoodLevelChange(FoodLevelChangeEvent event, int level) {
+
+    }
+
+    public void onPlayerInteractEntity(PlayerInteractEntityEvent event, int level) {
 
     }
     //endregion
