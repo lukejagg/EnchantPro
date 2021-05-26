@@ -1,9 +1,13 @@
 package DevJam.Enchantments;
 
 import DevJam.CustomEnchantment;
+import DevJam.Info;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.enchantments.EnchantmentTarget;
 import org.bukkit.entity.*;
+import org.bukkit.event.Event;
+import org.bukkit.event.entity.EntityTameEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 
 import java.util.Arrays;
@@ -11,7 +15,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Tamer extends CustomEnchantment {
-    private final static HashMap<Class, List<Material>> tamingItems = new HashMap<Class, List<Material>>() {{
+    private final static HashMap<Class, List<Material>> tamingItems = new HashMap<Class, List<Material>>() {{ // TODO replace with EntityType HashMap (did not know about this)
         put(Wolf.class, Arrays.asList(Material.BONE));
         put(Cat.class, Arrays.asList(Material.COD, Material.SALMON)); // Tamer will allow cooked cod and salmon to tame cats (feature not bug kek)
         put(Horse.class, Arrays.asList(Material.GOLDEN_APPLE, Material.HAY_BLOCK, Material.CARROT, Material.APPLE, Material.WHEAT, Material.SUGAR, Material.BREAD)); // Tamer will allow regular carrots to tame horses, donkeys, and mules (feature not bug once again)
@@ -40,6 +44,7 @@ public class Tamer extends CustomEnchantment {
                     if (clazz.isInstance(animal)) {
                         if (tamingItems.get(clazz).contains(mainItem) || tamingItems.get(clazz).contains(offItem)) {
                             animal.setOwner(event.getPlayer());
+                            Bukkit.getServer().getPluginManager().callEvent(new EntityTameEvent(animal, event.getPlayer())); // Compatibility with Beastmaster enchantment
                         }
                     }
                 }

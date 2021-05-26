@@ -14,14 +14,26 @@ public class TestCommand implements CommandExecutor { // TODO remove - temporary
         if (sender instanceof Player) {
             Player player = (Player) sender;
 
-            ItemStack item = new ItemStack(Material.DIAMOND_CHESTPLATE);
-            item.addEnchantment(new Regeneration(), 2);
-            item.addEnchantment(new Life(), 2);
-            item.addEnchantment(new WellFed(), 3);
-            item.addEnchantment(new Tamer(), 1);
-            CustomEnchantment.apply(item);
+            ItemStack helmet = new ItemStack(Material.DIAMOND_HELMET);
+            ItemStack chestPlate = new ItemStack(Material.DIAMOND_CHESTPLATE);
+            ItemStack leggings = new ItemStack(Material.DIAMOND_LEGGINGS);
+            ItemStack boots = new ItemStack(Material.DIAMOND_BOOTS);
 
-            player.getInventory().addItem(item);
+            chestPlate.addEnchantment(new Regeneration(), 2);
+            chestPlate.addEnchantment(new Life(), 2);
+            chestPlate.addEnchantment(new WellFed(), 3);
+            chestPlate.addEnchantment(new Tamer(), 1);
+            chestPlate.addEnchantment(new Beastmaster(), 1);
+
+            CustomEnchantment.apply(helmet);
+            CustomEnchantment.apply(chestPlate);
+            CustomEnchantment.apply(leggings);
+            CustomEnchantment.apply(boots);
+
+            player.getInventory().addItem(helmet);
+            player.getInventory().addItem(chestPlate);
+            player.getInventory().addItem(leggings);
+            player.getInventory().addItem(boots);
         }
         return true;
     }
