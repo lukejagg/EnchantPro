@@ -2,7 +2,6 @@ package DevJam;
 
 import DevJam.Events.UpdateItemEvent;
 import DevJam.Util.ItemUtil;
-import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.enchantments.EnchantmentTarget;
@@ -13,6 +12,7 @@ import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.EnchantmentStorageMeta;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
@@ -145,9 +145,13 @@ public abstract class CustomEnchantment extends Enchantment {
      * Adds lore to an item to reflect all of the custom enchantments on the item
      * @param item item to apply lore to
      */
-    public static void apply(ItemStack item) {
+    public static void updateMeta(ItemStack item) {
         Map<Enchantment, Integer> enchantments = item.getEnchantments();
-        apply(item, enchantments);
+
+        if (ItemUtil.isEnchantedBook(item) && item.getItemMeta() != null)
+            enchantments = ((EnchantmentStorageMeta)item.getItemMeta()).getStoredEnchants();
+
+        updateMeta(item, enchantments);
     }
 
     /**
@@ -155,7 +159,7 @@ public abstract class CustomEnchantment extends Enchantment {
      * @param item item to apply lore to
      * @param enchantments item's enchantments
      */
-    public static void apply(ItemStack item, Map<Enchantment, Integer> enchantments) {
+    public static void updateMeta(ItemStack item, Map<Enchantment, Integer> enchantments) {
         ArrayList<String> lore = new ArrayList<>();
 
         ItemMeta meta = item.getItemMeta();

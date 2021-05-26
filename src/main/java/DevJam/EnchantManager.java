@@ -99,4 +99,14 @@ public class EnchantManager {
         scheduler.scheduleSyncRepeatingTask(Info.plugin, new UpdateListener(), 0, 1);
     }
     //endregion
+
+    public CustomEnchantment getEnchantmentFromName(String str) {
+        for (CustomEnchantment e : enchants) {
+            if (e.getName().equals(str)) {
+                return e;
+            }
+        }
+
+        return null;
+    }
 }

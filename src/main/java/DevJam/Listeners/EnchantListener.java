@@ -3,8 +3,11 @@ package DevJam.Listeners;
 import DevJam.CustomEnchantment;
 import DevJam.Enchantments.Test;
 import DevJam.Info;
+import DevJam.Util.EnchantUtil;
 import DevJam.Util.ItemUtil;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.attribute.Attribute;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -12,47 +15,93 @@ import org.bukkit.event.enchantment.EnchantItemEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.event.inventory.PrepareAnvilEvent;
+import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.inventory.AnvilInventory;
 import org.bukkit.inventory.GrindstoneInventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.EnchantmentStorageMeta;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 
 public class EnchantListener implements Listener {
+    /* Debug for finding enchantments on item */
+    /*@EventHandler
+    public void onDropItem(PlayerDropItemEvent event) {
+        ItemStack item = event.getItemDrop().getItemStack();
+
+        Info.log("Enchants:");
+        item.getItemMeta().getEnchants().forEach((f,l) -> {Info.log(f.toString());});
+        Info.log("Stored Enchants:");
+        EnchantmentStorageMeta meta =  ((EnchantmentStorageMeta)item.getItemMeta());
+        meta.getStoredEnchants().forEach((f,l) -> {Info.log(f.toString());});
+    }*/
+
     @EventHandler
     public void onEnchantItem(EnchantItemEvent event) {
         ItemStack item = event.getItem();
-        Map<Enchantment, Integer> enchants = event.getEnchantsToAdd();
+        Map<CustomEnchantment, Integer> customEnchants = new HashMap<>();
 
+        // Apply custom enchant randomly
         Random rnd = new Random();
         if (rnd.nextBoolean()) {
             int level = rnd.nextInt(5) + 1;
-            Info.plugin.getLogger().info("Enchanted with level " + level);
-            enchants.put(new Test(), level);
+
+            customEnchants.put(new Test(), level);
         }
 
-        CustomEnchantment.apply(item, enchants);
+        // Todo: make custom enchanting work
+
+        // Apply enchantments
+        Map<Enchantment, Integer> enchants = event.getEnchantsToAdd();
+        customEnchants.forEach(enchants::put);
+
+        // Update item metadata
+        CustomEnchantment.updateMeta(item, enchants);
+
+        // Add custom enchantments to enchantment storage
+        // in EnchantedBooks
+        // Books use EnchantmentStorageMeta for enchantments
+        if (ItemUtil.isBook(item) && item.getItemMeta() != null) {
+
+            Bukkit.getScheduler().runTaskLater(Info.plugin, () -> {
+
+                ItemStack newItem = event.getView().getTopInventory().getItem(0);
+                if (newItem != null && ItemUtil.isEnchantedBook(newItem)) {
+                    EnchantmentStorageMeta meta = (EnchantmentStorageMeta) newItem.getItemMeta();
+
+                    if (meta == null) {
+                        Info.warn("Enchanted book didn't have metadata.");
+                        return;
+                    }
+
+                    // Re-add Custom Enchantments
+                    customEnchants.forEach((e, l) -> meta.addStoredEnchant(e, l, true));
+                    newItem.setItemMeta(meta);
+                    CustomEnchantment.updateMeta(newItem);
+                }
+            }, 1);
+        }
+
     }
 
     @EventHandler
     public void onInventoryClick(final InventoryClickEvent event) {
         InventoryType inventoryType = event.getView().getTopInventory().getType();
+
         if (inventoryType == InventoryType.GRINDSTONE) {
             // Remove lore from preview item
             Info.plugin.getServer().getScheduler().runTaskLater(Info.plugin, () -> {
                 GrindstoneInventory inv = (GrindstoneInventory)event.getView().getTopInventory();
                 ItemStack item = inv.getItem(2);
                 if (item != null)
-                    CustomEnchantment.apply(item);
+                    CustomEnchantment.updateMeta(item);
             },  1L);
 
             // Apply lore removal
             InventoryType.SlotType slotType = event.getSlotType();
             if (slotType == InventoryType.SlotType.RESULT && event.getCurrentItem() != null) {
                 ItemStack item = event.getCurrentItem();
-                CustomEnchantment.apply(item);
+                CustomEnchantment.updateMeta(item);
             }
         }
     }
@@ -77,13 +126,13 @@ public class EnchantListener implements Listener {
                     result.addEnchantment(enchantment, level);
                 }
             }
-            CustomEnchantment.apply(result);
+            CustomEnchantment.updateMeta(result);
 
             return;
         }
 
         // Make sure item2 is enchantable
-        if (!ItemUtil.isEnchantable(item2) || item2.getAmount() > 1)return;
+        if (!ItemUtil.isEnchantable(item2) || item2.getAmount() > 1) return;
 
         // Prevent book from being in first slot
         if (ItemUtil.isBook(item1) && !ItemUtil.isBook(item2)) return;
@@ -92,12 +141,20 @@ public class EnchantListener implements Listener {
         int cost = inv.getRepairCost();
 
         // Merge enchantments
-        if (item1.getType() == item2.getType() || ItemUtil.isBook(item2)) {
+        if (item1.getType() == item2.getType() || ItemUtil.isEnchantedBook(item2)) {
             Map<Enchantment, Integer> ench1 = item1.getEnchantments(), ench2 = item2.getEnchantments();
 
-            for (Enchantment e : ench1.keySet())
-                if (e instanceof CustomEnchantment)
+            if (ItemUtil.isEnchantedBook(item1) && item1.getItemMeta() != null)
+                ench1 = ((EnchantmentStorageMeta)item1.getItemMeta()).getStoredEnchants();
+
+            if (ItemUtil.isEnchantedBook(item2) && item2.getItemMeta() != null)
+                ench2 = ((EnchantmentStorageMeta)item2.getItemMeta()).getStoredEnchants();
+
+            for (Enchantment e : ench1.keySet()){
+                if (e instanceof CustomEnchantment) {
                     customEnchants.put((CustomEnchantment) e, ench1.get(e));
+                }
+            }
 
             for (Enchantment e : ench2.keySet()) {
                 if (e instanceof CustomEnchantment) {
@@ -118,9 +175,8 @@ public class EnchantListener implements Listener {
                             customEnchants.put(enchant, level + 1);
                             cost++;
                         }
-                        else {
-                            // Level is lower than original level
-                        }
+
+                        // Level is lower than original level
                     }
                     else {
                         if (CustomEnchantment.canAddEnchantment(enchant, ench1))
@@ -130,12 +186,28 @@ public class EnchantListener implements Listener {
             }
         }
 
-        for (CustomEnchantment e : customEnchants.keySet()) {
-            CustomEnchantment enchant = (CustomEnchantment) e;
-            int level = customEnchants.get(e);
-            result.addEnchantment(enchant, level);
+        if (ItemUtil.isEnchantedBook(result)) {
+            // todo: EnchantmentStorageMeta
+            EnchantmentStorageMeta meta = (EnchantmentStorageMeta) result.getItemMeta();
+
+            if (meta == null)
+                return;
+
+            for (CustomEnchantment e : customEnchants.keySet()) {
+                int level = customEnchants.get(e);
+                meta.addStoredEnchant(e, level, true);
+            }
+
+            result.setItemMeta(meta);
+        }
+        else {
+            for (CustomEnchantment e : customEnchants.keySet()) {
+                int level = customEnchants.get(e);
+                result.addEnchantment(e, level);
+            }
         }
 
-        CustomEnchantment.apply(result);
+        CustomEnchantment.updateMeta(result);
+        inv.setRepairCost(cost);
     }
 }

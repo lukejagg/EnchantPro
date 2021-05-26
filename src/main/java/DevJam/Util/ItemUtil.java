@@ -128,7 +128,12 @@ public class ItemUtil {
 
     public static boolean isBook(ItemStack item) {
         Material mat = item.getType();
-        return mat == Material.BOOK || mat == Material.ENCHANTED_BOOK;
+        return mat == Material.BOOK;
+    }
+
+    public static boolean isEnchantedBook(ItemStack item) {
+        Material mat = item.getType();
+        return mat == Material.ENCHANTED_BOOK;
     }
     //endregion
 
@@ -144,7 +149,7 @@ public class ItemUtil {
                 || isSword(item) || isTrident(item) || isShield(item)
                 || isBow(item) || isCrossbow(item)
                 || isFishingRod(item) || isFlintAndSteel(item) || isShears(item)
-                || isBook(item);
+                || isBook(item) || isEnchantedBook(item);
     }
     //endregion
 

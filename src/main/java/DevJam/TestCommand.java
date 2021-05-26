@@ -25,10 +25,10 @@ public class TestCommand implements CommandExecutor { // TODO remove - temporary
             chestPlate.addEnchantment(new Tamer(), 1);
             chestPlate.addEnchantment(new Beastmaster(), 1);
 
-            CustomEnchantment.apply(helmet);
-            CustomEnchantment.apply(chestPlate);
-            CustomEnchantment.apply(leggings);
-            CustomEnchantment.apply(boots);
+            CustomEnchantment.updateMeta(helmet);
+            CustomEnchantment.updateMeta(chestPlate);
+            CustomEnchantment.updateMeta(leggings);
+            CustomEnchantment.updateMeta(boots);
 
             player.getInventory().addItem(helmet);
             player.getInventory().addItem(chestPlate);
