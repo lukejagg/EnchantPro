@@ -28,10 +28,10 @@ public class EnchantPro extends JavaPlugin {
         StopWatch w = new StopWatch();
         w.start();
 
-        // Config
-        getConfig().addDefault("updatePeriod", 20);
-        getConfig().options().copyDefaults(true);
-        saveConfig();
+        // Config TODO
+        //getConfig().addDefault("updatePeriod", 20);
+        //getConfig().options().copyDefaults(true);
+        //saveConfig();
 
         // Register test commands
         getCommand("test").setExecutor(new TestCommand());
