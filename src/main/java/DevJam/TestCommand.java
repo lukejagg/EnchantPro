@@ -19,11 +19,14 @@ public class TestCommand implements CommandExecutor { // TODO remove - temporary
             ItemStack leggings = new ItemStack(Material.DIAMOND_LEGGINGS);
             ItemStack boots = new ItemStack(Material.DIAMOND_BOOTS);
 
+            helmet.addEnchantment(new PotionResistance(), 1);
             chestPlate.addEnchantment(new Regeneration(), 2);
             chestPlate.addEnchantment(new Life(), 2);
             chestPlate.addEnchantment(new WellFed(), 3);
             chestPlate.addEnchantment(new Tamer(), 1);
             chestPlate.addEnchantment(new Beastmaster(), 1);
+            chestPlate.addEnchantment(new PotionResistance(), 3);
+            leggings.addEnchantment(new PotionResistance(), 2);
 
             CustomEnchantment.updateMeta(helmet);
             CustomEnchantment.updateMeta(chestPlate);
