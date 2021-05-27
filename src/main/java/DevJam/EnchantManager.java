@@ -83,10 +83,12 @@ public class EnchantManager {
      * @param enchant enchantment
      */
     private static void register(CustomEnchantment enchant) {
-        Enchantment.registerEnchantment(enchant);
-        enchants.add(enchant);
+        if (enchant.enabled) {
+            Enchantment.registerEnchantment(enchant);
+            enchants.add(enchant);
 
-        Info.plugin.getLogger().info(enchant.getKey().getKey() + " enchantment registered");
+            Info.plugin.getLogger().info(enchant.getKey().getKey() + " enchantment registered");
+        }
     }
     //endregion
 

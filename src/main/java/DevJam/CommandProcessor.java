@@ -20,7 +20,7 @@ import java.util.List;
 
 public class CommandProcessor {
     public final static String PREFIX = "ep", COMMAND = "enchantpro";
-    public final static String[] COMMANDS = {"give", "help", "version"};
+    public final static String[] COMMANDS = {"give", "help", "version", "refresh"};
 
     public static boolean isCommandPrefix(String str) {
         return str.equalsIgnoreCase(PREFIX) || str.equalsIgnoreCase(COMMAND);
@@ -106,6 +106,8 @@ public class CommandProcessor {
                     return versionInfo(sender);
                 case "give":
                     return give(sender, args);
+                case "refresh":
+                    return refresh(sender, args);
                 case "help":
                 default:
                     return false; //helpEnchantment(sender, label) || enchant(sender, args);
@@ -159,6 +161,25 @@ public class CommandProcessor {
                 meta.addEnchant(ench, level, true);
                 item.setItemMeta(meta);
             }
+
+            CustomEnchantment.updateMeta(item);
+            target.getInventory().setItemInMainHand(item);
+        }
+
+        return true;
+    }
+
+    private static boolean refresh(CommandSender sender, String[] args) {
+        if (!PermissionType.REFRESH.hasPermission(sender)) {
+            sender.sendMessage(Info.LOGO + "You do not have permission to do this!");
+            return true;
+        }
+
+        Player target = Bukkit.getPlayer(args.length >= 2 ? args[1] : sender.getName());
+        if (target != null) {
+            ItemStack item = target.getInventory().getItemInMainHand();
+            if (item.getAmount() == 0)
+                return true;
 
             CustomEnchantment.updateMeta(item);
             target.getInventory().setItemInMainHand(item);
