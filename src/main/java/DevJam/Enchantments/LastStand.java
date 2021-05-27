@@ -22,10 +22,9 @@ public class LastStand extends CustomEnchantment {
                 cost = Math.min(20, cost);
 
                 if (player.getLevel() >= cost) {
-                    event.setCancelled(true);
+                    event.setDamage(0);
                     player.giveExpLevels(-1 * cost);
                     player.setHealth(1);
-                    event.setDamage(0); // Fo
                 }
             }
         }
