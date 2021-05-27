@@ -2,7 +2,10 @@ package DevJam;
 
 import DevJam.Events.UpdateItemEvent;
 import DevJam.Util.ItemUtil;
+import com.google.common.collect.Multimap;
 import org.bukkit.NamespacedKey;
+import org.bukkit.attribute.Attribute;
+import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.enchantments.EnchantmentTarget;
 import org.bukkit.entity.Entity;
@@ -170,6 +173,14 @@ public abstract class CustomEnchantment extends Enchantment {
 
         ItemMeta meta = item.getItemMeta();
         if (meta == null) return;
+
+        // Remove attributes
+        meta.removeAttributeModifier(EquipmentSlot.HEAD);
+        meta.removeAttributeModifier(EquipmentSlot.CHEST);
+        meta.removeAttributeModifier(EquipmentSlot.LEGS);
+        meta.removeAttributeModifier(EquipmentSlot.FEET);
+        meta.removeAttributeModifier(EquipmentSlot.HAND);
+        meta.removeAttributeModifier(EquipmentSlot.OFF_HAND);
 
         // Add enchantment lore and meta data
         for (Enchantment enchant : enchantments.keySet()) {

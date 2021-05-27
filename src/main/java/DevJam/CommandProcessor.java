@@ -130,11 +130,13 @@ public class CommandProcessor {
             return true;
         }
 
-        if (args.length < 4) return true;
+        if (args.length < 3) return true;
 
         Player target = Bukkit.getPlayer(args[1]);
         CustomEnchantment ench = EnchantManager.getEnchant(args[2]);
-        int level = tryParseInt(args[3], 1);
+        int level = 1;
+        if (args.length >= 4)
+            level = tryParseInt(args[3], 1);
 
         if (target != null && ench != null) {
             ItemStack item = target.getInventory().getItemInMainHand();
