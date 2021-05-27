@@ -29,6 +29,7 @@ public class TestCommand implements CommandExecutor { // TODO remove - temporary
             leggings.addEnchantment(new PotionResistance(), 2);
             leggings.addEnchantment(new LastStand(), 1);
             boots.addEnchantment(new LastStand(), 1);
+            boots.addEnchantment(new Rejuvenation(), 1);
 
             CustomEnchantment.updateMeta(helmet);
             CustomEnchantment.updateMeta(chestPlate);
