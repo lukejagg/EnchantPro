@@ -10,3 +10,6 @@ commands:
   ep:
     description: EnchantPro command.
     usage: /ep <command>
+  enchantpro:
+    description: EnchantPro command.
+    usage: /enchantpro <command>

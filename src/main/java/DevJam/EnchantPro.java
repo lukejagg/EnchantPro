@@ -39,6 +39,8 @@ public class EnchantPro extends JavaPlugin {
         // Register self as command (/ep)
         getCommand(CommandProcessor.PREFIX).setExecutor(this);
         getCommand(CommandProcessor.PREFIX).setTabCompleter(new CommandProcessor.TabCompletion());
+        getCommand(CommandProcessor.COMMAND).setExecutor(this);
+        getCommand(CommandProcessor.COMMAND).setTabCompleter(new CommandProcessor.TabCompletion());
 
         // Custom enchantments
         EnchantManager.start();

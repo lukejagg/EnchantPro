@@ -100,13 +100,17 @@ public class EnchantManager {
     }
     //endregion
 
-    public CustomEnchantment getEnchantmentFromName(String str) {
+    public static CustomEnchantment getEnchant(String str) {
         for (CustomEnchantment e : enchants) {
-            if (e.getName().equals(str)) {
+            if (e.getKeyName().equalsIgnoreCase(str)) {
                 return e;
             }
         }
 
         return null;
+    }
+
+    public static ArrayList<CustomEnchantment> getEnchants() {
+        return enchants;
     }
 }

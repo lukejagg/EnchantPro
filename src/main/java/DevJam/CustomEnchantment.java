@@ -20,7 +20,7 @@ import java.util.Map;
 import java.util.Objects;
 
 public abstract class CustomEnchantment extends Enchantment {
-    protected String name;
+    protected String name, keyName;
     protected int maxLevel;
     protected EnchantmentTarget targetItem;
     protected boolean treasure;
@@ -31,6 +31,7 @@ public abstract class CustomEnchantment extends Enchantment {
     public CustomEnchantment(String key, String name) {
         super(new NamespacedKey(Info.plugin, key));
         this.name = name;
+        this.keyName = key;
         maxLevel = 1;
         targetItem = EnchantmentTarget.BREAKABLE;
         treasure = false;
@@ -41,6 +42,10 @@ public abstract class CustomEnchantment extends Enchantment {
     //region Getters
     public String getName() {
         return name;
+    }
+
+    public String getKeyName() {
+        return keyName;
     }
 
     public int getMaxLevel() {
