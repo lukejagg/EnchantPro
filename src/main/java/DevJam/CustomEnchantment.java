@@ -16,6 +16,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.EnchantmentStorageMeta;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Objects;
@@ -28,6 +29,7 @@ public abstract class CustomEnchantment extends Enchantment {
     protected boolean cursed;
     protected ArrayList<Enchantment> conflicts = new ArrayList<>();
     protected int updateDelay;
+    protected boolean enabled;
 
     public CustomEnchantment(String key, String name) {
         super(new NamespacedKey(Info.plugin, key));
@@ -38,6 +40,13 @@ public abstract class CustomEnchantment extends Enchantment {
         treasure = false;
         cursed = false;
         updateDelay = 0;
+        enabled = true;
+
+        // Config Enable
+        ArrayList<String> disabledEnchants = (ArrayList<String>) Info.config.get("Disabled Enchantments");
+        if (disabledEnchants != null && (disabledEnchants.contains(key) || disabledEnchants.contains(name))) {
+            enabled = false;
+        }
     }
 
     //region Getters

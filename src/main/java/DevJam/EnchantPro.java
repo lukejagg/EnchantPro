@@ -5,6 +5,8 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.ArrayList;
+
 public class EnchantPro extends JavaPlugin {
     public static EnchantPro Instance;
 
@@ -28,10 +30,10 @@ public class EnchantPro extends JavaPlugin {
         StopWatch w = new StopWatch();
         w.start();
 
-        // Config TODO
-        //getConfig().addDefault("updatePeriod", 20);
-        //getConfig().options().copyDefaults(true);
-        //saveConfig();
+        // Config
+        getConfig().addDefault("Disabled Enchantments", new ArrayList<String>(){{add("Enter enchantment names or keys here");}});
+        getConfig().options().copyDefaults(true);
+        saveConfig();
 
         // Register test commands
         getCommand("test").setExecutor(new TestCommand());
