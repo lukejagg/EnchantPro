@@ -27,6 +27,8 @@ public class TestCommand implements CommandExecutor { // TODO remove - temporary
             chestPlate.addEnchantment(new Beastmaster(), 1);
             chestPlate.addEnchantment(new PotionResistance(), 3);
             leggings.addEnchantment(new PotionResistance(), 2);
+            leggings.addEnchantment(new LastStand(), 1);
+            boots.addEnchantment(new LastStand(), 1);
 
             CustomEnchantment.updateMeta(helmet);
             CustomEnchantment.updateMeta(chestPlate);

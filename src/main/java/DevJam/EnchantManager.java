@@ -45,6 +45,7 @@ public class EnchantManager {
             EnchantManager.register(new Tamer());
             EnchantManager.register(new Beastmaster());
             EnchantManager.register(new PotionResistance());
+            EnchantManager.register(new LastStand());
 
             /* Why is this necessary? */
             //Enchantment.stopAcceptingRegistrations();
