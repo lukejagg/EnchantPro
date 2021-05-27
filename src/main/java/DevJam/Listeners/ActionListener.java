@@ -76,9 +76,7 @@ public class ActionListener implements Listener {
 
     @EventHandler
     public void onEntityDamage(EntityDamageEvent event) {
-        Info.log("Entity damaged!");
         if (event.getEntity() instanceof Player) {
-            Info.log("Player damaged!");
             Player player = (Player) event.getEntity();
             EntityEquipment equipment = player.getEquipment();
 
