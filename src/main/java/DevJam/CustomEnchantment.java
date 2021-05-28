@@ -1,15 +1,12 @@
 package DevJam;
 
+import DevJam.Enums.TextColor;
 import DevJam.Events.UpdateItemEvent;
 import DevJam.Util.ItemUtil;
-import com.google.common.collect.Multimap;
+import org.bukkit.Color;
 import org.bukkit.NamespacedKey;
-import org.bukkit.attribute.Attribute;
-import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.enchantments.EnchantmentTarget;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.LivingEntity;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityTameEvent;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
@@ -19,7 +16,6 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.EnchantmentStorageMeta;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Objects;
@@ -32,7 +28,9 @@ public abstract class CustomEnchantment extends Enchantment {
     protected boolean cursed;
     protected ArrayList<Enchantment> conflicts = new ArrayList<>();
     protected int updateDelay;
+    protected TextColor loreColor;
     protected boolean enabled;
+
 
     public CustomEnchantment(String key, String name) {
         super(new NamespacedKey(Info.plugin, key));
@@ -43,6 +41,7 @@ public abstract class CustomEnchantment extends Enchantment {
         treasure = false;
         cursed = false;
         updateDelay = 0;
+        loreColor = TextColor.DEFAULT_LORE;
         enabled = true;
 
         // Config Enable
@@ -156,7 +155,7 @@ public abstract class CustomEnchantment extends Enchantment {
         else if (level > maxLevel || level > NUMERALS.length)
             numeral += level;
 
-        return "§7" + name + numeral;
+        return loreColor.getColorCode() + name + numeral;
     }
 
     /**

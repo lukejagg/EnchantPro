@@ -47,6 +47,7 @@ public class EnchantManager {
             EnchantManager.register(new PotionResistance());
             EnchantManager.register(new LastStand());
             EnchantManager.register(new Rejuvenation());
+            EnchantManager.register(new Heavy());
 
             /* Why is this necessary? */
             //Enchantment.stopAcceptingRegistrations();

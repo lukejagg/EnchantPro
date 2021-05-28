@@ -18,7 +18,7 @@ public class LastStand extends CustomEnchantment {
             Player player = (Player) event.getEntity();
 
             if (player.getHealth() <= event.getFinalDamage()) { // Player will die
-                int cost = (int) (event.getFinalDamage() - player.getHealth());
+                int cost = (int) (event.getFinalDamage() - player.getHealth() + 0.5);
                 cost = Math.min(20, cost);
 
                 if (player.getLevel() >= cost) {
