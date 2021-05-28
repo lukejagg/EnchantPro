@@ -48,6 +48,7 @@ public class EnchantManager {
             EnchantManager.register(new LastStand());
             EnchantManager.register(new Rejuvenation());
             EnchantManager.register(new Heavy());
+            EnchantManager.register(new Irreparable());
 
             /* Why is this necessary? */
             //Enchantment.stopAcceptingRegistrations();

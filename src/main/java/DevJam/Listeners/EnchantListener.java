@@ -1,6 +1,7 @@
 package DevJam.Listeners;
 
 import DevJam.CustomEnchantment;
+import DevJam.Enchantments.Irreparable;
 import DevJam.Enchantments.Test;
 import DevJam.Info;
 import DevJam.Util.EnchantUtil;
@@ -19,7 +20,9 @@ import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.inventory.AnvilInventory;
 import org.bukkit.inventory.GrindstoneInventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.Damageable;
 import org.bukkit.inventory.meta.EnchantmentStorageMeta;
+import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.*;
 
@@ -118,6 +121,17 @@ public class EnchantListener implements Listener {
 
         // Repairing, renaming
         if ((item2 == null || item2.getType() == Material.AIR || !ItemUtil.isEnchantable(item2)) && result.getType() == item1.getType()) {
+            // Irreparable Enchantment
+            if (item1.getItemMeta().getEnchantLevel(new Irreparable()) != 0) {
+                if (result.getItemMeta() instanceof Damageable && item1.getItemMeta() instanceof Damageable) {
+                    Damageable originalMeta = (Damageable) item1.getItemMeta();
+                    Damageable resultMeta = (Damageable) result.getItemMeta();
+
+                    resultMeta.setDamage(originalMeta.getDamage());
+                    result.setItemMeta((ItemMeta) resultMeta);
+                }
+            }
+
             // Re-apply enchantments
             for (Enchantment ench : item1.getEnchantments().keySet()) {
                 if (ench instanceof CustomEnchantment) {
@@ -136,6 +150,8 @@ public class EnchantListener implements Listener {
 
         // Prevent book from being in first slot
         if (ItemUtil.isBook(item1) && !ItemUtil.isBook(item2)) return;
+
+        if (!ItemUtil.isEnchantable(result) || result.getAmount() != 1) return;
 
         Map<CustomEnchantment, Integer> customEnchants = new HashMap<>();
         int cost = inv.getRepairCost();
@@ -170,7 +186,7 @@ public class EnchantListener implements Listener {
                             customEnchants.put(enchant, level);
                             cost++;
                         }
-                        else if (level == originalLevel) {
+                        else if (level == originalLevel && level != enchant.getMaxLevel()) {
                             // Add level to enchantment
                             customEnchants.put(enchant, level + 1);
                             cost++;
@@ -204,6 +220,17 @@ public class EnchantListener implements Listener {
             for (CustomEnchantment e : customEnchants.keySet()) {
                 int level = customEnchants.get(e);
                 result.addEnchantment(e, level);
+            }
+        }
+
+        // Irreparable Enchantment
+        if (item1.getItemMeta().getEnchantLevel(new Irreparable()) != 0) {
+            if (result.getItemMeta() instanceof Damageable && item1.getItemMeta() instanceof Damageable) {
+                Damageable originalMeta = (Damageable) item1.getItemMeta();
+                Damageable resultMeta = (Damageable) result.getItemMeta();
+
+                resultMeta.setDamage(originalMeta.getDamage());
+                result.setItemMeta((ItemMeta) resultMeta);
             }
         }
 
