@@ -20,6 +20,7 @@ public class TestCommand implements CommandExecutor { // TODO remove - temporary
             ItemStack boots = new ItemStack(Material.DIAMOND_BOOTS);
 
             helmet.addEnchantment(new PotionResistance(), 1);
+            helmet.addEnchantment(new NightVision(), 1);
             chestPlate.addEnchantment(new Regeneration(), 2);
             chestPlate.addEnchantment(new Life(), 2);
             chestPlate.addEnchantment(new WellFed(), 3);

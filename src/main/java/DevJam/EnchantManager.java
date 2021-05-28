@@ -49,6 +49,7 @@ public class EnchantManager {
             EnchantManager.register(new Rejuvenation());
             EnchantManager.register(new Heavy());
             EnchantManager.register(new Irreparable());
+            EnchantManager.register(new NightVision());
 
             /* Why is this necessary? */
             //Enchantment.stopAcceptingRegistrations();
