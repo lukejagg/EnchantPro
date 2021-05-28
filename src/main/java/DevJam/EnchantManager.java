@@ -1,6 +1,9 @@
 package DevJam;
 
 import DevJam.Enchantments.*;
+import DevJam.Enchantments.Armor.*;
+import DevJam.Enchantments.Armor.Helmet.NightVision;
+import DevJam.Enchantments.Armor.Helmet.PigGod;
 import DevJam.Listeners.ActionListener;
 import DevJam.Listeners.EnchantListener;
 import DevJam.Listeners.UpdateListener;

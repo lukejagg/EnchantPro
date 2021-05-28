@@ -1,7 +1,6 @@
-package DevJam.Enchantments;
+package DevJam.Enchantments.Armor;
 
 import DevJam.CustomEnchantment;
-import DevJam.Info;
 import org.bukkit.enchantments.EnchantmentTarget;
 import org.bukkit.entity.Player;
 import org.bukkit.event.entity.EntityDamageEvent;
@@ -9,7 +8,7 @@ import org.bukkit.event.entity.EntityDamageEvent;
 public class LastStand extends CustomEnchantment {
     public LastStand() {
         super("laststand", "Last Stand");
-        targetItem = EnchantmentTarget.ARMOR;
+        setTargetItems(EnchantmentTarget.ARMOR);
     }
 
     @Override

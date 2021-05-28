@@ -1,4 +1,4 @@
-package DevJam.Enchantments;
+package DevJam.Enchantments.Armor;
 
 import DevJam.CustomEnchantment;
 import org.bukkit.attribute.Attribute;
@@ -9,7 +9,7 @@ import org.bukkit.event.entity.EntityTameEvent;
 public class Beastmaster extends CustomEnchantment {
     public Beastmaster() {
         super("beastmaster", "Beastmaster");
-        targetItem = EnchantmentTarget.ARMOR;
+        setTargetItems(EnchantmentTarget.ARMOR);
     }
 
     @Override

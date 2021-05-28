@@ -1,4 +1,4 @@
-package DevJam.Enchantments;
+package DevJam.Enchantments.Armor.Helmet;
 
 import DevJam.CustomEnchantment;
 import DevJam.Events.UpdateItemEvent;
@@ -9,7 +9,7 @@ import org.bukkit.potion.PotionEffectType;
 public class NightVision extends CustomEnchantment {
     public NightVision() {
         super("nightvision", "Night Vision");
-        targetItem = EnchantmentTarget.ARMOR_HEAD;
+        setTargetItems(EnchantmentTarget.ARMOR_HEAD);
         updateDelay = 20;
     }
 

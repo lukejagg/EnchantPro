@@ -14,7 +14,7 @@ public class Rejuvenation extends CustomEnchantment {
 
     public Rejuvenation() {
         super("rejuvenation", "Rejuvenation");
-        targetItem = EnchantmentTarget.BREAKABLE;
+        setTargetItems(EnchantmentTarget.BREAKABLE);
         updateDelay = 20;
         rejuvenateChance = updateDelay / (24.0 * 60 * 60 * 20 / 429); // Defined to fully repair diamond boots after 24 hours on average
     }

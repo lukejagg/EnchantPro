@@ -1,4 +1,4 @@
-package DevJam.Enchantments;
+package DevJam.Enchantments.Armor;
 
 import DevJam.CustomEnchantment;
 import DevJam.Events.UpdateItemEvent;
@@ -7,7 +7,6 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class PotionResistance extends CustomEnchantment {
     private static final ArrayList<PotionEffectType> badEffects = new ArrayList<PotionEffectType>() {{
@@ -25,7 +24,7 @@ public class PotionResistance extends CustomEnchantment {
 
     public PotionResistance() {
         super("potionresistance", "Potion Resistance");
-        targetItem = EnchantmentTarget.ARMOR;
+        setTargetItems(EnchantmentTarget.ARMOR);
         maxLevel = 3;
         updateDelay = 3; // Should be quick to prevent unwanted effects
     }

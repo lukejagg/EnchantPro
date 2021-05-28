@@ -3,7 +3,6 @@ package DevJam;
 import DevJam.Enums.TextColor;
 import DevJam.Events.UpdateItemEvent;
 import DevJam.Util.ItemUtil;
-import org.bukkit.Color;
 import org.bukkit.NamespacedKey;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.enchantments.EnchantmentTarget;
@@ -23,7 +22,7 @@ import java.util.Objects;
 public abstract class CustomEnchantment extends Enchantment {
     protected String name, keyName;
     protected int maxLevel;
-    protected EnchantmentTarget targetItem;
+    protected EnchantmentTarget[] targetItems;
     protected boolean treasure;
     protected boolean cursed;
     protected ArrayList<Enchantment> conflicts = new ArrayList<>();
@@ -37,7 +36,7 @@ public abstract class CustomEnchantment extends Enchantment {
         this.name = name;
         this.keyName = key;
         maxLevel = 1;
-        targetItem = EnchantmentTarget.BREAKABLE;
+        targetItems = new EnchantmentTarget[] {EnchantmentTarget.BREAKABLE};
         treasure = false;
         cursed = false;
         updateDelay = 0;
@@ -56,6 +55,10 @@ public abstract class CustomEnchantment extends Enchantment {
         return name;
     }
 
+    public EnchantmentTarget getItemTarget() {
+        return targetItems[0];
+    }
+
     public String getKeyName() {
         return keyName;
     }
@@ -68,9 +71,9 @@ public abstract class CustomEnchantment extends Enchantment {
         return 1; // TODO confused on how this works
     }
 
-    public EnchantmentTarget getItemTarget() {
+    /*public EnchantmentTarget getItemTarget() {
         return targetItem;
-    }
+    }*/
 
     public boolean isTreasure() {
         return treasure;
@@ -80,6 +83,10 @@ public abstract class CustomEnchantment extends Enchantment {
         return cursed;
     }
     //endregion
+
+    public void setTargetItems(EnchantmentTarget... targets) {
+        targetItems = targets;
+    }
 
     //region Compatibility
     public static boolean canAddEnchantment(CustomEnchantment enchantment, Map<Enchantment, Integer> enchantments) {
@@ -102,7 +109,11 @@ public abstract class CustomEnchantment extends Enchantment {
      * @return returns if the enchantment can be applied to item
      */
     public boolean canEnchantItem(ItemStack item) {
-        return targetItem.includes(item);
+        for (EnchantmentTarget tar : targetItems) {
+            if (tar.includes(item))
+                return true;
+        }
+        return false;
     }
 
     /**
@@ -122,26 +133,31 @@ public abstract class CustomEnchantment extends Enchantment {
      * @return returns true if the enchantment can be used from this item slot
      */
     public boolean canUse(EquipmentSlot slot) {
-        switch (targetItem) {
-            case WEARABLE:
-            case ARMOR:
-            case ARMOR_FEET:
-            case ARMOR_LEGS:
-            case ARMOR_TORSO:
-            case ARMOR_HEAD:
-                return ItemUtil.slotIsArmor(slot);
-            case WEAPON:
-            case TOOL:
-            case BOW:
-            case FISHING_ROD:
-            case TRIDENT:
-            case CROSSBOW:
-                return ItemUtil.slotIsHands(slot);
-            case BREAKABLE:
-            case VANISHABLE:
-                return true;
+        boolean ret = false;
+        for (EnchantmentTarget targetItem : targetItems) {
+            switch (targetItem) {
+                case WEARABLE:
+                case ARMOR:
+                case ARMOR_FEET:
+                case ARMOR_LEGS:
+                case ARMOR_TORSO:
+                case ARMOR_HEAD:
+                    ret |= ItemUtil.slotIsArmor(slot);
+                    break;
+                case WEAPON:
+                case TOOL:
+                case BOW:
+                case FISHING_ROD:
+                case TRIDENT:
+                case CROSSBOW:
+                    ret |= ItemUtil.slotIsHands(slot);
+                    break;
+                case BREAKABLE:
+                case VANISHABLE:
+                    return true;
+            }
         }
-        return true;
+        return ret;
     }
     //endregion
 

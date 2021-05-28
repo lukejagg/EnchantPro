@@ -1,6 +1,10 @@
 package DevJam;
 
-import DevJam.Enchantments.*;
+import DevJam.Enchantments.Armor.*;
+import DevJam.Enchantments.Armor.Helmet.NightVision;
+import DevJam.Enchantments.Armor.Helmet.PigGod;
+import DevJam.Enchantments.Irreparable;
+import DevJam.Enchantments.Rejuvenation;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;

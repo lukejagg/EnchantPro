@@ -1,7 +1,6 @@
-package DevJam.Enchantments;
+package DevJam.Enchantments.Armor;
 
 import DevJam.CustomEnchantment;
-import DevJam.Info;
 import org.bukkit.enchantments.EnchantmentTarget;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
 
@@ -12,7 +11,7 @@ public class WellFed extends CustomEnchantment {
 
     public WellFed() {
         super("wellfed", "Well-Fed");
-        targetItem = EnchantmentTarget.ARMOR;
+        setTargetItems(EnchantmentTarget.ARMOR);
         maxLevel = 3;
     }
 

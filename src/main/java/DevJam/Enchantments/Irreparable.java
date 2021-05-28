@@ -7,7 +7,7 @@ import org.bukkit.enchantments.EnchantmentTarget;
 public class Irreparable extends CustomEnchantment {
     public Irreparable() {
         super("irreparable", "Irreparable");
-        targetItem = EnchantmentTarget.BREAKABLE;
+        setTargetItems(EnchantmentTarget.BREAKABLE);
         cursed = true;
         loreColor = TextColor.CURSED_LORE;
     }

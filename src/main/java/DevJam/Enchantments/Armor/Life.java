@@ -1,4 +1,4 @@
-package DevJam.Enchantments;
+package DevJam.Enchantments.Armor;
 
 import DevJam.CustomEnchantment;
 import org.bukkit.attribute.Attribute;
@@ -11,7 +11,7 @@ public class Life extends CustomEnchantment {
     public Life() {
         super("life", "Life");
         maxLevel = 2;
-        targetItem = EnchantmentTarget.ARMOR;
+        setTargetItems(EnchantmentTarget.ARMOR);
     }
 
     @Override

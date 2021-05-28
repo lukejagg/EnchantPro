@@ -7,6 +7,6 @@ public class Test extends CustomEnchantment {
     public Test() {
         super("test", "Test Enchantment");
         maxLevel = 5;
-        targetItem = EnchantmentTarget.WEAPON;
+        setTargetItems(EnchantmentTarget.WEAPON);
     }
 }

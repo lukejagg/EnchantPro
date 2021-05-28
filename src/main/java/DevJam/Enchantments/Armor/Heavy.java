@@ -1,4 +1,4 @@
-package DevJam.Enchantments;
+package DevJam.Enchantments.Armor;
 
 import DevJam.CustomEnchantment;
 import DevJam.Enums.TextColor;
@@ -10,7 +10,7 @@ import org.bukkit.potion.PotionEffectType;
 public class Heavy extends CustomEnchantment {
     public Heavy() {
         super("heavy", "Heavy");
-        targetItem = EnchantmentTarget.ARMOR;
+        setTargetItems(EnchantmentTarget.ARMOR);
         cursed = true;
         loreColor = TextColor.CURSED_LORE;
         updateDelay = 20;

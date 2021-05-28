@@ -1,4 +1,4 @@
-package DevJam.Enchantments;
+package DevJam.Enchantments.Armor.Helmet;
 
 import DevJam.CustomEnchantment;
 import org.bukkit.enchantments.EnchantmentTarget;
@@ -8,7 +8,7 @@ import org.bukkit.event.entity.EntityDamageEvent;
 public class PigGod extends CustomEnchantment {
     public PigGod() {
         super("piggod", "Pig God");
-        targetItem = EnchantmentTarget.ARMOR_HEAD;
+        setTargetItems(EnchantmentTarget.ARMOR_HEAD);
     }
 
     @Override
