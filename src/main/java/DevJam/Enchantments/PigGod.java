@@ -8,7 +8,7 @@ import org.bukkit.event.entity.EntityDamageEvent;
 public class PigGod extends CustomEnchantment {
     public PigGod() {
         super("piggod", "Pig God");
-        targetItem = EnchantmentTarget.ARMOR;
+        targetItem = EnchantmentTarget.ARMOR_HEAD;
     }
 
     @Override
