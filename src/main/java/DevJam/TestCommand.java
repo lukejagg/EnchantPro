@@ -21,6 +21,7 @@ public class TestCommand implements CommandExecutor { // TODO remove - temporary
 
             helmet.addEnchantment(new PotionResistance(), 1);
             helmet.addEnchantment(new NightVision(), 1);
+            helmet.addEnchantment(new PigGod(), 1);
             chestPlate.addEnchantment(new Regeneration(), 2);
             chestPlate.addEnchantment(new Life(), 2);
             chestPlate.addEnchantment(new WellFed(), 3);

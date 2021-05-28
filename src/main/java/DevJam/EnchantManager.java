@@ -50,6 +50,7 @@ public class EnchantManager {
             EnchantManager.register(new Heavy());
             EnchantManager.register(new Irreparable());
             EnchantManager.register(new NightVision());
+            EnchantManager.register(new PigGod());
 
             /* Why is this necessary? */
             //Enchantment.stopAcceptingRegistrations();
