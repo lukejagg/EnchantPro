@@ -10,6 +10,7 @@ import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityTameEvent;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
+import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.EnchantmentStorageMeta;
@@ -261,6 +262,10 @@ public abstract class CustomEnchantment extends Enchantment {
     }
 
     public void onEntityDamage(EntityDamageEvent event, int level) {
+
+    }
+
+    public void onPlayerTeleport(PlayerTeleportEvent event, int level) {
 
     }
     //endregion

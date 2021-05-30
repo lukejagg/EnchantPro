@@ -1,6 +1,9 @@
 package DevJam;
 
 import DevJam.Enchantments.Armor.*;
+import DevJam.Enchantments.Armor.Boots.Dolphin;
+import DevJam.Enchantments.Armor.Boots.Olympian;
+import DevJam.Enchantments.Armor.Chestplate.Enderman;
 import DevJam.Enchantments.Armor.Helmet.NightVision;
 import DevJam.Enchantments.Armor.Helmet.PigGod;
 import DevJam.Enchantments.Irreparable;
@@ -26,6 +29,7 @@ public class TestCommand implements CommandExecutor { // TODO remove - temporary
             helmet.addEnchantment(new PotionResistance(), 1);
             helmet.addEnchantment(new NightVision(), 1);
             helmet.addEnchantment(new PigGod(), 1);
+            chestPlate.addEnchantment(new Enderman(), 1);
             chestPlate.addEnchantment(new Regeneration(), 2);
             chestPlate.addEnchantment(new Life(), 2);
             chestPlate.addEnchantment(new WellFed(), 3);
@@ -34,11 +38,13 @@ public class TestCommand implements CommandExecutor { // TODO remove - temporary
             chestPlate.addEnchantment(new PotionResistance(), 3);
             leggings.addEnchantment(new PotionResistance(), 2);
             leggings.addEnchantment(new LastStand(), 1);
+            leggings.addEnchantment(new Heavy(), 1);
             boots.addEnchantment(new LastStand(), 1);
             boots.addEnchantment(new Rejuvenation(), 1);
-            boots.addEnchantment(new Heavy(), 1);
             boots.addEnchantment(new Irreparable(), 1);
             boots.setDurability((short) 50);
+            boots.addEnchantment(new Olympian(), 2);
+            boots.addEnchantment(new Dolphin(), 1);
 
             CustomEnchantment.updateMeta(helmet);
             CustomEnchantment.updateMeta(chestPlate);

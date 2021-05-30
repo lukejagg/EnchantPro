@@ -11,6 +11,7 @@ import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityTameEvent;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
+import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.inventory.EntityEquipment;
 import org.bukkit.inventory.ItemStack;
 
@@ -89,6 +90,23 @@ public class ActionListener implements Listener {
                         CustomEnchantment enchantment = (CustomEnchantment) enchant;
                         enchantment.onEntityDamage(event, level);
                     }
+                }
+            }
+        }
+    }
+
+    @EventHandler
+    public void onPlayerTeleport(PlayerTeleportEvent event) {
+        EntityEquipment equipment = event.getPlayer().getEquipment();
+
+        for (ItemStack armorPiece : equipment.getArmorContents()) {
+            if (armorPiece == null) continue;
+            Map<Enchantment, Integer> enchantmentIntegerMap = armorPiece.getEnchantments();
+            for (Enchantment enchant : enchantmentIntegerMap.keySet()) {
+                if (enchant instanceof CustomEnchantment) {
+                    int level = enchantmentIntegerMap.get(enchant);
+                    CustomEnchantment enchantment = (CustomEnchantment) enchant;
+                    enchantment.onPlayerTeleport(event, level);
                 }
             }
         }
