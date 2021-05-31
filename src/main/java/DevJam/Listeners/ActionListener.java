@@ -8,6 +8,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.entity.EntityTameEvent;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
@@ -107,6 +108,37 @@ public class ActionListener implements Listener {
                     int level = enchantmentIntegerMap.get(enchant);
                     CustomEnchantment enchantment = (CustomEnchantment) enchant;
                     enchantment.onPlayerTeleport(event, level);
+                }
+            }
+        }
+    }
+
+    @EventHandler
+    public void onEntityDeath(EntityDeathEvent event) {
+        if (event.getEntity() instanceof Player) {
+            EntityEquipment equipment = event.getEntity().getEquipment();
+
+            for (ItemStack armorPiece : equipment.getArmorContents()) {
+                if (armorPiece == null) continue;
+                Map<Enchantment, Integer> enchantmentIntegerMap = armorPiece.getEnchantments();
+                for (Enchantment enchant : enchantmentIntegerMap.keySet()) {
+                    if (enchant instanceof CustomEnchantment) {
+                        int level = enchantmentIntegerMap.get(enchant);
+                        CustomEnchantment enchantment = (CustomEnchantment) enchant;
+                        enchantment.onEntityDeath(event, level);
+                    }
+                }
+            }
+        } else { // Is a mob
+            for (ItemStack drop : event.getDrops()) {
+                if (drop == null) continue;
+                Map<Enchantment, Integer> enchantmentIntegerMap = drop.getEnchantments();
+                for (Enchantment enchant : enchantmentIntegerMap.keySet()) {
+                    if (enchant instanceof CustomEnchantment) {
+                        int level = enchantmentIntegerMap.get(enchant);
+                        CustomEnchantment enchantment = (CustomEnchantment) enchant;
+                        enchantment.onEntityDeath(event, level);
+                    }
                 }
             }
         }

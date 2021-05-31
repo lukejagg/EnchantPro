@@ -60,6 +60,7 @@ public class EnchantManager {
             EnchantManager.register(new Enderman());
             EnchantManager.register(new Olympian());
             EnchantManager.register(new Dolphin());
+            EnchantManager.register(new SelfDestruction());
 
             /* Why is this necessary? */
             //Enchantment.stopAcceptingRegistrations();

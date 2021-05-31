@@ -45,6 +45,7 @@ public class TestCommand implements CommandExecutor { // TODO remove - temporary
             boots.setDurability((short) 50);
             boots.addEnchantment(new Olympian(), 2);
             boots.addEnchantment(new Dolphin(), 1);
+            boots.addEnchantment(new SelfDestruction(), 5);
 
             CustomEnchantment.updateMeta(helmet);
             CustomEnchantment.updateMeta(chestPlate);

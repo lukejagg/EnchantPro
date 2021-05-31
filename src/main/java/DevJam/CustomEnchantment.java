@@ -7,6 +7,7 @@ import org.bukkit.NamespacedKey;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.enchantments.EnchantmentTarget;
 import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.entity.EntityTameEvent;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
@@ -266,6 +267,10 @@ public abstract class CustomEnchantment extends Enchantment {
     }
 
     public void onPlayerTeleport(PlayerTeleportEvent event, int level) {
+
+    }
+
+    public void onEntityDeath(EntityDeathEvent event, int level) {
 
     }
     //endregion
