@@ -17,7 +17,7 @@ public class PigGod extends CustomEnchantment {
             Player player = (Player) event.getEntity();
 
             if (player.getHealth() <= event.getFinalDamage()) { // Player will die
-                int cost = (int) (event.getFinalDamage() - player.getHealth() + 0.5);
+                int cost = (int) (event.getFinalDamage() - player.getHealth() + 1);
 
                 if (player.getFoodLevel() >= cost) {
                     event.setDamage(0);

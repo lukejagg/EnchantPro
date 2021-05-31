@@ -2,7 +2,6 @@ package DevJam.Enchantments.Armor.Chestplate;
 
 import DevJam.CustomEnchantment;
 import org.bukkit.enchantments.EnchantmentTarget;
-import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
 
 public class Enderman extends CustomEnchantment {

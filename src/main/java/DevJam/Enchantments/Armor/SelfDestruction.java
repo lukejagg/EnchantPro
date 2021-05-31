@@ -2,13 +2,8 @@ package DevJam.Enchantments.Armor;
 
 import DevJam.CustomEnchantment;
 import DevJam.Enums.TextColor;
-import DevJam.Info;
-import org.bukkit.World;
 import org.bukkit.enchantments.EnchantmentTarget;
 import org.bukkit.event.entity.EntityDeathEvent;
-import org.bukkit.inventory.ItemStack;
-
-import java.util.Iterator;
 
 public class SelfDestruction extends CustomEnchantment {
     public SelfDestruction() {

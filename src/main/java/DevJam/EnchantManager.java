@@ -1,12 +1,14 @@
 package DevJam;
 
-import DevJam.Enchantments.*;
 import DevJam.Enchantments.Armor.*;
 import DevJam.Enchantments.Armor.Boots.Dolphin;
 import DevJam.Enchantments.Armor.Boots.Olympian;
 import DevJam.Enchantments.Armor.Chestplate.Enderman;
 import DevJam.Enchantments.Armor.Helmet.NightVision;
 import DevJam.Enchantments.Armor.Helmet.PigGod;
+import DevJam.Enchantments.Irreparable;
+import DevJam.Enchantments.Rejuvenation;
+import DevJam.Enchantments.Test;
 import DevJam.Listeners.ActionListener;
 import DevJam.Listeners.EnchantListener;
 import DevJam.Listeners.UpdateListener;
@@ -61,6 +63,7 @@ public class EnchantManager {
             EnchantManager.register(new Olympian());
             EnchantManager.register(new Dolphin());
             EnchantManager.register(new SelfDestruction());
+            EnchantManager.register(new BlazesCurse());
 
             /* Why is this necessary? */
             //Enchantment.stopAcceptingRegistrations();

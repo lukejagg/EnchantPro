@@ -3,7 +3,6 @@ package DevJam.Listeners;
 import DevJam.CustomEnchantment;
 import DevJam.Events.UpdateItemEvent;
 import DevJam.Info;
-import DevJam.Util.EntityUtil;
 import org.bukkit.World;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.LivingEntity;
@@ -11,7 +10,6 @@ import org.bukkit.inventory.EntityEquipment;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 
-import java.util.ArrayList;
 import java.util.Map;
 
 /**
