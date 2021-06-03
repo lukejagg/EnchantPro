@@ -10,6 +10,7 @@ import DevJam.Enchantments.Armor.Helmet.PigGod;
 import DevJam.Enchantments.Armor.Helmet.Waterbreathing;
 import DevJam.Enchantments.Irreparable;
 import DevJam.Enchantments.Rejuvenation;
+import DevJam.Enchantments.Sword.Slothful;
 import DevJam.Enchantments.Sword.Venomous;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
@@ -54,6 +55,7 @@ public class TestCommand implements CommandExecutor { // TODO remove - temporary
             boots.addEnchantment(new Dolphin(), 1);
             boots.addEnchantment(new SelfDestruction(), 5);
             sword.addEnchantment(new Venomous(), 1);
+            sword.addEnchantment(new Slothful(), 1);
 
             CustomEnchantment.updateMeta(helmet);
             CustomEnchantment.updateMeta(chestPlate);
