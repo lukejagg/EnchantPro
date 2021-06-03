@@ -31,7 +31,7 @@ public class EnchantPro extends JavaPlugin {
         w.start();
 
         // Config
-        getConfig().addDefault("Disabled Enchantments", new ArrayList<String>(){{add("Enter enchantment names or keys here");}});
+        getConfig().addDefault("Disabled Enchantments", new ArrayList<String>(){{add("Freezing Glance"); add("waterbreathing");}});
         getConfig().options().copyDefaults(true);
         saveConfig();
 

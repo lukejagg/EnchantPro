@@ -4,10 +4,13 @@ import DevJam.Enchantments.Armor.*;
 import DevJam.Enchantments.Armor.Boots.Dolphin;
 import DevJam.Enchantments.Armor.Boots.Olympian;
 import DevJam.Enchantments.Armor.Chestplate.Enderman;
+import DevJam.Enchantments.Armor.Helmet.FreezingGlance;
 import DevJam.Enchantments.Armor.Helmet.NightVision;
 import DevJam.Enchantments.Armor.Helmet.PigGod;
+import DevJam.Enchantments.Armor.Helmet.Waterbreathing;
 import DevJam.Enchantments.Irreparable;
 import DevJam.Enchantments.Rejuvenation;
+import DevJam.Enchantments.Sword.Venomous;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -25,11 +28,14 @@ public class TestCommand implements CommandExecutor { // TODO remove - temporary
             ItemStack chestPlate = new ItemStack(Material.DIAMOND_CHESTPLATE);
             ItemStack leggings = new ItemStack(Material.DIAMOND_LEGGINGS);
             ItemStack boots = new ItemStack(Material.DIAMOND_BOOTS);
+            ItemStack sword = new ItemStack(Material.DIAMOND_SWORD);
 
             helmet.addEnchantment(new PotionResistance(), 1);
             helmet.addEnchantment(new NightVision(), 1);
             helmet.addEnchantment(new PigGod(), 1);
             helmet.addEnchantment(new BlazesCurse(), 1);
+            helmet.addEnchantment(new FreezingGlance(), 1);
+            helmet.addEnchantment(new Waterbreathing(), 1);
             chestPlate.addEnchantment(new Enderman(), 1);
             chestPlate.addEnchantment(new Regeneration(), 2);
             chestPlate.addEnchantment(new Life(), 2);
@@ -47,16 +53,19 @@ public class TestCommand implements CommandExecutor { // TODO remove - temporary
             boots.addEnchantment(new Olympian(), 2);
             boots.addEnchantment(new Dolphin(), 1);
             boots.addEnchantment(new SelfDestruction(), 5);
+            sword.addEnchantment(new Venomous(), 1);
 
             CustomEnchantment.updateMeta(helmet);
             CustomEnchantment.updateMeta(chestPlate);
             CustomEnchantment.updateMeta(leggings);
             CustomEnchantment.updateMeta(boots);
+            CustomEnchantment.updateMeta(sword);
 
             player.getInventory().addItem(helmet);
             player.getInventory().addItem(chestPlate);
             player.getInventory().addItem(leggings);
             player.getInventory().addItem(boots);
+            player.getInventory().addItem(sword);
         }
         return true;
     }

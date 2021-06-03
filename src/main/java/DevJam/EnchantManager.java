@@ -4,10 +4,13 @@ import DevJam.Enchantments.Armor.*;
 import DevJam.Enchantments.Armor.Boots.Dolphin;
 import DevJam.Enchantments.Armor.Boots.Olympian;
 import DevJam.Enchantments.Armor.Chestplate.Enderman;
+import DevJam.Enchantments.Armor.Helmet.FreezingGlance;
 import DevJam.Enchantments.Armor.Helmet.NightVision;
 import DevJam.Enchantments.Armor.Helmet.PigGod;
+import DevJam.Enchantments.Armor.Helmet.Waterbreathing;
 import DevJam.Enchantments.Irreparable;
 import DevJam.Enchantments.Rejuvenation;
+import DevJam.Enchantments.Sword.Venomous;
 import DevJam.Enchantments.Test;
 import DevJam.Listeners.ActionListener;
 import DevJam.Listeners.EnchantListener;
@@ -64,6 +67,9 @@ public class EnchantManager {
             EnchantManager.register(new Dolphin());
             EnchantManager.register(new SelfDestruction());
             EnchantManager.register(new BlazesCurse());
+            EnchantManager.register(new FreezingGlance());
+            EnchantManager.register(new Waterbreathing());
+            EnchantManager.register(new Venomous());
 
             /* Why is this necessary? */
             //Enchantment.stopAcceptingRegistrations();

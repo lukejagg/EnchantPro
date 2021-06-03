@@ -6,10 +6,7 @@ import DevJam.Util.ItemUtil;
 import org.bukkit.NamespacedKey;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.enchantments.EnchantmentTarget;
-import org.bukkit.event.entity.EntityDamageEvent;
-import org.bukkit.event.entity.EntityDeathEvent;
-import org.bukkit.event.entity.EntityTameEvent;
-import org.bukkit.event.entity.FoodLevelChangeEvent;
+import org.bukkit.event.entity.*;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.inventory.EquipmentSlot;
@@ -212,6 +209,7 @@ public abstract class CustomEnchantment extends Enchantment {
         for (Enchantment enchant : enchantments.keySet()) {
             if (enchant instanceof CustomEnchantment) {
                 CustomEnchantment en = (CustomEnchantment) enchant;
+                if (!en.enabled) continue;
                 int level = enchantments.get(enchant);
                 lore.add(en.loreString(level));
                 en.applyEnchant(meta, level);
@@ -271,6 +269,14 @@ public abstract class CustomEnchantment extends Enchantment {
     }
 
     public void onEntityDeath(EntityDeathEvent event, int level) {
+
+    }
+
+    public void onEntityAirChange(EntityAirChangeEvent event, int level) {
+
+    }
+
+    public void onEntityDamageByEntity(EntityDamageByEntityEvent event, int level) {
 
     }
     //endregion

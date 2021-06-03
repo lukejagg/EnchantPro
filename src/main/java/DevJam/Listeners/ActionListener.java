@@ -2,13 +2,11 @@ package DevJam.Listeners;
 
 import DevJam.CustomEnchantment;
 import org.bukkit.enchantments.Enchantment;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.entity.EntityDamageEvent;
-import org.bukkit.event.entity.EntityDeathEvent;
-import org.bukkit.event.entity.EntityTameEvent;
-import org.bukkit.event.entity.FoodLevelChangeEvent;
+import org.bukkit.event.entity.*;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.inventory.EntityEquipment;
@@ -138,6 +136,38 @@ public class ActionListener implements Listener {
                         enchantment.onEntityDeath(event, level);
                     }
                 }
+            }
+        }
+    }
+
+    @EventHandler
+    public void onEntityAirChange(EntityAirChangeEvent event) {
+        LivingEntity entity = (LivingEntity) event.getEntity();
+        EntityEquipment equipment = entity.getEquipment();
+
+        for (ItemStack armorPiece : equipment.getArmorContents()) {
+            if (armorPiece == null) continue;
+            Map<Enchantment, Integer> enchantmentIntegerMap = armorPiece.getEnchantments();
+            for (Enchantment enchant : enchantmentIntegerMap.keySet()) {
+                if (enchant instanceof CustomEnchantment) {
+                    int level = enchantmentIntegerMap.get(enchant);
+                    CustomEnchantment enchantment = (CustomEnchantment) enchant;
+                    enchantment.onEntityAirChange(event, level);
+                }
+            }
+        }
+    }
+
+    @EventHandler
+    public void onEntityDamageByEntity(EntityDamageByEntityEvent event) {
+        LivingEntity damager = (LivingEntity) event.getDamager();
+        ItemStack item = damager.getEquipment().getItemInMainHand();
+        Map<Enchantment, Integer> enchantmentIntegerMap = item.getEnchantments();
+        for (Enchantment enchant : enchantmentIntegerMap.keySet()) {
+            if (enchant instanceof CustomEnchantment) {
+                int level = enchantmentIntegerMap.get(enchant);
+                CustomEnchantment enchantment = (CustomEnchantment) enchant;
+                enchantment.onEntityDamageByEntity(event, level);
             }
         }
     }
