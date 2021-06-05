@@ -10,8 +10,7 @@ import DevJam.Enchantments.Armor.Helmet.PigGod;
 import DevJam.Enchantments.Armor.Helmet.Waterbreathing;
 import DevJam.Enchantments.Irreparable;
 import DevJam.Enchantments.Rejuvenation;
-import DevJam.Enchantments.Sword.Slothful;
-import DevJam.Enchantments.Sword.Venomous;
+import DevJam.Enchantments.Sword.*;
 import DevJam.Enchantments.Test;
 import DevJam.Listeners.ActionListener;
 import DevJam.Listeners.EnchantListener;
@@ -72,6 +71,10 @@ public class EnchantManager {
             EnchantManager.register(new Waterbreathing());
             EnchantManager.register(new Venomous());
             EnchantManager.register(new Slothful());
+            EnchantManager.register(new Blinding());
+            EnchantManager.register(new Withering());
+            EnchantManager.register(new LifeLeech());
+            EnchantManager.register(new Lucky());
 
             /* Why is this necessary? */
             //Enchantment.stopAcceptingRegistrations();

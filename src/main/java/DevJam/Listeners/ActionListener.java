@@ -111,6 +111,7 @@ public class ActionListener implements Listener {
 
     @EventHandler
     public void onEntityDeath(EntityDeathEvent event) {
+        // Handle enchantments on equipped items of dead entity
         if (event.getEntity() instanceof Player) {
             EntityEquipment equipment = event.getEntity().getEquipment();
 
@@ -138,6 +139,20 @@ public class ActionListener implements Listener {
                 }
             }
         }
+
+        // Handle enchantments on killer
+        Player killer = event.getEntity().getKiller();
+        if (killer == null) return;
+        EntityEquipment equipment = killer.getEquipment();
+        ItemStack heldItem = equipment.getItemInMainHand();
+        Map<Enchantment, Integer> enchantmentIntegerMap = heldItem.getEnchantments();
+        for (Enchantment enchant : enchantmentIntegerMap.keySet()) {
+            if (enchant instanceof CustomEnchantment) {
+                int level = enchantmentIntegerMap.get(enchant);
+                CustomEnchantment enchantment = (CustomEnchantment) enchant;
+                enchantment.onEntityDeath(event, level);
+            }
+        }
     }
 
     @EventHandler
@@ -160,14 +175,16 @@ public class ActionListener implements Listener {
 
     @EventHandler
     public void onEntityDamageByEntity(EntityDamageByEntityEvent event) {
-        LivingEntity damager = (LivingEntity) event.getDamager();
-        ItemStack item = damager.getEquipment().getItemInMainHand();
-        Map<Enchantment, Integer> enchantmentIntegerMap = item.getEnchantments();
-        for (Enchantment enchant : enchantmentIntegerMap.keySet()) {
-            if (enchant instanceof CustomEnchantment) {
-                int level = enchantmentIntegerMap.get(enchant);
-                CustomEnchantment enchantment = (CustomEnchantment) enchant;
-                enchantment.onEntityDamageByEntity(event, level);
+        if (event.getDamager() instanceof LivingEntity) {
+            LivingEntity damager = (LivingEntity) event.getDamager();
+            ItemStack item = damager.getEquipment().getItemInMainHand();
+            Map<Enchantment, Integer> enchantmentIntegerMap = item.getEnchantments();
+            for (Enchantment enchant : enchantmentIntegerMap.keySet()) {
+                if (enchant instanceof CustomEnchantment) {
+                    int level = enchantmentIntegerMap.get(enchant);
+                    CustomEnchantment enchantment = (CustomEnchantment) enchant;
+                    enchantment.onEntityDamageByEntity(event, level);
+                }
             }
         }
     }

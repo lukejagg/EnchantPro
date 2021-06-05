@@ -1,7 +1,6 @@
 package DevJam.Enchantments.Armor.Helmet;
 
 import DevJam.CustomEnchantment;
-import DevJam.Info;
 import org.bukkit.enchantments.EnchantmentTarget;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.event.entity.EntityAirChangeEvent;
