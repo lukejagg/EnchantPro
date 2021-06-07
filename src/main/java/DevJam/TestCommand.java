@@ -59,6 +59,8 @@ public class TestCommand implements CommandExecutor { // TODO remove - temporary
             sword.addEnchantment(new Withering(), 1);
             sword.addEnchantment(new LifeLeech(), 3);
             sword.addEnchantment(new Lucky(), 5);
+            sword.addEnchantment(new Beheading(), 3);
+            sword.addEnchantment(new DoubleStrike(), 3);
 
             CustomEnchantment.updateMeta(helmet);
             CustomEnchantment.updateMeta(chestPlate);

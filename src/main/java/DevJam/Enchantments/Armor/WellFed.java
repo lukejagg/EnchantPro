@@ -7,7 +7,7 @@ import org.bukkit.event.entity.FoodLevelChangeEvent;
 import java.util.Random;
 
 public class WellFed extends CustomEnchantment {
-    private Random random = new Random();
+    private static final Random RANDOM = new Random();
 
     public WellFed() {
         super("wellfed", "Well-Fed");
@@ -17,7 +17,7 @@ public class WellFed extends CustomEnchantment {
 
     @Override
     public void onFoodLevelChange(FoodLevelChangeEvent event, int level) {
-        if (random.nextDouble() < 0.25 * level && event.getFoodLevel() < event.getEntity().getFoodLevel()) {
+        if (RANDOM.nextDouble() < 0.25 * level && event.getFoodLevel() < event.getEntity().getFoodLevel()) {
             event.setCancelled(true);
         }
     }
