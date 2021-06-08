@@ -1,5 +1,6 @@
 package DevJam;
 
+import DevJam.Data.EnchantData;
 import DevJam.Enums.TextColor;
 import DevJam.Events.UpdateItemEvent;
 import DevJam.Util.ItemUtil;
@@ -22,6 +23,7 @@ public abstract class CustomEnchantment extends Enchantment {
     protected String name, keyName;
     protected int maxLevel;
     protected EnchantmentTarget[] targetItems;
+    protected EnchantData enchantData;
     protected boolean treasure;
     protected boolean cursed;
     protected ArrayList<Enchantment> conflicts = new ArrayList<>();
@@ -30,12 +32,14 @@ public abstract class CustomEnchantment extends Enchantment {
     protected boolean enabled;
 
 
+
     public CustomEnchantment(String key, String name) {
         super(new NamespacedKey(Info.plugin, key));
         this.name = name;
         this.keyName = key;
         maxLevel = 1;
         targetItems = new EnchantmentTarget[] {EnchantmentTarget.BREAKABLE};
+        enchantData = new EnchantData(100, 100, 1);
         treasure = false;
         cursed = false;
         updateDelay = 0;
@@ -290,6 +294,36 @@ public abstract class CustomEnchantment extends Enchantment {
      */
     public void applyEnchant(ItemMeta meta, int level) {
 
+    }
+    //endregion
+
+
+    //region Enchanting
+    /**
+     * The weight used to calculate how common this enchant is.
+     * Lower weight is less common
+     * @param level level that user is enchanting at
+     * @return returns weight of this enchant (weighted probability)
+     */
+    public double getEnchantWeight(int level) {
+        if (level < 1)
+            level = 1;
+        if (level > 30)
+            level = 30;
+
+        // Linear interpolation from low weight to high weight
+        return enchantData.lowWeight + (enchantData.highWeight - enchantData.lowWeight) * (level - 1.0) / (29.0);
+    }
+
+    /**
+     * Significance determines how much this enchantment effects
+     * the probability of geting more enchantments.
+     * The higher the significance, the less likely you are
+     * to get more enchantments.
+     * @return returns the significance of this enchant
+     */
+    public double getEnchantSignificance() {
+        return enchantData.significance;
     }
     //endregion
 }

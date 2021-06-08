@@ -4,6 +4,7 @@ import DevJam.CustomEnchantment;
 import DevJam.Enchantments.Irreparable;
 import DevJam.Enchantments.Test;
 import DevJam.Info;
+import DevJam.Util.EnchantUtil;
 import DevJam.Util.ItemUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -21,6 +22,7 @@ import org.bukkit.inventory.meta.Damageable;
 import org.bukkit.inventory.meta.EnchantmentStorageMeta;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -43,15 +45,38 @@ public class EnchantListener implements Listener {
         ItemStack item = event.getItem();
         Map<CustomEnchantment, Integer> customEnchants = new HashMap<>();
 
-        // Apply custom enchant randomly
-        Random rnd = new Random();
-        if (rnd.nextBoolean()) {
-            int level = rnd.nextInt(5) + 1;
 
-            customEnchants.put(new Test(), level);
+        int level = event.getExpLevelCost();
+        Info.log("Enchanting at " + level);
+
+        ArrayList<CustomEnchantment> possibleEnchants = new ArrayList<>();
+        EnchantUtil.getPossibleEnchantments(possibleEnchants, item);
+
+        double luck = 0;
+        while (EnchantUtil.shouldAddEnchantment(luck)) {
+            double total = 0.0;
+            for (CustomEnchantment e : possibleEnchants)
+                total += e.getEnchantWeight(level);
+
+            // Todo: convert Weighted Random to use TreeMap (map.floorKey)
+            CustomEnchantment enchant = null;
+            double random = Math.random() * total;
+            for (CustomEnchantment possibleEnchant : possibleEnchants) {
+                random -= possibleEnchant.getEnchantWeight(level);
+                if (random <= 0.0) {
+                    enchant = possibleEnchant;
+                    break;
+                }
+            }
+
+            Info.log("Adding " + enchant);
+
+            if (enchant != null) {
+                // Todo: level select
+                customEnchants.put(enchant, 1);
+                luck += enchant.getEnchantSignificance();
+            }
         }
-
-        // Todo: make custom enchanting work
 
         // Apply enchantments
         Map<Enchantment, Integer> enchants = event.getEnchantsToAdd();

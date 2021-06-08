@@ -1,6 +1,7 @@
 package DevJam.Enchantments.Armor.Helmet;
 
 import DevJam.CustomEnchantment;
+import DevJam.Data.EnchantData;
 import DevJam.Events.UpdateItemEvent;
 import org.bukkit.enchantments.EnchantmentTarget;
 import org.bukkit.potion.PotionEffect;
