@@ -65,7 +65,7 @@ public class TestCommand implements CommandExecutor { // TODO remove - temporary
             diamondSword.addEnchantment(new DoubleStrike(), 3);
             netheriteSword.addEnchantment(new Surprise(), 1);
             netheriteSword.addEnchantment(new VillageDefender(), 5);
-
+            netheriteSword.addEnchantment(new Disjunction(), 5);
 
             CustomEnchantment.updateMeta(helmet);
             CustomEnchantment.updateMeta(chestPlate);

@@ -79,6 +79,7 @@ public class EnchantManager {
             EnchantManager.register(new DoubleStrike());
             EnchantManager.register(new Surprise());
             EnchantManager.register(new VillageDefender());
+            EnchantManager.register(new Disjunction());
 
             /* Why is this necessary? */
             //Enchantment.stopAcceptingRegistrations();
