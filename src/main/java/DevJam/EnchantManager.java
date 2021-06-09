@@ -77,6 +77,8 @@ public class EnchantManager {
             EnchantManager.register(new Lucky());
             EnchantManager.register(new Beheading());
             EnchantManager.register(new DoubleStrike());
+            EnchantManager.register(new Surprise());
+            EnchantManager.register(new VillageDefender());
 
             /* Why is this necessary? */
             //Enchantment.stopAcceptingRegistrations();

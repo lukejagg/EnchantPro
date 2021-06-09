@@ -12,6 +12,7 @@ import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.inventory.EntityEquipment;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 /**
@@ -128,7 +129,8 @@ public class ActionListener implements Listener {
                 }
             }
         } else { // Is a mob
-            for (ItemStack drop : event.getDrops()) {
+            ArrayList<ItemStack> drops = new ArrayList<ItemStack>(event.getDrops()); // Prevents concurrent modification error
+            for (ItemStack drop : drops) {
                 if (drop == null) continue;
                 Map<Enchantment, Integer> enchantmentIntegerMap = drop.getEnchantments();
                 for (Enchantment enchant : enchantmentIntegerMap.keySet()) {
