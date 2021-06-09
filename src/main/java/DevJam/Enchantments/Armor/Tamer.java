@@ -24,7 +24,7 @@ public class Tamer extends CustomEnchantment {
         if (entity instanceof Tameable) {
             Tameable animal = (Tameable) entity;
 
-            if (EntityUtil.canTame(animal.getType(), mainItem) || EntityUtil.canTame(animal.getType(), offItem)) {
+            if (!animal.isTamed() && (EntityUtil.canTame(animal.getType(), mainItem) || EntityUtil.canTame(animal.getType(), offItem))) {
                 animal.setOwner(event.getPlayer());
                 Bukkit.getServer().getPluginManager().callEvent(new EntityTameEvent(animal, event.getPlayer())); // Compatibility with Beastmaster enchantment
             }
