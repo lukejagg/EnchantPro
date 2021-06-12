@@ -8,14 +8,15 @@ import DevJam.Enchantments.Armor.Helmet.FreezingGlance;
 import DevJam.Enchantments.Armor.Helmet.NightVision;
 import DevJam.Enchantments.Armor.Helmet.PigGod;
 import DevJam.Enchantments.Armor.Helmet.Waterbreathing;
+import DevJam.Enchantments.Heavy;
 import DevJam.Enchantments.Irreparable;
 import DevJam.Enchantments.Rejuvenation;
 import DevJam.Enchantments.Sword.*;
+import DevJam.Enchantments.Tool.AutoSmelting;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
@@ -31,6 +32,7 @@ public class TestCommand implements CommandExecutor { // TODO remove - temporary
             ItemStack boots = new ItemStack(Material.DIAMOND_BOOTS);
             ItemStack diamondSword = new ItemStack(Material.DIAMOND_SWORD);
             ItemStack netheriteSword = new ItemStack(Material.NETHERITE_SWORD);
+            ItemStack pickaxe = new ItemStack(Material.DIAMOND_PICKAXE);
 
             helmet.addEnchantment(new PotionResistance(), 1);
             helmet.addEnchantment(new NightVision(), 1);
@@ -66,6 +68,7 @@ public class TestCommand implements CommandExecutor { // TODO remove - temporary
             netheriteSword.addEnchantment(new Surprise(), 1);
             netheriteSword.addEnchantment(new VillageDefender(), 5);
             netheriteSword.addEnchantment(new Disjunction(), 5);
+            pickaxe.addEnchantment(new AutoSmelting(), 1);
 
             CustomEnchantment.updateMeta(helmet);
             CustomEnchantment.updateMeta(chestPlate);
@@ -73,6 +76,7 @@ public class TestCommand implements CommandExecutor { // TODO remove - temporary
             CustomEnchantment.updateMeta(boots);
             CustomEnchantment.updateMeta(diamondSword);
             CustomEnchantment.updateMeta(netheriteSword);
+            CustomEnchantment.updateMeta(pickaxe);
 
             player.getInventory().addItem(helmet);
             player.getInventory().addItem(chestPlate);
@@ -80,6 +84,7 @@ public class TestCommand implements CommandExecutor { // TODO remove - temporary
             player.getInventory().addItem(boots);
             player.getInventory().addItem(diamondSword);
             player.getInventory().addItem(netheriteSword);
+            player.getInventory().addItem(pickaxe);
         }
         return true;
     }

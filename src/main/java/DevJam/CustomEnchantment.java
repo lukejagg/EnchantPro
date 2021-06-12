@@ -1,12 +1,14 @@
 package DevJam;
 
 import DevJam.Data.EnchantData;
+import DevJam.Enums.EquipmentType;
 import DevJam.Enums.TextColor;
 import DevJam.Events.UpdateItemEvent;
 import DevJam.Util.ItemUtil;
 import org.bukkit.NamespacedKey;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.enchantments.EnchantmentTarget;
+import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.entity.*;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
@@ -30,8 +32,6 @@ public abstract class CustomEnchantment extends Enchantment {
     protected int updateDelay;
     protected TextColor loreColor;
     protected boolean enabled;
-
-
 
     public CustomEnchantment(String key, String name) {
         super(new NamespacedKey(Info.plugin, key));
@@ -184,7 +184,7 @@ public abstract class CustomEnchantment extends Enchantment {
     public static void updateMeta(ItemStack item) {
         Map<Enchantment, Integer> enchantments = item.getEnchantments();
 
-        if (ItemUtil.isEnchantedBook(item) && item.getItemMeta() != null)
+        if (EquipmentType.fromItemStack(item) == EquipmentType.ENCHANTED_BOOK && item.getItemMeta() != null)
             enchantments = ((EnchantmentStorageMeta)item.getItemMeta()).getStoredEnchants();
 
         updateMeta(item, enchantments);
@@ -281,6 +281,10 @@ public abstract class CustomEnchantment extends Enchantment {
     }
 
     public void onEntityDamageByEntity(EntityDamageByEntityEvent event, int level) {
+
+    }
+
+    public void onBlockBreak(BlockBreakEvent event, int level) {
 
     }
     //endregion

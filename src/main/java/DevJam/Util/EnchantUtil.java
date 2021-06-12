@@ -3,7 +3,6 @@ package DevJam.Util;
 import DevJam.CustomEnchantment;
 import DevJam.EnchantManager;
 import org.bukkit.Material;
-import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;

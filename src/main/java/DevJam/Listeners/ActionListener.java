@@ -6,6 +6,7 @@ import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.entity.*;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
@@ -188,6 +189,21 @@ public class ActionListener implements Listener {
                     CustomEnchantment enchantment = (CustomEnchantment) enchant;
                     enchantment.onEntityDamageByEntity(event, level);
                 }
+            }
+        }
+    }
+
+    @EventHandler
+    public void onBlockBreak(BlockBreakEvent event) {
+        Player breaker = event.getPlayer();
+        EntityEquipment equipment = breaker.getEquipment();
+        ItemStack heldItem = equipment.getItemInMainHand();
+        Map<Enchantment, Integer> enchantmentIntegerMap = heldItem.getEnchantments();
+        for (Enchantment enchant : enchantmentIntegerMap.keySet()) {
+            if (enchant instanceof CustomEnchantment) {
+                int level = enchantmentIntegerMap.get(enchant);
+                CustomEnchantment enchantment = (CustomEnchantment) enchant;
+                enchantment.onBlockBreak(event, level);
             }
         }
     }

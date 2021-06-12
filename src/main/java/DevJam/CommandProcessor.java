@@ -1,7 +1,7 @@
 package DevJam;
 
+import DevJam.Enums.EquipmentType;
 import DevJam.Enums.PermissionType;
-import DevJam.Util.ItemUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -145,10 +145,10 @@ public class CommandProcessor {
             if (item.getAmount() == 0)
                 return true;
 
-            if (ItemUtil.isBook(item))
+            if (EquipmentType.fromItemStack(item) == EquipmentType.BOOK)
                 item = new ItemStack(Material.ENCHANTED_BOOK, 1);
 
-            if (ItemUtil.isEnchantedBook(item)) {
+            if (EquipmentType.fromItemStack(item) == EquipmentType.ENCHANTED_BOOK) {
                 EnchantmentStorageMeta meta = (EnchantmentStorageMeta) item.getItemMeta();
                 assert meta != null;
                 meta.addStoredEnchant(ench, level, true);

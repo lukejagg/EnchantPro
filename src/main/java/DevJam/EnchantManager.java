@@ -8,10 +8,12 @@ import DevJam.Enchantments.Armor.Helmet.FreezingGlance;
 import DevJam.Enchantments.Armor.Helmet.NightVision;
 import DevJam.Enchantments.Armor.Helmet.PigGod;
 import DevJam.Enchantments.Armor.Helmet.Waterbreathing;
+import DevJam.Enchantments.Heavy;
 import DevJam.Enchantments.Irreparable;
 import DevJam.Enchantments.Rejuvenation;
 import DevJam.Enchantments.Sword.*;
 import DevJam.Enchantments.Test;
+import DevJam.Enchantments.Tool.AutoSmelting;
 import DevJam.Listeners.ActionListener;
 import DevJam.Listeners.EnchantListener;
 import DevJam.Listeners.UpdateListener;
@@ -80,6 +82,7 @@ public class EnchantManager {
             EnchantManager.register(new Surprise());
             EnchantManager.register(new VillageDefender());
             EnchantManager.register(new Disjunction());
+            EnchantManager.register(new AutoSmelting());
 
             /* Why is this necessary? */
             //Enchantment.stopAcceptingRegistrations();

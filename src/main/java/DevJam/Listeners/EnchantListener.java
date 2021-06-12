@@ -2,7 +2,7 @@ package DevJam.Listeners;
 
 import DevJam.CustomEnchantment;
 import DevJam.Enchantments.Irreparable;
-import DevJam.Enchantments.Test;
+import DevJam.Enums.EquipmentType;
 import DevJam.Info;
 import DevJam.Util.EnchantUtil;
 import DevJam.Util.ItemUtil;
@@ -25,7 +25,6 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Random;
 
 public class EnchantListener implements Listener {
     /* Debug for finding enchantments on item */
@@ -88,12 +87,12 @@ public class EnchantListener implements Listener {
         // Add custom enchantments to enchantment storage
         // in EnchantedBooks
         // Books use EnchantmentStorageMeta for enchantments
-        if (ItemUtil.isBook(item) && item.getItemMeta() != null) {
+        if (EquipmentType.fromItemStack(item) == EquipmentType.BOOK && item.getItemMeta() != null) {
 
             Bukkit.getScheduler().runTaskLater(Info.plugin, () -> {
 
                 ItemStack newItem = event.getView().getTopInventory().getItem(0);
-                if (newItem != null && ItemUtil.isEnchantedBook(newItem)) {
+                if (newItem != null && EquipmentType.fromItemStack(newItem) == EquipmentType.ENCHANTED_BOOK) {
                     EnchantmentStorageMeta meta = (EnchantmentStorageMeta) newItem.getItemMeta();
 
                     if (meta == null) {
@@ -173,7 +172,7 @@ public class EnchantListener implements Listener {
         if (!ItemUtil.isEnchantable(item2) || item2.getAmount() > 1) return;
 
         // Prevent book from being in first slot
-        if (ItemUtil.isBook(item1) && !ItemUtil.isBook(item2)) return;
+        if (EquipmentType.fromItemStack(item1) == EquipmentType.BOOK && EquipmentType.fromItemStack(item2) != EquipmentType.BOOK) return;
 
         if (!ItemUtil.isEnchantable(result) || result.getAmount() != 1) return;
 
@@ -181,13 +180,13 @@ public class EnchantListener implements Listener {
         int cost = inv.getRepairCost();
 
         // Merge enchantments
-        if (item1.getType() == item2.getType() || ItemUtil.isEnchantedBook(item2)) {
+        if (item1.getType() == item2.getType() || EquipmentType.fromItemStack(item2) == EquipmentType.ENCHANTED_BOOK) {
             Map<Enchantment, Integer> ench1 = item1.getEnchantments(), ench2 = item2.getEnchantments();
 
-            if (ItemUtil.isEnchantedBook(item1) && item1.getItemMeta() != null)
+            if (EquipmentType.fromItemStack(item1) == EquipmentType.ENCHANTED_BOOK && item1.getItemMeta() != null)
                 ench1 = ((EnchantmentStorageMeta)item1.getItemMeta()).getStoredEnchants();
 
-            if (ItemUtil.isEnchantedBook(item2) && item2.getItemMeta() != null)
+            if (EquipmentType.fromItemStack(item2) == EquipmentType.ENCHANTED_BOOK && item2.getItemMeta() != null)
                 ench2 = ((EnchantmentStorageMeta)item2.getItemMeta()).getStoredEnchants();
 
             for (Enchantment e : ench1.keySet()){
@@ -226,7 +225,7 @@ public class EnchantListener implements Listener {
             }
         }
 
-        if (ItemUtil.isEnchantedBook(result)) {
+        if (EquipmentType.fromItemStack(result) == EquipmentType.ENCHANTED_BOOK) {
             // todo: EnchantmentStorageMeta
             EnchantmentStorageMeta meta = (EnchantmentStorageMeta) result.getItemMeta();
 

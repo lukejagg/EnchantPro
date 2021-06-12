@@ -22,13 +22,13 @@ public enum TextColor {
     WHITE("§f"),
     MINECOIN_GOLD("§g");
 
-    private final String colorCode;
+    private final String COLOR_CODE;
 
     TextColor(String colorCode) {
-        this.colorCode = colorCode;
+        this.COLOR_CODE = colorCode;
     }
 
     public String getColorCode() {
-        return colorCode;
+        return COLOR_CODE;
     }
 }
