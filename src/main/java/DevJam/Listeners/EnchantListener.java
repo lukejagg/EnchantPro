@@ -169,7 +169,7 @@ public class EnchantListener implements Listener {
         }
 
         // Make sure item2 is enchantable
-        if (!ItemUtil.isEnchantable(item2) || item2.getAmount() > 1) return;
+        if (item2 == null || !ItemUtil.isEnchantable(item2) || item2.getAmount() > 1) return;
 
         // Prevent book from being in first slot
         if (EquipmentType.fromItemStack(item1) == EquipmentType.BOOK && EquipmentType.fromItemStack(item2) != EquipmentType.BOOK) return;

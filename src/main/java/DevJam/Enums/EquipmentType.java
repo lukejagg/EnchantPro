@@ -55,6 +55,7 @@ public enum EquipmentType { // Do not change enum names to allow fromItemStack t
      * @return the EquipmentType of the item; null if not equipment
      */
     public static EquipmentType fromItemStack(ItemStack item) {
+        if (item == null) return null;
         Material itemMaterial = item.getType();
         if (EXPLICITLY_NULL.contains(itemMaterial)) return null;
         for (EquipmentType type : EquipmentType.values()) {
