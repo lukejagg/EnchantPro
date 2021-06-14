@@ -21,9 +21,21 @@ public class EnchantData {
      */
     public double significance = 1;
 
-    public EnchantData(double lowWeight, double highWeight, double significance) {
+    /** Max level of enchantment at level 30 = (maxLevel - maxLevelBias)
+     *
+     */
+    public double maxLevelBias = 0;
+
+    /** How random the selected level is.
+     *
+     */
+    public double levelSpread = 0.5;
+
+    public EnchantData(double lowWeight, double highWeight, double significance, double maxLevelBias, double levelSpread) {
         this.lowWeight = lowWeight;
         this.highWeight = highWeight;
         this.significance = significance;
+        this.maxLevelBias = maxLevelBias;
+        this.levelSpread = levelSpread;
     }
 }

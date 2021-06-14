@@ -39,4 +39,18 @@ public class EnchantUtil {
             }
         }
     }
+
+    public static int getLevel(CustomEnchantment ench, int enchLevel) {
+        double enchProgress = (enchLevel - 1.0) / 29.0;
+        double targetLevel = 1 + (ench.getMaxLevel() - ench.getEnchantLevelBias()) * enchLevel;
+        int level = (int)Math.round(targetLevel + Math.random() * ench.getEnchantLevelSpread());
+
+        // Clamp level range
+        if (level < 1)
+            level = 1;
+        if (level > ench.getMaxLevel())
+            level = ench.getMaxLevel();
+
+        return level;
+    }
 }

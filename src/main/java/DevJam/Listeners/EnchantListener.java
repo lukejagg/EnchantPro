@@ -71,8 +71,7 @@ public class EnchantListener implements Listener {
             Info.log("Adding " + enchant);
 
             if (enchant != null) {
-                // Todo: level select
-                customEnchants.put(enchant, 1);
+                customEnchants.put(enchant, EnchantUtil.getLevel(enchant, level));
                 luck += enchant.getEnchantSignificance();
             }
         }

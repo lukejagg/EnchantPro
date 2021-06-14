@@ -39,7 +39,7 @@ public abstract class CustomEnchantment extends Enchantment {
         this.keyName = key;
         maxLevel = 1;
         targetItems = new EnchantmentTarget[] {EnchantmentTarget.BREAKABLE};
-        enchantData = new EnchantData(100, 100, 1);
+        enchantData = new EnchantData(100, 100, 1, 0, 0.6f);
         treasure = false;
         cursed = false;
         updateDelay = 0;
@@ -328,6 +328,14 @@ public abstract class CustomEnchantment extends Enchantment {
      */
     public double getEnchantSignificance() {
         return enchantData.significance;
+    }
+
+    public double getEnchantLevelBias() {
+        return enchantData.maxLevelBias;
+    }
+
+    public double getEnchantLevelSpread() {
+        return enchantData.levelSpread;
     }
     //endregion
 }
