@@ -52,6 +52,11 @@ public class EnchantListener implements Listener {
         EnchantUtil.getPossibleEnchantments(possibleEnchants, item);
 
         double luck = 0;
+
+        // The higher level enchanted at, the better the luck
+        // Higher luck = less chance to get next enchantment
+        luck = 1.0 - level / 15.0;
+
         while (EnchantUtil.shouldAddEnchantment(luck)) {
             double total = 0.0;
             for (CustomEnchantment e : possibleEnchants)
