@@ -2,12 +2,14 @@ package DevJam.Util;
 
 import DevJam.Enums.EquipmentType;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.FurnaceRecipe;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.Recipe;
 
+import java.util.HashMap;
 import java.util.Iterator;
 
 public class ItemUtil {
@@ -54,6 +56,9 @@ public class ItemUtil {
         return input;
     }
 
+    private static final HashMap<Material, EquipmentType> IDEAL_TOOLS = new HashMap<Material, EquipmentType>() {{
+
+    }};
     public static ItemStack getIdealTool(Block block) { // TODO
         return null;
     }

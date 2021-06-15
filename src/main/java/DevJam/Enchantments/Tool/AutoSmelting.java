@@ -1,6 +1,9 @@
 package DevJam.Enchantments.Tool;
 
 import DevJam.CustomEnchantment;
+import DevJam.Enums.EquipmentType;
+import DevJam.Generated.IdealToolsGenerated;
+import DevJam.Info;
 import DevJam.Util.ItemUtil;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
@@ -24,10 +27,10 @@ public class AutoSmelting extends CustomEnchantment { // TODO WIP
         Player player = event.getPlayer();
         ItemStack heldItem = player.getEquipment().getItemInMainHand();
 
-        if (event.isDropItems() && !player.getGameMode().equals(GameMode.CREATIVE) && block.isPreferredTool(heldItem)) {
-            //if ((block.getType().equals(Material.SAND) || block.getType().equals(Material.CLAY)) && !ItemUtil.isShovel(heldItem)) return; // A pickaxe is a preferred tool for sand bruh
-            //if ((block.getType().equals(Material.WOOD)))
-
+        Info.log(IdealToolsGenerated.IDEAL_TOOLS.get(block.getType()).name());
+        Info.log(EquipmentType.fromItemStack(heldItem).name());
+        if (event.isDropItems() && !player.getGameMode().equals(GameMode.CREATIVE) && IdealToolsGenerated.IDEAL_TOOLS.get(block.getType()) == EquipmentType.fromItemStack(heldItem)) {
+            Info.log("yippee");
             event.setDropItems(false);
 
             for (ItemStack drop : block.getDrops(heldItem, player)) {
