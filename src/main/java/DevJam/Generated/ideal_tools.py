@@ -2,13 +2,13 @@ import requests
 from bs4 import BeautifulSoup
 
 
-def format_java_material(block_name):
-    if '(' in block_name:
-        block_name = block_name[:block_name.index('(') - 1]
-    if 'Block_of_' in block_name:
-        block_name = block_name[block_name.index('Block_of_') + len('Block_of_'):] + '_Block'
-    block_name = block_name.replace('%27', '_')
-    return block_name.upper()
+def format_java_material(name):
+    if '(' in name:
+        name = name[:name.index('(') - 1]
+    if 'Block_of_' in name:
+        name = name[name.index('Block_of_') + len('Block_of_'):] + '_Block'
+    name = name.replace('%27', '_')
+    return name.upper()
 
 
 with open('IdealToolsGenerated.java', 'w') as file:

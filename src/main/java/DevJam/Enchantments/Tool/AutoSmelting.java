@@ -3,7 +3,6 @@ package DevJam.Enchantments.Tool;
 import DevJam.CustomEnchantment;
 import DevJam.Enums.EquipmentType;
 import DevJam.Generated.IdealToolsGenerated;
-import DevJam.Info;
 import DevJam.Util.ItemUtil;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
@@ -14,7 +13,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
 
-public class AutoSmelting extends CustomEnchantment { // TODO WIP
+public class AutoSmelting extends CustomEnchantment {
     public AutoSmelting() {
         super("autosmelting", "Auto-Smelting");
         setTargetItems(EnchantmentTarget.TOOL);
@@ -27,10 +26,7 @@ public class AutoSmelting extends CustomEnchantment { // TODO WIP
         Player player = event.getPlayer();
         ItemStack heldItem = player.getEquipment().getItemInMainHand();
 
-        Info.log(IdealToolsGenerated.IDEAL_TOOLS.get(block.getType()).name());
-        Info.log(EquipmentType.fromItemStack(heldItem).name());
         if (event.isDropItems() && !player.getGameMode().equals(GameMode.CREATIVE) && IdealToolsGenerated.IDEAL_TOOLS.get(block.getType()) == EquipmentType.fromItemStack(heldItem)) {
-            Info.log("yippee");
             event.setDropItems(false);
 
             for (ItemStack drop : block.getDrops(heldItem, player)) {

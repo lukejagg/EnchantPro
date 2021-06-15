@@ -55,11 +55,4 @@ public class ItemUtil {
         }
         return input;
     }
-
-    private static final HashMap<Material, EquipmentType> IDEAL_TOOLS = new HashMap<Material, EquipmentType>() {{
-
-    }};
-    public static ItemStack getIdealTool(Block block) { // TODO
-        return null;
-    }
 }
