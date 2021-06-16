@@ -12,6 +12,7 @@ import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.entity.*;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
+import org.bukkit.event.player.PlayerToggleFlightEvent;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.EnchantmentStorageMeta;
@@ -248,7 +249,7 @@ public abstract class CustomEnchantment extends Enchantment {
     /**
      * Update action called every time the Update event is called
      */
-    public void update(UpdateItemEvent event) {
+    public void update(UpdateItemEvent event, int level) {
 
     }
 
@@ -287,12 +288,17 @@ public abstract class CustomEnchantment extends Enchantment {
     public void onBlockBreak(BlockBreakEvent event, int level) {
 
     }
+
+    public void onFlyToggled(PlayerToggleFlightEvent event, int level) {
+
+    }
     //endregion
 
     //region Meta
     /**
      * Used to add custom meta data to item
      * Such as attributes (e.g. move speed)
+     * Overwritten by children
      * @param meta item meta data
      * @param level enchantment level
      */

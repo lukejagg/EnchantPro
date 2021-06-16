@@ -14,7 +14,7 @@ public class Dolphin extends CustomEnchantment {
     }
 
     @Override
-    public void update(UpdateItemEvent event) {
+    public void update(UpdateItemEvent event, int level) {
         event.entity.addPotionEffect(new PotionEffect(PotionEffectType.DOLPHINS_GRACE, 5 * 20, 0));
     }
 }

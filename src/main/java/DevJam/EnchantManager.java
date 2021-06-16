@@ -83,6 +83,7 @@ public class EnchantManager {
             EnchantManager.register(new VillageDefender());
             EnchantManager.register(new Disjunction());
             EnchantManager.register(new AutoSmelting());
+            EnchantManager.register(new Flight());
 
             /* Why is this necessary? */
             //Enchantment.stopAcceptingRegistrations();

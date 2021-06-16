@@ -20,7 +20,7 @@ public class Rejuvenation extends CustomEnchantment {
     }
 
     @Override
-    public void update(UpdateItemEvent event) {
+    public void update(UpdateItemEvent event, int level) {
         if (event.item.getItemMeta() instanceof Damageable && random.nextDouble() < rejuvenateChance) {
             Damageable meta = (Damageable) event.item.getItemMeta();
             if (meta.hasDamage()) {

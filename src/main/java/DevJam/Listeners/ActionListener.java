@@ -8,8 +8,10 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.entity.*;
+import org.bukkit.event.inventory.InventoryInteractEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
+import org.bukkit.event.player.PlayerToggleFlightEvent;
 import org.bukkit.inventory.EntityEquipment;
 import org.bukkit.inventory.ItemStack;
 
@@ -21,6 +23,15 @@ import java.util.Map;
  */
 public class ActionListener implements Listener {
     // Todo: Refactor
+
+    //region Enchantment Actions
+
+    // Use this for enchantments that need to call events when that item
+    // isn't equipped. (e.g. for disabling effect after it is unequipped)
+
+    //endregion
+
+    //region Generic Actions
     @EventHandler
     public void onFoodLevelChange(FoodLevelChangeEvent event) {
         EntityEquipment equipment = event.getEntity().getEquipment();
@@ -207,4 +218,22 @@ public class ActionListener implements Listener {
             }
         }
     }
+
+    @EventHandler
+    public void onFlyToggled(PlayerToggleFlightEvent event) {
+        EntityEquipment equipment = event.getPlayer().getEquipment();
+
+        for (ItemStack armorPiece : equipment.getArmorContents()) {
+            if (armorPiece == null) continue;
+            Map<Enchantment, Integer> enchantmentIntegerMap = armorPiece.getEnchantments();
+            for (Enchantment enchant : enchantmentIntegerMap.keySet()) {
+                if (enchant instanceof CustomEnchantment) {
+                    int level = enchantmentIntegerMap.get(enchant);
+                    CustomEnchantment enchantment = (CustomEnchantment) enchant;
+                    enchantment.onFlyToggled(event, level);
+                }
+            }
+        }
+    }
+    //endregion
 }

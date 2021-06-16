@@ -15,7 +15,7 @@ public class Olympian extends CustomEnchantment {
     }
 
     @Override
-    public void update(UpdateItemEvent event) {
+    public void update(UpdateItemEvent event, int level) {
         event.entity.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 5 * 20, event.level - 1));
     }
 }

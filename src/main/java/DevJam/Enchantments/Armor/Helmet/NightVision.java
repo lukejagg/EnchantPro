@@ -14,7 +14,7 @@ public class NightVision extends CustomEnchantment {
     }
 
     @Override
-    public void update(UpdateItemEvent event) {
+    public void update(UpdateItemEvent event, int level) {
         event.entity.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION, 12 * 20, 0));
     }
 }

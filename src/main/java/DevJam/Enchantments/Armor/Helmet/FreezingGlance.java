@@ -14,7 +14,7 @@ public class FreezingGlance extends CustomEnchantment {
     }
 
     @Override
-    public void update(UpdateItemEvent event) { // TODO worldguard/grief prevention support; Source water vs. flowing
+    public void update(UpdateItemEvent event, int level) { // TODO worldguard/grief prevention support; Source water vs. flowing
         Block target = event.entity.getTargetBlock(null, 200);
         if (target.getType().equals(Material.WATER)) {
             target.setType(Material.FROSTED_ICE);

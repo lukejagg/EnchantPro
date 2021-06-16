@@ -30,7 +30,7 @@ public class PotionResistance extends CustomEnchantment {
     }
 
     @Override
-    public void update(UpdateItemEvent event) {
+    public void update(UpdateItemEvent event, int level) {
         for (PotionEffect effect : event.entity.getActivePotionEffects()) {
             int maximumDuration = 20 * (16 - 5 * event.level); // At Level 1 => 11 second maximum, Level 3 => 1 second maximum
             if (badEffects.contains(effect.getType()) && effect.getDuration() > maximumDuration) {

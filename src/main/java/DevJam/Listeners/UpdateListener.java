@@ -1,11 +1,14 @@
 package DevJam.Listeners;
 
 import DevJam.CustomEnchantment;
+import DevJam.Enchantments.Armor.Flight;
 import DevJam.Events.UpdateItemEvent;
 import DevJam.Info;
+import org.bukkit.GameMode;
 import org.bukkit.World;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.LivingEntity;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.EntityEquipment;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
@@ -45,6 +48,11 @@ public class UpdateListener implements Runnable {
                 applyItemEnchantments(entity, equipment.getBoots(), EquipmentSlot.FEET);
                 applyItemEnchantments(entity, equipment.getItemInMainHand(), EquipmentSlot.HAND);
                 applyItemEnchantments(entity, equipment.getItemInOffHand(), EquipmentSlot.OFF_HAND);
+
+                // Flight enchantment
+                if (currentTick % 20 == 0 && entity instanceof Player) {
+                    testFlight((Player)entity);
+                }
             }
         }
     }
@@ -66,9 +74,35 @@ public class UpdateListener implements Runnable {
 
                 if (enchantment.canUpdate(currentTick) && enchantment.canUse(slot)) {
                     int level = enchantments.get(enchantment);
-                    enchantment.update(new UpdateItemEvent(entity, item, level, slot));
+                    enchantment.update(new UpdateItemEvent(entity, item, level, slot), level);
                 }
             }
         }
     }
+
+    //region Flight Enchantment
+    private boolean hasFlight(ItemStack e) {
+        if (e == null)
+            return false;
+
+        return e.getEnchantments().containsKey(new Flight());
+    }
+
+    private void testFlight(Player player) {
+        if (player.getGameMode() == GameMode.CREATIVE)
+            return;
+
+        EntityEquipment equipment = player.getEquipment();
+        if (equipment == null) return;
+
+        boolean canFly = hasFlight(equipment.getHelmet())
+                || hasFlight(equipment.getChestplate())
+                || hasFlight(equipment.getLeggings())
+                || hasFlight(equipment.getBoots());
+
+        if (!canFly) {
+            player.setAllowFlight(false);
+        }
+    }
+    //endregion
 }
