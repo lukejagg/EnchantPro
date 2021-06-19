@@ -14,6 +14,7 @@ import DevJam.Enchantments.Rejuvenation;
 import DevJam.Enchantments.Sword.*;
 import DevJam.Enchantments.Test;
 import DevJam.Enchantments.Tool.AutoSmelting;
+import DevJam.Enchantments.Tool.Regain;
 import DevJam.Listeners.ActionListener;
 import DevJam.Listeners.EnchantListener;
 import DevJam.Listeners.UpdateListener;
@@ -28,7 +29,6 @@ import java.util.ArrayList;
 public class EnchantManager {
     private static boolean registered = false;
     private static final ArrayList<CustomEnchantment> enchants = new ArrayList<>();
-
 
     //region Initialization
     public static void start() {
@@ -84,6 +84,7 @@ public class EnchantManager {
             EnchantManager.register(new Disjunction());
             EnchantManager.register(new AutoSmelting());
             EnchantManager.register(new Flight());
+            EnchantManager.register(new Regain());
 
             /* Why is this necessary? */
             //Enchantment.stopAcceptingRegistrations();
@@ -101,7 +102,7 @@ public class EnchantManager {
     /**
      * Checks if enchantments can be registered
      */
-    private static boolean allowRegistrations() { // Returns true upon success
+    private static void allowRegistrations() { // Returns true upon success
         try {
             // Using Java reflection to set a private variable
             // https://www.spigotmc.org/threads/making-a-custom-enchantment.226403/
@@ -110,9 +111,8 @@ public class EnchantManager {
             fieldAcceptingNew.set(null, true);
             //fieldAcceptingNew.setAccessible(false);
         } catch (Exception e) {
-            return false;
+            Info.error("Cannot register custom enchantments!");
         }
-        return true;
     }
 
     /**

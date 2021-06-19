@@ -5,7 +5,7 @@ import org.bukkit.block.BlockFace;
 import org.bukkit.configuration.file.FileConfiguration;
 
 /**
- * This class will be removed in the 3.0.0 or 4.0.0 refractor since it deeply violates the principles of OOP.
+ * This class will be removed in the 3.0.0 or 4.0.0 refactor since it deeply violates the principles of OOP.
  *
  * Shared class where constants are provided.
  */

@@ -1,29 +1,12 @@
 package DevJam.Util;
 
-import DevJam.Info;
 import org.bukkit.Material;
-import org.bukkit.World;
 import org.bukkit.entity.EntityType;
-import org.bukkit.entity.LivingEntity;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.*;
 
 public class EntityUtil {
-    /**
-     * Gets all living entities in all worlds on the server
-     * @return an ArrayList of all living entities
-     */
-    public static ArrayList<LivingEntity> getLivingEntities() {
-        ArrayList<LivingEntity> livingEntities = new ArrayList<LivingEntity>();
-
-        for (World world : Info.plugin.getServer().getWorlds()) {
-            livingEntities.addAll(world.getLivingEntities());
-        }
-
-        return livingEntities;
-    }
-
     private final static HashMap<EntityType, List<Material>> TAMING_ITEMS = new HashMap<EntityType, List<Material>>() {{
         put(EntityType.WOLF, Collections.singletonList(Material.BONE));
         put(EntityType.CAT, Arrays.asList(Material.COD, Material.SALMON)); // Tamer will allow cooked cod and salmon to tame cats (feature not bug kek)

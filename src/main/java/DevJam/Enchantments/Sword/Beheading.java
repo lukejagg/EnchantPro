@@ -28,6 +28,7 @@ public class Beheading extends CustomEnchantment {
             ItemStack head = new ItemStack(headType);
             if (headType.equals(Material.PLAYER_HEAD)) {
                 SkullMeta meta = (SkullMeta) head.getItemMeta();
+                if (meta == null) return;
                 meta.setOwningPlayer((OfflinePlayer) event.getEntity());
                 head.setItemMeta(meta);
             }

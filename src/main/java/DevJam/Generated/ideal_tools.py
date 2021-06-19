@@ -20,7 +20,8 @@ with open('IdealToolsGenerated.java', 'w') as file:
     file.write('import java.util.HashMap;\n')
     file.write('\n')
     file.write('public class IdealToolsGenerated {\n')
-    file.write('    public static final HashMap<Material, EquipmentType> IDEAL_TOOLS = new HashMap<Material, EquipmentType>() {{\n')
+    file.write('    public static final HashMap<Material, EquipmentType> IDEAL_TOOLS = ')
+    file.write('new HashMap<Material, EquipmentType>() {{\n')
     file.write('        // TODO - manually comb through and prune\n')
 
     URL = 'https://minecraft.fandom.com/wiki/Cobweb'
@@ -60,7 +61,7 @@ with open('IdealToolsGenerated.java', 'w') as file:
                 file.write(format_java_material(block_name))
                 file.write(', EquipmentType.')
                 file.write(tool)
-                file.write(');\n');
+                file.write(');\n')
 
     file.write('    }};\n')
     file.write('}')

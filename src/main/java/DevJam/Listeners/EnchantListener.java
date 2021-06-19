@@ -25,20 +25,10 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
+@SuppressWarnings("unused")
 public class EnchantListener implements Listener {
-    /* Debug for finding enchantments on item */
-    /*@EventHandler
-    public void onDropItem(PlayerDropItemEvent event) {
-        ItemStack item = event.getItemDrop().getItemStack();
-
-        Info.log("Enchants:");
-        item.getItemMeta().getEnchants().forEach((f,l) -> {Info.log(f.toString());});
-        Info.log("Stored Enchants:");
-        EnchantmentStorageMeta meta =  ((EnchantmentStorageMeta)item.getItemMeta());
-        meta.getStoredEnchants().forEach((f,l) -> {Info.log(f.toString());});
-    }*/
-
     @EventHandler
     public void onEnchantItem(EnchantItemEvent event) {
         ItemStack item = event.getItem();
@@ -51,11 +41,9 @@ public class EnchantListener implements Listener {
         ArrayList<CustomEnchantment> possibleEnchants = new ArrayList<>();
         EnchantUtil.getPossibleEnchantments(possibleEnchants, item);
 
-        double luck = 0;
-
         // The higher level enchanted at, the better the luck
         // Higher luck = less chance to get next enchantment
-        luck = 1.0 - level / 15.0;
+        double luck = 1.0 - level / 15.0;
 
         while (EnchantUtil.shouldAddEnchantment(luck)) {
             double total = 0.0;
@@ -149,7 +137,7 @@ public class EnchantListener implements Listener {
         // Repairing, renaming
         if ((item2 == null || item2.getType() == Material.AIR || !ItemUtil.isEnchantable(item2)) && result.getType() == item1.getType()) {
             // Irreparable Enchantment
-            if (item1.getItemMeta().getEnchantLevel(new Irreparable()) != 0) {
+            if (Objects.requireNonNull(item1.getItemMeta()).getEnchantLevel(new Irreparable()) != 0) {
                 if (result.getItemMeta() instanceof Damageable && item1.getItemMeta() instanceof Damageable) {
                     Damageable originalMeta = (Damageable) item1.getItemMeta();
                     Damageable resultMeta = (Damageable) result.getItemMeta();
@@ -251,7 +239,7 @@ public class EnchantListener implements Listener {
         }
 
         // Irreparable Enchantment
-        if (item1.getItemMeta().getEnchantLevel(new Irreparable()) != 0) {
+        if (Objects.requireNonNull(item1.getItemMeta()).getEnchantLevel(new Irreparable()) != 0) {
             if (result.getItemMeta() instanceof Damageable && item1.getItemMeta() instanceof Damageable) {
                 Damageable originalMeta = (Damageable) item1.getItemMeta();
                 Damageable resultMeta = (Damageable) result.getItemMeta();

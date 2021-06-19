@@ -45,7 +45,6 @@ public class CommandProcessor {
             if (args.length == 0 || !(sender instanceof Player))
                 return null;
 
-            ItemStack stack = ((Player) sender).getInventory().getItemInMainHand();
             String label = args[0].toLowerCase();
             List<String> results = new ArrayList<>();
 
@@ -83,6 +82,18 @@ public class CommandProcessor {
                             results.add(e.getMaxLevel() + "");
                         else
                             results.add("[<level>]");
+                    }
+                    return results;
+                case "refresh":
+                    if (!PermissionType.REFRESH.hasPermission(sender)) return results;
+                    // Player argument
+                    if (args.length == 2) {
+                        for (Player player : Bukkit.getOnlinePlayers()) {
+                            if (player == null) continue;
+                            if (startsWith(player.getPlayerListName(), args[1])) {
+                                results.add(player.getPlayerListName());
+                            }
+                        }
                     }
                     return results;
                 default:
@@ -134,12 +145,12 @@ public class CommandProcessor {
         if (args.length < 3) return true;
 
         Player target = Bukkit.getPlayer(args[1]);
-        CustomEnchantment ench = EnchantManager.getEnchant(args[2]);
+        CustomEnchantment enchantment = EnchantManager.getEnchant(args[2]);
         int level = 1;
         if (args.length >= 4)
             level = tryParseInt(args[3], 1);
 
-        if (target != null && ench != null) {
+        if (target != null && enchantment != null) {
             ItemStack item = target.getInventory().getItemInMainHand();
 
             if (item.getAmount() == 0)
@@ -151,13 +162,13 @@ public class CommandProcessor {
             if (EquipmentType.fromItemStack(item) == EquipmentType.ENCHANTED_BOOK) {
                 EnchantmentStorageMeta meta = (EnchantmentStorageMeta) item.getItemMeta();
                 assert meta != null;
-                meta.addStoredEnchant(ench, level, true);
+                meta.addStoredEnchant(enchantment, level, true);
                 item.setItemMeta(meta);
             }
             else {
                 ItemMeta meta = item.getItemMeta();
                 assert meta != null;
-                meta.addEnchant(ench, level, true);
+                meta.addEnchant(enchantment, level, true);
                 item.setItemMeta(meta);
             }
 

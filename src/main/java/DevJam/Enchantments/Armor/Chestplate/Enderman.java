@@ -12,7 +12,7 @@ public class Enderman extends CustomEnchantment {
 
     @Override
     public void onPlayerTeleport(PlayerTeleportEvent event, int level) {
-        if (event.getCause().equals(PlayerTeleportEvent.TeleportCause.ENDER_PEARL)) {
+        if (event.getCause().equals(PlayerTeleportEvent.TeleportCause.ENDER_PEARL) && event.getTo() != null) {
             event.setCancelled(true);
             event.getPlayer().teleport(event.getTo());
         }

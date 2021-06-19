@@ -2,10 +2,8 @@ package DevJam.Enchantments.Armor;
 
 import DevJam.CustomEnchantment;
 import DevJam.Events.UpdateItemEvent;
-import DevJam.Info;
 import org.bukkit.enchantments.EnchantmentTarget;
 import org.bukkit.entity.Player;
-import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerToggleFlightEvent;
 
 public class Flight extends CustomEnchantment {

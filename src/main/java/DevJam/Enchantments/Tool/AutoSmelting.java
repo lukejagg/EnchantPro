@@ -13,6 +13,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.Objects;
+
 public class AutoSmelting extends CustomEnchantment {
     public AutoSmelting() {
         super("autosmelting", "Auto-Smelting");
@@ -24,7 +26,7 @@ public class AutoSmelting extends CustomEnchantment {
     public void onBlockBreak(BlockBreakEvent event, int level) {
         Block block = event.getBlock();
         Player player = event.getPlayer();
-        ItemStack heldItem = player.getEquipment().getItemInMainHand();
+        ItemStack heldItem = Objects.requireNonNull(player.getEquipment()).getItemInMainHand();
 
         if (event.isDropItems() && !player.getGameMode().equals(GameMode.CREATIVE) && IdealToolsGenerated.IDEAL_TOOLS.get(block.getType()) == EquipmentType.fromItemStack(heldItem)) {
             event.setDropItems(false);

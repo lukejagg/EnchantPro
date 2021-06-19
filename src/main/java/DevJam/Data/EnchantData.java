@@ -2,16 +2,16 @@ package DevJam.Data;
 
 public class EnchantData {
     /**
-     * Chance of getting thsi enchantment at low level enchanting
+     * Chance of getting this enchantment at low level enchanting
      * Level 1
      */
-    public double lowWeight = 100;
+    public double lowWeight;
 
     /**
      * Chance of getting this enchantment at high level enchanting
      * Level 30
      */
-    public double highWeight = 100;
+    public double highWeight;
 
     /**
      * How significant this enchantment is.
@@ -19,17 +19,25 @@ public class EnchantData {
      * 0 = not worth anything
      * negative = gives more enchantments
      */
-    public double significance = 1;
+    public double significance;
 
     /** Max level of enchantment at level 30 = (maxLevel - maxLevelBias)
      *
      */
-    public double maxLevelBias = 0;
+    public double maxLevelBias;
 
     /** How random the selected level is.
      *
      */
-    public double levelSpread = 0.5;
+    public double levelSpread;
+
+    public EnchantData() {
+        lowWeight = 100;
+        highWeight = 100;
+        significance = 1;
+        maxLevelBias = 0;
+        levelSpread = 0.5;
+    }
 
     public EnchantData(double lowWeight, double highWeight, double significance, double maxLevelBias, double levelSpread) {
         this.lowWeight = lowWeight;

@@ -35,7 +35,7 @@ public class EnchantPro extends JavaPlugin {
         getConfig().options().copyDefaults(true);
         saveConfig();
 
-        // Register test commands
+        // Register test command
         getCommand("test").setExecutor(new TestCommand());
 
         // Register self as command (/ep)

@@ -13,6 +13,7 @@ import DevJam.Enchantments.Irreparable;
 import DevJam.Enchantments.Rejuvenation;
 import DevJam.Enchantments.Sword.*;
 import DevJam.Enchantments.Tool.AutoSmelting;
+import DevJam.Enchantments.Tool.Regain;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -20,7 +21,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-public class TestCommand implements CommandExecutor { // TODO remove - temporary
+@Deprecated
+public class TestCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player) {
@@ -69,6 +71,7 @@ public class TestCommand implements CommandExecutor { // TODO remove - temporary
             netheriteSword.addEnchantment(new VillageDefender(), 5);
             netheriteSword.addEnchantment(new Disjunction(), 5);
             pickaxe.addEnchantment(new AutoSmelting(), 1);
+            pickaxe.addEnchantment(new Regain(), 3);
 
             CustomEnchantment.updateMeta(helmet);
             CustomEnchantment.updateMeta(chestPlate);

@@ -7,7 +7,7 @@ import org.bukkit.event.entity.EntityDeathEvent;
 import java.util.Random;
 
 public class Lucky extends CustomEnchantment {
-    private static Random random = new Random();
+    private static final Random RANDOM = new Random();
 
     public Lucky() {
         super("lucky", "Lucky");
@@ -17,7 +17,7 @@ public class Lucky extends CustomEnchantment {
 
     @Override
     public void onEntityDeath(EntityDeathEvent event, int level) {
-        if (random.nextDouble() < 0.2 * level) {
+        if (RANDOM.nextDouble() < 0.2 * level) {
             event.setDroppedExp(event.getDroppedExp() * 2);
         }
     }

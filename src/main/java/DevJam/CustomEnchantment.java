@@ -48,6 +48,7 @@ public abstract class CustomEnchantment extends Enchantment {
         enabled = true;
 
         // Config Enable
+        @SuppressWarnings("unchecked") // Can't find better way to cast to ArrayList<String> without warnings
         ArrayList<String> disabledEnchants = (ArrayList<String>) Info.config.get("Disabled Enchantments");
         if (disabledEnchants != null && (disabledEnchants.contains(key) || disabledEnchants.contains(name))) {
             enabled = false;
@@ -75,10 +76,6 @@ public abstract class CustomEnchantment extends Enchantment {
         return 1; // TODO confused on how this works
     }
 
-    /*public EnchantmentTarget getItemTarget() {
-        return targetItem;
-    }*/
-
     public boolean isTreasure() {
         return treasure;
     }
@@ -93,7 +90,13 @@ public abstract class CustomEnchantment extends Enchantment {
     }
 
     //region Compatibility
+    // TODO check if this is correct
     public static boolean canAddEnchantment(CustomEnchantment enchantment, Map<Enchantment, Integer> enchantments) {
+        for (Enchantment enchant : enchantments.keySet()) {
+            if (enchant.conflictsWith(enchantment)) {
+                return false;
+            }
+        }
         return true;
     }
 
@@ -327,7 +330,7 @@ public abstract class CustomEnchantment extends Enchantment {
 
     /**
      * Significance determines how much this enchantment effects
-     * the probability of geting more enchantments.
+     * the probability of getting more enchantments.
      * The higher the significance, the less likely you are
      * to get more enchantments.
      * @return returns the significance of this enchant
