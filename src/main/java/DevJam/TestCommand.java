@@ -8,14 +8,12 @@ import DevJam.Enchantments.Armor.Helmet.FreezingGlance;
 import DevJam.Enchantments.Armor.Helmet.NightVision;
 import DevJam.Enchantments.Armor.Helmet.PigGod;
 import DevJam.Enchantments.Armor.Helmet.Waterbreathing;
+import DevJam.Enchantments.Ethereal;
 import DevJam.Enchantments.Heavy;
 import DevJam.Enchantments.Irreparable;
 import DevJam.Enchantments.Rejuvenation;
 import DevJam.Enchantments.Sword.*;
-import DevJam.Enchantments.Tool.AutoSmelting;
-import DevJam.Enchantments.Tool.Harvesting;
-import DevJam.Enchantments.Tool.Hasty;
-import DevJam.Enchantments.Tool.Regain;
+import DevJam.Enchantments.Tool.*;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -76,6 +74,8 @@ public class TestCommand implements CommandExecutor {
             pickaxe.addEnchantment(new Regain(), 3);
             pickaxe.addEnchantment(new Harvesting(), 3);
             pickaxe.addEnchantment(new Hasty(), 2);
+            pickaxe.addEnchantment(new LuckyMiner(), 3);
+            pickaxe.addEnchantment(new Ethereal(), 1);
 
             CustomEnchantment.updateMeta(helmet);
             CustomEnchantment.updateMeta(chestPlate);

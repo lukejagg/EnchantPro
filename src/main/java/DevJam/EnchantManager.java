@@ -1,5 +1,6 @@
 package DevJam;
 
+import DevJam.Enchantments.*;
 import DevJam.Enchantments.Armor.*;
 import DevJam.Enchantments.Armor.Boots.Dolphin;
 import DevJam.Enchantments.Armor.Boots.Olympian;
@@ -8,15 +9,8 @@ import DevJam.Enchantments.Armor.Helmet.FreezingGlance;
 import DevJam.Enchantments.Armor.Helmet.NightVision;
 import DevJam.Enchantments.Armor.Helmet.PigGod;
 import DevJam.Enchantments.Armor.Helmet.Waterbreathing;
-import DevJam.Enchantments.Heavy;
-import DevJam.Enchantments.Irreparable;
-import DevJam.Enchantments.Rejuvenation;
 import DevJam.Enchantments.Sword.*;
-import DevJam.Enchantments.Test;
-import DevJam.Enchantments.Tool.AutoSmelting;
-import DevJam.Enchantments.Tool.Harvesting;
-import DevJam.Enchantments.Tool.Hasty;
-import DevJam.Enchantments.Tool.Regain;
+import DevJam.Enchantments.Tool.*;
 import DevJam.Listeners.ActionListener;
 import DevJam.Listeners.EnchantListener;
 import DevJam.Listeners.UpdateListener;
@@ -89,6 +83,8 @@ public class EnchantManager {
             EnchantManager.register(new Regain());
             EnchantManager.register(new Harvesting());
             EnchantManager.register(new Hasty());
+            EnchantManager.register(new LuckyMiner());
+            EnchantManager.register(new Ethereal());
 
             /* Why is this necessary? */
             //Enchantment.stopAcceptingRegistrations();
