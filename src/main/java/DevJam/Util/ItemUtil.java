@@ -6,6 +6,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.inventory.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
@@ -20,6 +21,39 @@ public class ItemUtil {
         return EquipmentType.fromItemStack(item) != null;
     }
     //endregion
+
+    private static final ArrayList<Material> CROPS = new ArrayList<Material>(){{ // https://minecraft.fandom.com/wiki/Crops
+        add(Material.WHEAT_SEEDS);
+        add(Material.WHEAT);
+        add(Material.BEETROOT_SEEDS);
+        add(Material.BEETROOT);
+        add(Material.CARROT);
+        add(Material.POTATO);
+        add(Material.POISONOUS_POTATO);
+        add(Material.MELON);
+        add(Material.PUMPKIN);
+        add(Material.BAMBOO);
+        add(Material.COCOA_BEANS);
+        add(Material.SUGAR_CANE);
+        add(Material.SWEET_BERRIES);
+        add(Material.CACTUS);
+        add(Material.BROWN_MUSHROOM);
+        add(Material.RED_MUSHROOM);
+        add(Material.KELP);
+        add(Material.SEA_PICKLE);
+        add(Material.NETHER_WART);
+        add(Material.CHORUS_FRUIT);
+        add(Material.CRIMSON_FUNGUS);
+        add(Material.WARPED_FUNGUS);
+    }};
+    /**
+     * Checks if an item is a crop
+     * @param item the item to be checked
+     * @return true if it is a crop
+     */
+    public static boolean isCrop(ItemStack item) {
+        return CROPS.contains(item.getType());
+    }
 
     //region Slots
     public static boolean slotIsArmor(EquipmentSlot slot) {
@@ -58,7 +92,7 @@ public class ItemUtil {
         put(EquipmentMaterial.STONE, new RecipeChoice.MaterialChoice(Material.STONE, Material.GRANITE, Material.DIORITE, Material.ANDESITE));
         put(EquipmentMaterial.LEATHER, new RecipeChoice.MaterialChoice(Material.LEATHER));
         put(EquipmentMaterial.CHAINMAIL, new RecipeChoice.MaterialChoice(Material.CHAIN));
-        put(EquipmentMaterial.IRON, new RecipeChoice.MaterialChoice(Material.IRON_ORE)); // TODO 1.17 allow copper to give it more of a use
+        put(EquipmentMaterial.IRON, new RecipeChoice.MaterialChoice(Material.IRON_ORE)); // TODO 1.17 allow copper ore to give it more of a use
         put(EquipmentMaterial.GOLD, new RecipeChoice.MaterialChoice(Material.GOLD_ORE, Material.NETHER_GOLD_ORE));
         put(EquipmentMaterial.DIAMOND, new RecipeChoice.MaterialChoice(Material.DIAMOND_ORE, Material.EMERALD_ORE));
         put(EquipmentMaterial.NETHERITE, new RecipeChoice.MaterialChoice(Material.ANCIENT_DEBRIS, Material.DIAMOND_ORE, Material.EMERALD_ORE));

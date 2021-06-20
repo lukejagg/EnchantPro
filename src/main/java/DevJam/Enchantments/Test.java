@@ -5,7 +5,7 @@ import org.bukkit.enchantments.EnchantmentTarget;
 
 @Deprecated
 public class Test extends CustomEnchantment {
-    public Test() { // TODO remove - temporary
+    public Test() {
         super("test", "Test Enchantment");
         maxLevel = 5;
         setTargetItems(EnchantmentTarget.WEAPON);

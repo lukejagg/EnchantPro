@@ -25,7 +25,7 @@ public enum EquipmentMaterial {
         EquipmentType type = EquipmentType.fromItemStack(item);
         if (type == null) return null;
 
-        switch(type) {
+        switch (type) {
             case CROSSBOW:
             case SHIELD:
             case FLINT_AND_STEEL:

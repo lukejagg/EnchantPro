@@ -13,6 +13,8 @@ import DevJam.Enchantments.Irreparable;
 import DevJam.Enchantments.Rejuvenation;
 import DevJam.Enchantments.Sword.*;
 import DevJam.Enchantments.Tool.AutoSmelting;
+import DevJam.Enchantments.Tool.Harvesting;
+import DevJam.Enchantments.Tool.Hasty;
 import DevJam.Enchantments.Tool.Regain;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
@@ -72,6 +74,8 @@ public class TestCommand implements CommandExecutor {
             netheriteSword.addEnchantment(new Disjunction(), 5);
             pickaxe.addEnchantment(new AutoSmelting(), 1);
             pickaxe.addEnchantment(new Regain(), 3);
+            pickaxe.addEnchantment(new Harvesting(), 3);
+            pickaxe.addEnchantment(new Hasty(), 2);
 
             CustomEnchantment.updateMeta(helmet);
             CustomEnchantment.updateMeta(chestPlate);

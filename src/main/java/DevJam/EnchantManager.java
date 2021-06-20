@@ -14,6 +14,8 @@ import DevJam.Enchantments.Rejuvenation;
 import DevJam.Enchantments.Sword.*;
 import DevJam.Enchantments.Test;
 import DevJam.Enchantments.Tool.AutoSmelting;
+import DevJam.Enchantments.Tool.Harvesting;
+import DevJam.Enchantments.Tool.Hasty;
 import DevJam.Enchantments.Tool.Regain;
 import DevJam.Listeners.ActionListener;
 import DevJam.Listeners.EnchantListener;
@@ -85,6 +87,8 @@ public class EnchantManager {
             EnchantManager.register(new AutoSmelting());
             EnchantManager.register(new Flight());
             EnchantManager.register(new Regain());
+            EnchantManager.register(new Harvesting());
+            EnchantManager.register(new Hasty());
 
             /* Why is this necessary? */
             //Enchantment.stopAcceptingRegistrations();
