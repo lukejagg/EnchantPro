@@ -1,15 +1,15 @@
 package DevJam.Enchantments.Armor.Helmet;
 
 import DevJam.CustomEnchantment;
+import DevJam.Enums.CustomEnchantmentTarget;
 import DevJam.Events.UpdateItemEvent;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
-import org.bukkit.enchantments.EnchantmentTarget;
 
 public class FreezingGlance extends CustomEnchantment {
     public FreezingGlance() {
         super("freezingglance", "Freezing Glance");
-        setTargetItems(EnchantmentTarget.ARMOR_HEAD);
+        setTargetItems(CustomEnchantmentTarget.HELMET);
         updateDelay = 1; // idk how long to make this, may lag TODO
     }
 

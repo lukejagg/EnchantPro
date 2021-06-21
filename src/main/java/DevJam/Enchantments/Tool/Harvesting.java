@@ -1,12 +1,12 @@
 package DevJam.Enchantments.Tool;
 
 import DevJam.CustomEnchantment;
+import DevJam.Enums.CustomEnchantmentTarget;
 import DevJam.Util.ItemUtil;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.enchantments.Enchantment;
-import org.bukkit.enchantments.EnchantmentTarget;
 import org.bukkit.entity.Player;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
@@ -19,7 +19,7 @@ public class Harvesting extends CustomEnchantment {
 
     public Harvesting() {
         super("harvesting", "Harvesting");
-        setTargetItems(EnchantmentTarget.TOOL);
+        setTargetItems(CustomEnchantmentTarget.TOOL);
         conflicts.add(Enchantment.SILK_TOUCH);
         maxLevel = 3;
     }

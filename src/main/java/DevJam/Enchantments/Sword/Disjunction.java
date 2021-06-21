@@ -1,15 +1,15 @@
 package DevJam.Enchantments.Sword;
 
 import DevJam.CustomEnchantment;
+import DevJam.Enums.CustomEnchantmentTarget;
 import DevJam.Util.EntityUtil;
-import org.bukkit.enchantments.EnchantmentTarget;
 import org.bukkit.entity.EntityType;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 
 public class Disjunction extends CustomEnchantment {
     public Disjunction() {
         super("disjunction", "Disjunction");
-        setTargetItems(EnchantmentTarget.WEAPON);
+        setTargetItems(CustomEnchantmentTarget.SWORD);
         maxLevel = 5;
     }
 

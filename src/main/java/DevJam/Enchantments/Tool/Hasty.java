@@ -1,8 +1,8 @@
 package DevJam.Enchantments.Tool;
 
 import DevJam.CustomEnchantment;
+import DevJam.Enums.CustomEnchantmentTarget;
 import DevJam.Events.UpdateItemEvent;
-import org.bukkit.enchantments.EnchantmentTarget;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
@@ -10,7 +10,7 @@ public class Hasty extends CustomEnchantment {
     public Hasty() {
         super("hasty", "Hasty");
         maxLevel = 2;
-        setTargetItems(EnchantmentTarget.TOOL);
+        setTargetItems(CustomEnchantmentTarget.TOOL);
         updateDelay = 20;
     }
 

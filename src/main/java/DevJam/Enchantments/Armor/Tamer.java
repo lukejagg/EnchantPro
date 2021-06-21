@@ -1,9 +1,9 @@
 package DevJam.Enchantments.Armor;
 
 import DevJam.CustomEnchantment;
+import DevJam.Enums.CustomEnchantmentTarget;
 import DevJam.Util.EntityUtil;
 import org.bukkit.Bukkit;
-import org.bukkit.enchantments.EnchantmentTarget;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Tameable;
 import org.bukkit.event.entity.EntityTameEvent;
@@ -13,7 +13,7 @@ import org.bukkit.inventory.ItemStack;
 public class Tamer extends CustomEnchantment {
     public Tamer() {
         super("tamer", "Tamer");
-        setTargetItems(EnchantmentTarget.ARMOR);
+        setTargetItems(CustomEnchantmentTarget.ARMOR);
     }
 
     @Override

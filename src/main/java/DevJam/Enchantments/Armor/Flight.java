@@ -1,15 +1,15 @@
 package DevJam.Enchantments.Armor;
 
 import DevJam.CustomEnchantment;
+import DevJam.Enums.CustomEnchantmentTarget;
 import DevJam.Events.UpdateItemEvent;
-import org.bukkit.enchantments.EnchantmentTarget;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerToggleFlightEvent;
 
 public class Flight extends CustomEnchantment {
     public Flight() {
         super("flight", "Flight");
-        setTargetItems(EnchantmentTarget.ARMOR);
+        setTargetItems(CustomEnchantmentTarget.ARMOR);
         updateDelay = 12;
     }
 

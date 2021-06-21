@@ -1,14 +1,14 @@
 package DevJam.Enchantments;
 
 import DevJam.CustomEnchantment;
-import org.bukkit.enchantments.EnchantmentTarget;
+import DevJam.Enums.CustomEnchantmentTarget;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.meta.ItemMeta;
 
 public class Ethereal extends CustomEnchantment {
     public Ethereal() {
         super("ethereal", "Ethereal");
-        setTargetItems(EnchantmentTarget.BREAKABLE);
+        setTargetItems(CustomEnchantmentTarget.BREAKABLE);
     }
 
     @Override

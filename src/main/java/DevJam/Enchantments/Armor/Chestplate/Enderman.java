@@ -1,13 +1,13 @@
 package DevJam.Enchantments.Armor.Chestplate;
 
 import DevJam.CustomEnchantment;
-import org.bukkit.enchantments.EnchantmentTarget;
+import DevJam.Enums.CustomEnchantmentTarget;
 import org.bukkit.event.player.PlayerTeleportEvent;
 
 public class Enderman extends CustomEnchantment {
     public Enderman() {
         super("enderman", "Enderman");
-        setTargetItems(EnchantmentTarget.ARMOR_TORSO);
+        setTargetItems(CustomEnchantmentTarget.CHESTPLATE);
     }
 
     @Override

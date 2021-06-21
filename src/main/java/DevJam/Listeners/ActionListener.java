@@ -2,6 +2,7 @@ package DevJam.Listeners;
 
 import DevJam.CustomEnchantment;
 import org.bukkit.enchantments.Enchantment;
+import org.bukkit.entity.Item;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -242,6 +243,21 @@ public class ActionListener implements Listener {
                     int level = enchantmentIntegerMap.get(enchant);
                     CustomEnchantment enchantment = (CustomEnchantment) enchant;
                     enchantment.onFlyToggled(event, level);
+                }
+            }
+        }
+    }
+
+    @EventHandler
+    public void onEntitySpawn(EntitySpawnEvent event) {
+        if (event.getEntity() instanceof Item) {
+            Item droppedItem = (Item) event.getEntity();
+            Map<Enchantment, Integer> enchantmentIntegerMap = droppedItem.getItemStack().getEnchantments();
+            for (Enchantment enchant : enchantmentIntegerMap.keySet()) {
+                if (enchant instanceof CustomEnchantment) {
+                    int level = enchantmentIntegerMap.get(enchant);
+                    CustomEnchantment enchantment = (CustomEnchantment) enchant;
+                    enchantment.onEntitySpawn(event, level);
                 }
             }
         }

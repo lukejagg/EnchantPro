@@ -1,8 +1,8 @@
 package DevJam.Enchantments.Armor;
 
 import DevJam.CustomEnchantment;
+import DevJam.Enums.CustomEnchantmentTarget;
 import DevJam.Events.UpdateItemEvent;
-import org.bukkit.enchantments.EnchantmentTarget;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
@@ -10,7 +10,7 @@ public class Regeneration extends CustomEnchantment {
     public Regeneration() {
         super("regeneration", "Regeneration");
         maxLevel = 2;
-        setTargetItems(EnchantmentTarget.ARMOR);
+        setTargetItems(CustomEnchantmentTarget.ARMOR);
         updateDelay = 20;
     }
 

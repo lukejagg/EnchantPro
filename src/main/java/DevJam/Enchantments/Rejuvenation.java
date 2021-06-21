@@ -1,8 +1,8 @@
 package DevJam.Enchantments;
 
 import DevJam.CustomEnchantment;
+import DevJam.Enums.CustomEnchantmentTarget;
 import DevJam.Events.UpdateItemEvent;
-import org.bukkit.enchantments.EnchantmentTarget;
 import org.bukkit.inventory.meta.Damageable;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -14,7 +14,7 @@ public class Rejuvenation extends CustomEnchantment {
 
     public Rejuvenation() {
         super("rejuvenation", "Rejuvenation");
-        setTargetItems(EnchantmentTarget.BREAKABLE);
+        setTargetItems(CustomEnchantmentTarget.BREAKABLE);
         updateDelay = 20;
         rejuvenateChance = updateDelay / (24.0 * 60 * 60 * 20 / 429); // Defined to fully repair diamond boots after 24 hours on average
     }

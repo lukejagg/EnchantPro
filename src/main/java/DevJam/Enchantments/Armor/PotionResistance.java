@@ -1,8 +1,8 @@
 package DevJam.Enchantments.Armor;
 
 import DevJam.CustomEnchantment;
+import DevJam.Enums.CustomEnchantmentTarget;
 import DevJam.Events.UpdateItemEvent;
-import org.bukkit.enchantments.EnchantmentTarget;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
@@ -24,7 +24,7 @@ public class PotionResistance extends CustomEnchantment {
 
     public PotionResistance() {
         super("potionresistance", "Potion Resistance");
-        setTargetItems(EnchantmentTarget.ARMOR);
+        setTargetItems(CustomEnchantmentTarget.ARMOR);
         maxLevel = 3;
         updateDelay = 3; // Should be quick to prevent unwanted effects
     }

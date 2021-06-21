@@ -1,6 +1,7 @@
 package DevJam.Enchantments.Tool;
 
 import DevJam.CustomEnchantment;
+import DevJam.Enums.CustomEnchantmentTarget;
 import DevJam.Enums.EquipmentType;
 import DevJam.Generated.IdealToolsGenerated;
 import DevJam.Util.ItemUtil;
@@ -8,7 +9,6 @@ import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.enchantments.Enchantment;
-import org.bukkit.enchantments.EnchantmentTarget;
 import org.bukkit.entity.Player;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
@@ -18,7 +18,7 @@ import java.util.Objects;
 public class AutoSmelting extends CustomEnchantment {
     public AutoSmelting() {
         super("autosmelting", "Auto-Smelting");
-        setTargetItems(EnchantmentTarget.TOOL);
+        setTargetItems(CustomEnchantmentTarget.TOOL);
         conflicts.add(Enchantment.SILK_TOUCH);
     }
 

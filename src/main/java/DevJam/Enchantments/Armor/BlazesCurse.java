@@ -1,13 +1,13 @@
 package DevJam.Enchantments.Armor;
 
 import DevJam.CustomEnchantment;
+import DevJam.Enums.CustomEnchantmentTarget;
 import DevJam.Enums.TextColor;
 import DevJam.Events.UpdateItemEvent;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Biome;
-import org.bukkit.enchantments.EnchantmentTarget;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
@@ -26,7 +26,7 @@ public class BlazesCurse extends CustomEnchantment {
 
     public BlazesCurse() {
         super("blazescurse", "Blaze's Curse");
-        setTargetItems(EnchantmentTarget.ARMOR);
+        setTargetItems(CustomEnchantmentTarget.ARMOR);
         cursed = true;
         loreColor = TextColor.CURSED_LORE;
         updateDelay = 20;

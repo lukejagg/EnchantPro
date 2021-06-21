@@ -1,7 +1,7 @@
 package DevJam.Enchantments.Armor;
 
 import DevJam.CustomEnchantment;
-import org.bukkit.enchantments.EnchantmentTarget;
+import DevJam.Enums.CustomEnchantmentTarget;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
 
 import java.util.Random;
@@ -11,7 +11,7 @@ public class WellFed extends CustomEnchantment {
 
     public WellFed() {
         super("wellfed", "Well-Fed");
-        setTargetItems(EnchantmentTarget.ARMOR);
+        setTargetItems(CustomEnchantmentTarget.ARMOR);
         maxLevel = 3;
     }
 

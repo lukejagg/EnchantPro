@@ -1,7 +1,7 @@
 package DevJam.Enchantments.Tool;
 
 import DevJam.CustomEnchantment;
-import org.bukkit.enchantments.EnchantmentTarget;
+import DevJam.Enums.CustomEnchantmentTarget;
 import org.bukkit.event.block.BlockBreakEvent;
 
 import java.util.Random;
@@ -12,7 +12,7 @@ public class LuckyMiner extends CustomEnchantment {
     public LuckyMiner() {
         super("luckyminer", "Lucky Miner");
         maxLevel = 3;
-        setTargetItems(EnchantmentTarget.TOOL);
+        setTargetItems(CustomEnchantmentTarget.TOOL);
     }
 
     @Override

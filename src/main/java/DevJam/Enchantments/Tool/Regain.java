@@ -1,9 +1,9 @@
 package DevJam.Enchantments.Tool;
 
 import DevJam.CustomEnchantment;
+import DevJam.Enums.CustomEnchantmentTarget;
 import DevJam.Util.ItemUtil;
 import org.bukkit.block.Block;
-import org.bukkit.enchantments.EnchantmentTarget;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.EntityEquipment;
 import org.bukkit.inventory.ItemStack;
@@ -13,7 +13,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 public class Regain extends CustomEnchantment {
     public Regain() {
         super("regain", "Regain");
-        setTargetItems(EnchantmentTarget.TOOL);
+        setTargetItems(CustomEnchantmentTarget.TOOL);
         maxLevel = 3;
     }
 

@@ -1,7 +1,7 @@
 package DevJam.Enchantments.Sword;
 
 import DevJam.CustomEnchantment;
-import org.bukkit.enchantments.EnchantmentTarget;
+import DevJam.Enums.CustomEnchantmentTarget;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 
 import java.util.Random;
@@ -11,7 +11,7 @@ public class DoubleStrike extends CustomEnchantment {
 
     public DoubleStrike() {
         super("doublestrike", "Double Strike");
-        setTargetItems(EnchantmentTarget.WEAPON);
+        setTargetItems(CustomEnchantmentTarget.SWORD);
         maxLevel = 3;
     }
 

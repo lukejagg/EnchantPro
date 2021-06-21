@@ -8,10 +8,7 @@ import DevJam.Enchantments.Armor.Helmet.FreezingGlance;
 import DevJam.Enchantments.Armor.Helmet.NightVision;
 import DevJam.Enchantments.Armor.Helmet.PigGod;
 import DevJam.Enchantments.Armor.Helmet.Waterbreathing;
-import DevJam.Enchantments.Ethereal;
-import DevJam.Enchantments.Heavy;
-import DevJam.Enchantments.Irreparable;
-import DevJam.Enchantments.Rejuvenation;
+import DevJam.Enchantments.*;
 import DevJam.Enchantments.Sword.*;
 import DevJam.Enchantments.Tool.*;
 import org.bukkit.Material;
@@ -76,6 +73,7 @@ public class TestCommand implements CommandExecutor {
             pickaxe.addEnchantment(new Hasty(), 2);
             pickaxe.addEnchantment(new LuckyMiner(), 3);
             pickaxe.addEnchantment(new Ethereal(), 1);
+            pickaxe.addEnchantment(new Volatile(), 1);
 
             CustomEnchantment.updateMeta(helmet);
             CustomEnchantment.updateMeta(chestPlate);

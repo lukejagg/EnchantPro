@@ -1,14 +1,14 @@
 package DevJam.Enchantments.Armor.Helmet;
 
 import DevJam.CustomEnchantment;
-import org.bukkit.enchantments.EnchantmentTarget;
+import DevJam.Enums.CustomEnchantmentTarget;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.event.entity.EntityAirChangeEvent;
 
 public class Waterbreathing extends CustomEnchantment {
     public Waterbreathing() {
         super("waterbreathing", "Waterbreathing");
-        setTargetItems(EnchantmentTarget.ARMOR_HEAD);
+        setTargetItems(CustomEnchantmentTarget.HELMET);
     }
 
     @Override

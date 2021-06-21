@@ -1,8 +1,8 @@
 package DevJam.Enchantments.Armor;
 
 import DevJam.CustomEnchantment;
+import DevJam.Enums.CustomEnchantmentTarget;
 import DevJam.Enums.TextColor;
-import org.bukkit.enchantments.EnchantmentTarget;
 import org.bukkit.event.entity.EntityDeathEvent;
 
 import java.util.Objects;
@@ -10,7 +10,7 @@ import java.util.Objects;
 public class SelfDestruction extends CustomEnchantment {
     public SelfDestruction() {
         super("selfdestruction", "Self-Destruction");
-        setTargetItems(EnchantmentTarget.ARMOR);
+        setTargetItems(CustomEnchantmentTarget.ARMOR);
         maxLevel = 5;
         cursed = true;
         loreColor = TextColor.CURSED_LORE;

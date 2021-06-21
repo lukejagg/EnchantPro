@@ -1,15 +1,15 @@
 package DevJam.Enchantments.Armor.Boots;
 
 import DevJam.CustomEnchantment;
+import DevJam.Enums.CustomEnchantmentTarget;
 import DevJam.Events.UpdateItemEvent;
-import org.bukkit.enchantments.EnchantmentTarget;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 public class Dolphin extends CustomEnchantment {
     public Dolphin() {
         super("dolphin", "Dolphin");
-        setTargetItems(EnchantmentTarget.ARMOR_FEET);
+        setTargetItems(CustomEnchantmentTarget.BOOTS);
         updateDelay = 20;
     }
 

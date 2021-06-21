@@ -1,6 +1,7 @@
 package DevJam;
 
 import DevJam.Data.EnchantData;
+import DevJam.Enums.CustomEnchantmentTarget;
 import DevJam.Enums.EquipmentType;
 import DevJam.Enums.TextColor;
 import DevJam.Events.UpdateItemEvent;
@@ -25,7 +26,7 @@ import java.util.Objects;
 public abstract class CustomEnchantment extends Enchantment {
     protected String name, keyName;
     protected int maxLevel;
-    protected EnchantmentTarget[] targetItems;
+    protected CustomEnchantmentTarget[] targetItems;
     protected EnchantData enchantData;
     protected boolean treasure;
     protected boolean cursed;
@@ -39,7 +40,7 @@ public abstract class CustomEnchantment extends Enchantment {
         this.name = name;
         this.keyName = key;
         maxLevel = 1;
-        targetItems = new EnchantmentTarget[] {EnchantmentTarget.BREAKABLE};
+        targetItems = new CustomEnchantmentTarget[] {CustomEnchantmentTarget.BREAKABLE};
         enchantData = new EnchantData(100, 100, 1, 0, 0.6f);
         treasure = false;
         cursed = false;
@@ -58,10 +59,6 @@ public abstract class CustomEnchantment extends Enchantment {
     //region Getters
     public String getName() {
         return name;
-    }
-
-    public EnchantmentTarget getItemTarget() {
-        return targetItems[0];
     }
 
     public String getKeyName() {
@@ -85,11 +82,15 @@ public abstract class CustomEnchantment extends Enchantment {
     }
     //endregion
 
-    public void setTargetItems(EnchantmentTarget... targets) {
+    public void setTargetItems(CustomEnchantmentTarget... targets) {
         targetItems = targets;
     }
 
     //region Compatibility
+    public EnchantmentTarget getItemTarget() {
+        return EnchantmentTarget.BREAKABLE;
+    }
+
     // TODO check if this is correct
     public static boolean canAddEnchantment(CustomEnchantment enchantment, Map<Enchantment, Integer> enchantments) {
         for (Enchantment enchant : enchantments.keySet()) {
@@ -116,7 +117,7 @@ public abstract class CustomEnchantment extends Enchantment {
      * @return returns if the enchantment can be applied to item
      */
     public boolean canEnchantItem(ItemStack item) {
-        for (EnchantmentTarget tar : targetItems) {
+        for (CustomEnchantmentTarget tar : targetItems) {
             if (tar.includes(item))
                 return true;
         }
@@ -141,22 +142,30 @@ public abstract class CustomEnchantment extends Enchantment {
      */
     public boolean canUse(EquipmentSlot slot) {
         boolean ret = false;
-        for (EnchantmentTarget targetItem : targetItems) {
+        for (CustomEnchantmentTarget targetItem : targetItems) {
             switch (targetItem) {
                 case WEARABLE:
                 case ARMOR:
-                case ARMOR_FEET:
-                case ARMOR_LEGS:
-                case ARMOR_TORSO:
-                case ARMOR_HEAD:
+                case BOOTS:
+                case LEGGINGS:
+                case CHESTPLATE:
+                case HELMET:
+                case ELYTRA:
                     ret |= ItemUtil.slotIsArmor(slot);
                     break;
-                case WEAPON:
+                case SWORD:
                 case TOOL:
                 case BOW:
                 case FISHING_ROD:
                 case TRIDENT:
                 case CROSSBOW:
+                case SHIELD:
+                case SHOVEL:
+                case AXE:
+                case PICKAXE:
+                case HOE:
+                case FLINT_AND_STEEL:
+                case SHEARS:
                     ret |= ItemUtil.slotIsHands(slot);
                     break;
                 case BREAKABLE:
@@ -293,6 +302,10 @@ public abstract class CustomEnchantment extends Enchantment {
     }
 
     public void onFlyToggled(PlayerToggleFlightEvent event, int level) {
+
+    }
+
+    public void onEntitySpawn(EntitySpawnEvent event, int level) {
 
     }
     //endregion

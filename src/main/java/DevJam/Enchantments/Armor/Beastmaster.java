@@ -1,9 +1,9 @@
 package DevJam.Enchantments.Armor;
 
 import DevJam.CustomEnchantment;
+import DevJam.Enums.CustomEnchantmentTarget;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeModifier;
-import org.bukkit.enchantments.EnchantmentTarget;
 import org.bukkit.event.entity.EntityTameEvent;
 
 import java.util.Objects;
@@ -11,7 +11,7 @@ import java.util.Objects;
 public class Beastmaster extends CustomEnchantment {
     public Beastmaster() {
         super("beastmaster", "Beastmaster");
-        setTargetItems(EnchantmentTarget.ARMOR);
+        setTargetItems(CustomEnchantmentTarget.ARMOR);
     }
 
     @Override

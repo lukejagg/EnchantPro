@@ -1,15 +1,15 @@
 package DevJam.Enchantments.Armor.Boots;
 
 import DevJam.CustomEnchantment;
+import DevJam.Enums.CustomEnchantmentTarget;
 import DevJam.Events.UpdateItemEvent;
-import org.bukkit.enchantments.EnchantmentTarget;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 public class Olympian extends CustomEnchantment {
     public Olympian() {
         super("olympian", "Olympian");
-        setTargetItems(EnchantmentTarget.ARMOR_FEET);
+        setTargetItems(CustomEnchantmentTarget.BOOTS);
         maxLevel = 2;
         updateDelay = 20;
     }

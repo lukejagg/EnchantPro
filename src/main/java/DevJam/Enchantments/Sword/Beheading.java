@@ -1,10 +1,10 @@
 package DevJam.Enchantments.Sword;
 
 import DevJam.CustomEnchantment;
+import DevJam.Enums.CustomEnchantmentTarget;
 import DevJam.Util.EntityUtil;
 import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
-import org.bukkit.enchantments.EnchantmentTarget;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
@@ -16,7 +16,7 @@ public class Beheading extends CustomEnchantment {
 
     public Beheading() {
         super("beheading", "Beheading");
-        setTargetItems(EnchantmentTarget.WEAPON);
+        setTargetItems(CustomEnchantmentTarget.SWORD);
         maxLevel = 3;
     }
 

@@ -1,14 +1,14 @@
 package DevJam.Enchantments.Armor;
 
 import DevJam.CustomEnchantment;
-import org.bukkit.enchantments.EnchantmentTarget;
+import DevJam.Enums.CustomEnchantmentTarget;
 import org.bukkit.entity.Player;
 import org.bukkit.event.entity.EntityDamageEvent;
 
 public class LastStand extends CustomEnchantment {
     public LastStand() {
         super("laststand", "Last Stand");
-        setTargetItems(EnchantmentTarget.ARMOR);
+        setTargetItems(CustomEnchantmentTarget.ARMOR);
     }
 
     @Override
