@@ -6,11 +6,16 @@ import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.inventory.*;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
 public class ItemUtil {
+    //region Material Groupings
+    // Use MaterialChoice.test(ItemStack) to see if the item is in the category
+    public static final RecipeChoice.MaterialChoice CROPS = new RecipeChoice.MaterialChoice(Material.WHEAT_SEEDS, Material.WHEAT, Material.BEETROOT_SEEDS, Material.BEETROOT, Material.CARROT, Material.POTATO, Material.POISONOUS_POTATO, Material.MELON, Material.PUMPKIN, Material.BAMBOO, Material.COCOA_BEANS, Material.SUGAR_CANE, Material.SWEET_BERRIES, Material.CACTUS, Material.BROWN_MUSHROOM, Material.RED_MUSHROOM, Material.KELP, Material.SEA_PICKLE, Material.NETHER_WART, Material.CHORUS_FRUIT, Material.CRIMSON_FUNGUS, Material.WARPED_FUNGUS);
+    public static final RecipeChoice.MaterialChoice LEAVES = new RecipeChoice.MaterialChoice(Material.ACACIA_LEAVES, Material.BIRCH_LEAVES, Material.DARK_OAK_LEAVES, Material.JUNGLE_LEAVES, Material.OAK_LEAVES, Material.SPRUCE_LEAVES);
+    //endregion
+
     //region Enchanting
     /**
      * Checks if the item type is enchantable
@@ -21,39 +26,6 @@ public class ItemUtil {
         return EquipmentType.fromItemStack(item) != null;
     }
     //endregion
-
-    private static final ArrayList<Material> CROPS = new ArrayList<Material>(){{ // https://minecraft.fandom.com/wiki/Crops
-        add(Material.WHEAT_SEEDS);
-        add(Material.WHEAT);
-        add(Material.BEETROOT_SEEDS);
-        add(Material.BEETROOT);
-        add(Material.CARROT);
-        add(Material.POTATO);
-        add(Material.POISONOUS_POTATO);
-        add(Material.MELON);
-        add(Material.PUMPKIN);
-        add(Material.BAMBOO);
-        add(Material.COCOA_BEANS);
-        add(Material.SUGAR_CANE);
-        add(Material.SWEET_BERRIES);
-        add(Material.CACTUS);
-        add(Material.BROWN_MUSHROOM);
-        add(Material.RED_MUSHROOM);
-        add(Material.KELP);
-        add(Material.SEA_PICKLE);
-        add(Material.NETHER_WART);
-        add(Material.CHORUS_FRUIT);
-        add(Material.CRIMSON_FUNGUS);
-        add(Material.WARPED_FUNGUS);
-    }};
-    /**
-     * Checks if an item is a crop
-     * @param item the item to be checked
-     * @return true if it is a crop
-     */
-    public static boolean isCrop(ItemStack item) {
-        return CROPS.contains(item.getType());
-    }
 
     //region Slots
     public static boolean slotIsArmor(EquipmentSlot slot) {

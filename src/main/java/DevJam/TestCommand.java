@@ -11,6 +11,7 @@ import DevJam.Enchantments.Armor.Helmet.Waterbreathing;
 import DevJam.Enchantments.*;
 import DevJam.Enchantments.Sword.*;
 import DevJam.Enchantments.Tool.*;
+import DevJam.Enchantments.Tool.Axe.Arborist;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -32,6 +33,7 @@ public class TestCommand implements CommandExecutor {
             ItemStack diamondSword = new ItemStack(Material.DIAMOND_SWORD);
             ItemStack netheriteSword = new ItemStack(Material.NETHERITE_SWORD);
             ItemStack pickaxe = new ItemStack(Material.DIAMOND_PICKAXE);
+            ItemStack axe = new ItemStack(Material.DIAMOND_AXE);
 
             helmet.addEnchantment(new PotionResistance(), 1);
             helmet.addEnchantment(new NightVision(), 1);
@@ -74,6 +76,7 @@ public class TestCommand implements CommandExecutor {
             pickaxe.addEnchantment(new LuckyMiner(), 3);
             pickaxe.addEnchantment(new Ethereal(), 1);
             pickaxe.addEnchantment(new Volatile(), 1);
+            //axe.addEnchantment(new Arborist(), 1);
 
             CustomEnchantment.updateMeta(helmet);
             CustomEnchantment.updateMeta(chestPlate);
@@ -82,6 +85,7 @@ public class TestCommand implements CommandExecutor {
             CustomEnchantment.updateMeta(diamondSword);
             CustomEnchantment.updateMeta(netheriteSword);
             CustomEnchantment.updateMeta(pickaxe);
+            CustomEnchantment.updateMeta(axe);
 
             player.getInventory().addItem(helmet);
             player.getInventory().addItem(chestPlate);
@@ -90,6 +94,7 @@ public class TestCommand implements CommandExecutor {
             player.getInventory().addItem(diamondSword);
             player.getInventory().addItem(netheriteSword);
             player.getInventory().addItem(pickaxe);
+            player.getInventory().addItem(axe);
         }
         return true;
     }

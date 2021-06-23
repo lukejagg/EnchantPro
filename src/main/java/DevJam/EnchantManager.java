@@ -11,6 +11,7 @@ import DevJam.Enchantments.Armor.Helmet.Waterbreathing;
 import DevJam.Enchantments.*;
 import DevJam.Enchantments.Sword.*;
 import DevJam.Enchantments.Tool.*;
+import DevJam.Enchantments.Tool.Axe.Arborist;
 import DevJam.Listeners.ActionListener;
 import DevJam.Listeners.EnchantListener;
 import DevJam.Listeners.UpdateListener;
