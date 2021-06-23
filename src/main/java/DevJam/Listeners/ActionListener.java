@@ -10,6 +10,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.entity.*;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
+import org.bukkit.event.player.PlayerItemDamageEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.event.player.PlayerToggleFlightEvent;
 import org.bukkit.inventory.EntityEquipment;
@@ -32,6 +33,8 @@ public class ActionListener implements Listener {
     // isn't equipped. (e.g. for disabling effect after it is unequipped)
 
     //endregion
+
+
 
     //region Generic Actions
     @EventHandler
@@ -261,6 +264,11 @@ public class ActionListener implements Listener {
                 }
             }
         }
+    }
+
+    @EventHandler
+    public void onPlayerItemDamage(PlayerItemDamageEvent event) {
+
     }
     //endregion
 }

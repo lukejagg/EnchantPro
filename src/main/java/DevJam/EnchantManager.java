@@ -1,17 +1,31 @@
 package DevJam;
 
+import DevJam.Enchantments.*;
 import DevJam.Enchantments.Armor.*;
 import DevJam.Enchantments.Armor.Boots.Dolphin;
 import DevJam.Enchantments.Armor.Boots.Olympian;
 import DevJam.Enchantments.Armor.Chestplate.Enderman;
+import DevJam.Enchantments.Armor.Chestplate.X_Cloaking;
+import DevJam.Enchantments.Armor.Chestplate.X_EnergyShield;
+import DevJam.Enchantments.Armor.Chestplate.X_Fireball;
 import DevJam.Enchantments.Armor.Helmet.FreezingGlance;
 import DevJam.Enchantments.Armor.Helmet.NightVision;
 import DevJam.Enchantments.Armor.Helmet.PigGod;
 import DevJam.Enchantments.Armor.Helmet.Waterbreathing;
+import DevJam.Enchantments.Heavy;
+import DevJam.Enchantments.Irreparable;
+import DevJam.Enchantments.Rejuvenation;
 import DevJam.Enchantments.*;
+import DevJam.Enchantments.Shield.*;
 import DevJam.Enchantments.Sword.*;
 import DevJam.Enchantments.Tool.*;
 import DevJam.Enchantments.Tool.Axe.Arborist;
+import DevJam.Enchantments.Tool.Axe.X_Ambrosia;
+import DevJam.Enchantments.Tool.Axe.X_GoldenTouch;
+import DevJam.Enchantments.Tool.Pickaxe.X_Excavator;
+import DevJam.Enchantments.Tool.Pickaxe.X_Reveal;
+import DevJam.Enchantments.Tool.Pickaxe.X_Voiding;
+import DevJam.Enchantments.Tool.Shovel.X_GoldRush;
 import DevJam.Listeners.ActionListener;
 import DevJam.Listeners.EnchantListener;
 import DevJam.Listeners.UpdateListener;
@@ -48,25 +62,38 @@ public class EnchantManager {
             allowRegistrations();
 
             // Enchantments
+
+            // Boots
+            EnchantManager.register(new Olympian());
+            EnchantManager.register(new Dolphin());
+
+            // Chestplate
+            EnchantManager.register(new Enderman());
+            EnchantManager.register(new X_Cloaking());
+            EnchantManager.register(new X_EnergyShield());
+            EnchantManager.register(new X_Fireball());
+
+
+            // Helmet
+            EnchantManager.register(new FreezingGlance());
+            EnchantManager.register(new NightVision());
+            EnchantManager.register(new PigGod());
+            EnchantManager.register(new Waterbreathing());
+
+            // Armor
+            EnchantManager.register(new Beastmaster());
             EnchantManager.register(new Regeneration());
             EnchantManager.register(new Life());
             EnchantManager.register(new WellFed());
             EnchantManager.register(new Tamer());
-            EnchantManager.register(new Beastmaster());
             EnchantManager.register(new PotionResistance());
             EnchantManager.register(new LastStand());
-            EnchantManager.register(new Rejuvenation());
-            EnchantManager.register(new Heavy());
-            EnchantManager.register(new Irreparable());
-            EnchantManager.register(new NightVision());
-            EnchantManager.register(new PigGod());
-            EnchantManager.register(new Enderman());
-            EnchantManager.register(new Olympian());
-            EnchantManager.register(new Dolphin());
             EnchantManager.register(new SelfDestruction());
             EnchantManager.register(new BlazesCurse());
-            EnchantManager.register(new FreezingGlance());
-            EnchantManager.register(new Waterbreathing());
+            EnchantManager.register(new Flight());
+            EnchantManager.register(new Magnetic());
+
+            // Sword
             EnchantManager.register(new Venomous());
             EnchantManager.register(new Slothful());
             EnchantManager.register(new Blinding());
@@ -78,12 +105,49 @@ public class EnchantManager {
             EnchantManager.register(new Surprise());
             EnchantManager.register(new VillageDefender());
             EnchantManager.register(new Disjunction());
+            EnchantManager.register(new X_IceAspect());
+            EnchantManager.register(new X_Agility());
+            EnchantManager.register(new X_Bludgeoning());
+            EnchantManager.register(new X_Kinetic());
+            EnchantManager.register(new X_Pigificator());
+            EnchantManager.register(new X_Chickenator());
+
+            // Axe
+            EnchantManager.register(new Arborist());
+            EnchantManager.register(new X_GoldenTouch());
+            EnchantManager.register(new X_Ambrosia());
+
+            // Pickaxe
+            EnchantManager.register(new X_Reveal());
+            EnchantManager.register(new X_Voiding());
+            EnchantManager.register(new X_Excavator());
+
+            // Shovel
+            EnchantManager.register(new X_GoldRush());
+
+            // Tool
             EnchantManager.register(new AutoSmelting());
-            EnchantManager.register(new Flight());
             EnchantManager.register(new Regain());
             EnchantManager.register(new Harvesting());
             EnchantManager.register(new Hasty());
             EnchantManager.register(new LuckyMiner());
+            EnchantManager.register(new X_Reinforced());
+            EnchantManager.register(new X_DivineTouch());
+            EnchantManager.register(new X_SilkChest());
+            EnchantManager.register(new X_Laser());
+            EnchantManager.register(new X_AutoBoxer());
+
+            // Shields
+            EnchantManager.register(new X_Bash());
+            EnchantManager.register(new X_Deflect());
+            EnchantManager.register(new X_Recoil());
+            EnchantManager.register(new X_Reflect());
+            EnchantManager.register(new X_Weighted());
+
+            // General
+            EnchantManager.register(new Rejuvenation());
+            EnchantManager.register(new Heavy());
+            EnchantManager.register(new Irreparable());
             EnchantManager.register(new Ethereal());
             EnchantManager.register(new Volatile());
 
