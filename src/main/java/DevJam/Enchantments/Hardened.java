@@ -1,6 +1,7 @@
 package DevJam.Enchantments;
 
 import DevJam.CustomEnchantment;
+import DevJam.Enums.CustomEnchantmentTarget;
 import DevJam.Events.UpdateItemEvent;
 import org.bukkit.enchantments.EnchantmentTarget;
 import org.bukkit.inventory.meta.Damageable;
@@ -14,7 +15,7 @@ public class Hardened extends CustomEnchantment {
 
     public Hardened() {
         super("hardened", "Hardened");
-        setTargetItems(EnchantmentTarget.BREAKABLE);
+        setTargetItems(CustomEnchantmentTarget.BREAKABLE);
     }
 
     @Override

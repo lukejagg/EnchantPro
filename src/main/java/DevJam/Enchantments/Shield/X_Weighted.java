@@ -10,7 +10,7 @@ import org.bukkit.event.player.PlayerToggleFlightEvent;
 
 public class X_Weighted extends CustomEnchantment {
     public X_Weighted() {
-        super("heavy", "Heavy");
+        super("weighted", "Weighted");
         enchantData = new EnchantData(100, 100, 1, 0, 0);
         setTargetItems(CustomEnchantmentTarget.SHIELD);
     }
