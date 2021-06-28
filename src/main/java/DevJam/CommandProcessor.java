@@ -57,8 +57,8 @@ public class CommandProcessor {
                     if (args.length == 2) {
                         for (Player player : Bukkit.getOnlinePlayers()) {
                             if (player == null) continue;
-                            if (startsWith(player.getPlayerListName(), args[1])) {
-                                results.add(player.getPlayerListName());
+                            if (startsWith(player.getName(), args[1])) {
+                                results.add(player.getName());
                             }
                         }
                     }
@@ -92,8 +92,8 @@ public class CommandProcessor {
                     if (args.length == 2) {
                         for (Player player : Bukkit.getOnlinePlayers()) {
                             if (player == null) continue;
-                            if (startsWith(player.getPlayerListName(), args[1])) {
-                                results.add(player.getPlayerListName());
+                            if (startsWith(player.getName(), args[1])) {
+                                results.add(player.getName());
                             }
                         }
                     }
@@ -135,8 +135,8 @@ public class CommandProcessor {
                     if (args.length == 2) {
                         for (Player player : Bukkit.getOnlinePlayers()) {
                             if (player == null) continue;
-                            if (startsWith(player.getPlayerListName(), args[1])) {
-                                results.add(player.getPlayerListName());
+                            if (startsWith(player.getName(), args[1])) {
+                                results.add(player.getName());
                             }
                         }
                     }
@@ -159,8 +159,8 @@ public class CommandProcessor {
                     if (args.length == 2) {
                         for (Player player : Bukkit.getOnlinePlayers()) {
                             if (player == null) continue;
-                            if (startsWith(player.getPlayerListName(), args[1])) {
-                                results.add(player.getPlayerListName());
+                            if (startsWith(player.getName(), args[1])) {
+                                results.add(player.getName());
                             }
                         }
                     }
@@ -171,8 +171,8 @@ public class CommandProcessor {
                     if (args.length == 2) {
                         for (Player player : Bukkit.getOnlinePlayers()) {
                             if (player == null) continue;
-                            if (startsWith(player.getPlayerListName(), args[1])) {
-                                results.add(player.getPlayerListName());
+                            if (startsWith(player.getName(), args[1])) {
+                                results.add(player.getName());
                             }
                         }
                     }
