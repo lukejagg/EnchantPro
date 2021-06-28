@@ -1,7 +1,9 @@
 name: EnchantPro
 version: 1.0
+description: Custom enchantments plugin.
 api-version: 1.16
 main: DevJam.EnchantPro
+depend: [WorldGuard]
 commands:
   test:
     description: Temporary, should not be in the final version.

@@ -10,7 +10,7 @@ public class DoubleStrike extends CustomEnchantment {
     private static final Random RANDOM = new Random();
 
     public DoubleStrike() {
-        super("doublestrike", "Double Strike");
+        super("double_strike", "Double Strike");
         setTargetItems(CustomEnchantmentTarget.SWORD);
         maxLevel = 3;
     }

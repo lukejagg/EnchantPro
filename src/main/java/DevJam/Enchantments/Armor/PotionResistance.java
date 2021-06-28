@@ -23,7 +23,7 @@ public class PotionResistance extends CustomEnchantment {
     }};
 
     public PotionResistance() {
-        super("potionresistance", "Potion Resistance");
+        super("potion_resistance", "Potion Resistance");
         setTargetItems(CustomEnchantmentTarget.ARMOR);
         maxLevel = 3;
         updateDelay = 3; // Should be quick to prevent unwanted effects

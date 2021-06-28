@@ -7,7 +7,7 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 
 public class VillageDefender extends CustomEnchantment {
     public VillageDefender() {
-        super("villagedefender", "Village Defender");
+        super("village_defender", "Village Defender");
         setTargetItems(CustomEnchantmentTarget.SWORD);
         maxLevel = 5;
     }

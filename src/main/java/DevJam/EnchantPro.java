@@ -31,7 +31,7 @@ public class EnchantPro extends JavaPlugin {
         w.start();
 
         // Config
-        getConfig().addDefault("Disabled Enchantments", new ArrayList<String>(){{add("Freezing Glance"); add("waterbreathing");}});
+        getConfig().addDefault("Disabled Enchantments", new ArrayList<String>(){{add("waterbreathing");}});
         getConfig().options().copyDefaults(true);
         saveConfig();
 
@@ -57,5 +57,11 @@ public class EnchantPro extends JavaPlugin {
         getLogger().info("Disabling EnchantPro");
 
         EnchantManager.stop();
+    }
+
+    @Override
+    public void onLoad() {
+        super.onLoad();
+        WorldGuardHook.init();
     }
 }

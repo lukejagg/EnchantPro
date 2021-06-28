@@ -7,7 +7,7 @@ import org.bukkit.event.entity.EntityDamageEvent;
 
 public class LastStand extends CustomEnchantment {
     public LastStand() {
-        super("laststand", "Last Stand");
+        super("last_stand", "Last Stand");
         setTargetItems(CustomEnchantmentTarget.ARMOR);
     }
 

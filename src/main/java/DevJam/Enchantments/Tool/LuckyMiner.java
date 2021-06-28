@@ -10,7 +10,7 @@ public class LuckyMiner extends CustomEnchantment {
     private static final Random RANDOM = new Random();
 
     public LuckyMiner() {
-        super("luckyminer", "Lucky Miner");
+        super("lucky_miner", "Lucky Miner");
         maxLevel = 3;
         setTargetItems(CustomEnchantmentTarget.TOOL);
     }

@@ -7,7 +7,7 @@ import org.bukkit.event.entity.EntityDamageEvent;
 
 public class PigGod extends CustomEnchantment {
     public PigGod() {
-        super("piggod", "Pig God");
+        super("pig_god", "Pig God");
         setTargetItems(CustomEnchantmentTarget.HELMET);
     }
 

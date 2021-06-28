@@ -10,7 +10,7 @@ import java.util.Objects;
 
 public class LifeLeech extends CustomEnchantment {
     public LifeLeech() {
-        super("lifeleech", "Life Leech");
+        super("life_leech", "Life Leech");
         setTargetItems(CustomEnchantmentTarget.SWORD);
         maxLevel = 3;
     }

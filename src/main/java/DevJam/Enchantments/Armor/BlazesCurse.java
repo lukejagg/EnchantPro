@@ -25,7 +25,7 @@ public class BlazesCurse extends CustomEnchantment {
     }};
 
     public BlazesCurse() {
-        super("blazescurse", "Blaze's Curse");
+        super("blazes_curse", "Blaze's Curse");
         setTargetItems(CustomEnchantmentTarget.ARMOR);
         cursed = true;
         loreColor = TextColor.CURSED_LORE;

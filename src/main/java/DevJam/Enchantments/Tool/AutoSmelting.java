@@ -17,7 +17,7 @@ import java.util.Objects;
 
 public class AutoSmelting extends CustomEnchantment {
     public AutoSmelting() {
-        super("autosmelting", "Auto-Smelting");
+        super("auto_smelting", "Auto-Smelting");
         setTargetItems(CustomEnchantmentTarget.TOOL);
         conflicts.add(Enchantment.SILK_TOUCH);
     }

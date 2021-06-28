@@ -8,7 +8,7 @@ import org.bukkit.potion.PotionEffectType;
 
 public class NightVision extends CustomEnchantment {
     public NightVision() {
-        super("nightvision", "Night Vision");
+        super("night_vision", "Night Vision");
         setTargetItems(CustomEnchantmentTarget.HELMET);
         updateDelay = 20;
     }

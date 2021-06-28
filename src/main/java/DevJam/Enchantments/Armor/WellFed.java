@@ -10,7 +10,7 @@ public class WellFed extends CustomEnchantment {
     private static final Random RANDOM = new Random();
 
     public WellFed() {
-        super("wellfed", "Well-Fed");
+        super("well_fed", "Well-Fed");
         setTargetItems(CustomEnchantmentTarget.ARMOR);
         maxLevel = 3;
     }

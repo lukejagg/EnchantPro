@@ -9,7 +9,7 @@ import java.util.Objects;
 
 public class SelfDestruction extends CustomEnchantment {
     public SelfDestruction() {
-        super("selfdestruction", "Self-Destruction");
+        super("self_destruction", "Self-Destruction");
         setTargetItems(CustomEnchantmentTarget.ARMOR);
         maxLevel = 5;
         cursed = true;
