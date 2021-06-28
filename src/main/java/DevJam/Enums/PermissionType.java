@@ -4,7 +4,7 @@ import org.bukkit.permissions.Permissible;
 
 public enum PermissionType {
 
-    USE("enchantpro.enchant.use"), GIVE("enchantpro.command.give"),
+    USE("enchantpro.enchant.use"), ENCHANT("enchantpro.command.enchant"), SET("enchantpro.command.set"), REMOVE("enchantpro.command.remove"), CLEAR("enchantpro.command.clear"),
     LIST("enchantpro.command.toggle"), INFO("enchantpro.command.reload"),
     REFRESH("enchantpro.command.refresh");
 
