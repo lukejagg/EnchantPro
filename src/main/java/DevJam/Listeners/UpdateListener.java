@@ -89,8 +89,10 @@ public class UpdateListener implements Runnable {
     }
 
     private void testFlight(Player player) {
-        if (player.getGameMode() == GameMode.CREATIVE)
+        if (player.getGameMode() == GameMode.CREATIVE || player.getGameMode() == GameMode.SPECTATOR) {
+            player.setAllowFlight(true);
             return;
+        }
 
         EntityEquipment equipment = player.getEquipment();
         if (equipment == null) return;
