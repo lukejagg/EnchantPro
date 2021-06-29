@@ -131,6 +131,26 @@ public class EnchantListener implements Listener {
         ItemStack item2 = inv.getItem(1);
         ItemStack result = event.getResult();
 
+        // If Item2 is enchanted_book, check if enchanted_book
+        // can be added to the item.
+        if (item1 != null && item2 != null && item1.getAmount() != 0 &&
+            item2.getType() == Material.ENCHANTED_BOOK &&
+            (result == null || result.getType() == Material.AIR)) {
+
+            boolean worked = false;
+            EnchantmentStorageMeta meta = (EnchantmentStorageMeta) item2.getItemMeta();
+            for (Enchantment e : meta.getStoredEnchants().keySet()) {
+                if (e instanceof CustomEnchantment && e.canEnchantItem(item1)) {
+                    worked = true;
+                }
+            }
+
+            if (worked) {
+                result = new ItemStack(item1);
+                event.setResult(result);
+            }
+        }
+
         // Make sure item1 is enchantable
         if (item1 == null || item1.getAmount() > 1 || !ItemUtil.isEnchantable(item1) || result == null) return;
 
@@ -233,8 +253,10 @@ public class EnchantListener implements Listener {
         }
         else {
             for (CustomEnchantment e : customEnchants.keySet()) {
-                int level = customEnchants.get(e);
-                result.addEnchantment(e, level);
+                if (e.canEnchantItem(result)) {
+                    int level = customEnchants.get(e);
+                    result.addEnchantment(e, level);
+                }
             }
         }
 
