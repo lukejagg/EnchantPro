@@ -54,6 +54,15 @@ public abstract class CustomEnchantment extends Enchantment {
         if (disabledEnchants != null && (disabledEnchants.contains(key) || disabledEnchants.contains(name))) {
             enabled = false;
         }
+        @SuppressWarnings("unchecked")
+        ArrayList<String> treasureEnchants = (ArrayList<String>) Info.config.get("Treasure Enchantments");
+        if (treasureEnchants != null && (treasureEnchants.contains(key) || treasureEnchants.contains(name))) {
+            treasure = true;
+        }
+        if (!enabled || treasure) {
+            enchantData.lowWeight = 0;
+            enchantData.highWeight = 0;
+        }
     }
 
     //region Getters

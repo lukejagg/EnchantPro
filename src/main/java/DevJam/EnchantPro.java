@@ -32,6 +32,7 @@ public class EnchantPro extends JavaPlugin {
 
         // Config
         getConfig().addDefault("Disabled Enchantments", new ArrayList<String>(){{add("waterbreathing");}});
+        getConfig().addDefault("Treasure Enchantments", new ArrayList<String>(){{add("flight");}});
         getConfig().options().copyDefaults(true);
         saveConfig();
 
