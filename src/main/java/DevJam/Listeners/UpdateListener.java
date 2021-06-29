@@ -50,7 +50,7 @@ public class UpdateListener implements Runnable {
                 applyItemEnchantments(entity, equipment.getItemInOffHand(), EquipmentSlot.OFF_HAND);
 
                 // Flight enchantment
-                if (currentTick % 20 == 0 && entity instanceof Player) {
+                if (currentTick % 10 == 0 && entity instanceof Player) {
                     testFlight((Player)entity);
                 }
             }
@@ -102,8 +102,9 @@ public class UpdateListener implements Runnable {
                 || hasFlight(equipment.getLeggings())
                 || hasFlight(equipment.getBoots());
 
-        if (!canFly) {
+        if (!canFly && Flight.FlyingPlayers.containsKey(player)) {
             player.setAllowFlight(false);
+            Flight.FlyingPlayers.remove(player);
         }
     }
     //endregion
